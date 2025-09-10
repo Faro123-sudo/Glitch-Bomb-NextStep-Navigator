@@ -1,0 +1,103 @@
+{
+  "careerBank": [
+    {
+      "id": 1,
+      "careerName": "Software Engineer",
+      "description": "Designs, develops, and maintains software applications and systems.",
+      "skillsRequired": ["Programming", "Problem-Solving", "Teamwork"],
+      "averageSalary": "$70,000 - $120,000",
+      "educationPath": "Bachelor's degree in Computer Science or related field"
+    },
+    {
+      "id": 2,
+      "careerName": "Doctor",
+      "description": "Diagnoses and treats illnesses and injuries, promotes health and wellness.",
+      "skillsRequired": ["Medical Knowledge", "Empathy", "Attention to Detail"],
+      "averageSalary": "$120,000 - $300,000",
+      "educationPath": "Medical School + Residency"
+    }
+  ],
+  "quizQuestions": [
+    {
+      "id": 1,
+      "question": "Do you enjoy working with numbers and data?",
+      "options": ["Yes", "No", "Sometimes"],
+      "answersMapping": {
+        "Yes": "Consider careers in Data Science, Accounting, or Engineering",
+        "No": "Explore careers in Creative Arts or Communication",
+        "Sometimes": "You might enjoy a mix like Marketing Analytics"
+      }
+    },
+    {
+      "id": 2,
+      "question": "Do you like working with people?",
+      "options": ["Yes", "No"],
+      "answersMapping": {
+        "Yes": "Teaching, Sales, and Counseling may suit you",
+        "No": "Consider careers in Research or Software Development"
+      }
+    }
+  ],
+  "multimediaGuidance": {
+    "videos": [
+      {
+        "id": 1,
+        "title": "How to Choose a Career Path",
+        "url": "https://example.com/career-video"
+      }
+    ],
+    "podcasts": [
+      {
+        "id": 1,
+        "title": "Career Conversations Podcast",
+        "url": "https://example.com/career-podcast"
+      }
+    ]
+  },
+  "resourceLibrary": {
+    "articles": [
+      {
+        "id": 1,
+        "title": "Top 10 Careers for 2025",
+        "url": "https://example.com/article"
+      }
+    ],
+    "ebooks": [
+      {
+        "id": 1,
+        "title": "Career Planning Guide",
+        "url": "https://example.com/ebook"
+      }
+    ],
+    "webinars": [
+      {
+        "id": 1,
+        "title": "Mastering Job Interviews",
+        "date": "2025-09-15",
+        "url": "https://example.com/webinar"
+      }
+    ]
+  },
+  "successStories": [
+    {
+      "id": 1,
+      "name": "Jane Doe",
+      "career": "Entrepreneur",
+      "story": "Jane started her own business after years of working in tech and now mentors young founders."
+    }
+  ],
+  "admissionAndCoaching": {
+    "guidanceTopics": [
+      {
+        "id": 1,
+        "title": "Preparing for University Admission",
+        "content": "Step-by-step guidance on writing personal statements, preparing for entrance exams, and building a strong application profile."
+      },
+      {
+        "id": 2,
+        "title": "Career Coaching Sessions",
+        "content": "Book one-on-one sessions with certified career coaches to explore career options and create an action plan."
+      }
+    ]
+  }
+}

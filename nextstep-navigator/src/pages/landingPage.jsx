@@ -12,7 +12,7 @@ function LandingPage() {
                 <div className="container">
                     <div className="row justify-content-center">
                         {/* Header */}
-                        <div className="col-12 text-center mb-4">
+                        <div className="col-12 text-center mb-4" data-aos="fade-up" data-aos-delay="300">
                             <h1 className="display-4 fw-bold text-primary mb-3">
                                 Welcome to NextStep Navigator
                             </h1>
@@ -22,9 +22,9 @@ function LandingPage() {
                         </div>
 
                         {/* Lottie Animation */}
-                        <div className="col-md-5 text-center me-2 mb-5 mb-md-0">
+                        <div className="col-md-5 text-center me-2 mb-5 mb-md-0"  data-aos="fade-up" data-aos-delay="300">
                             <div className="lottie-container mb-4">
-                                <div
+                                <div load="lazy"
                                     className="d-flex align-items-center justify-content-center rounded-circle mx-auto"
                                     style={{ width: "300px", height: "300px" }}
                                 >
@@ -41,7 +41,7 @@ function LandingPage() {
                         </div>
 
                         {/* Dummy Form */}
-                        <div className="col-md-7 col-lg-5">
+                        <div className="col-md-7 col-lg-5" data-aos="fade-up" data-aos-delay="300">
                             <div className="form-container p-4 p-md-5 shadow rounded">
                                 <form action="#" method="POST">
                                     <div className="mb-3">
