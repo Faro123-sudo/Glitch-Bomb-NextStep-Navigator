@@ -97,6 +97,10 @@ function LandingPage() {
                                                 Graduate (UG/PG)
                                             </label>
                                         </div>
+                                        <p className="text-start ms-4">
+                                            <strong>UG:</strong> Undergraduate (Bachelor's Degree) <br />
+                                            <strong>PG:</strong> Postgraduate (Master's Degree)
+                                        </p>
                                         <div className="form-check mb-3">
                                             <input className="form-check-input" type="checkbox" id="working" />
                                             <label className="form-check-label" htmlFor="working">
