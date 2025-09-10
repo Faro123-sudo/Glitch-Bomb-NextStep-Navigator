@@ -1,0 +1,31 @@
+
+          .form-check {
+            width: fit-content !important;
+          }
+          .form-container {
+            background: white;
+            border-radius: 15px;
+          }
+          .form-check-input:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+          }
+          .btn-primary {
+            background: linear-gradient(to right, #0d6efd, #0dcaf0);
+            border: none;
+            transition: all 0.3s ease;
+          }
+          .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+          .lottie-container {
+            max-width: 300px;
+            margin: 0 auto;
+          }
+          @media (max-width: 768px) {
+            .lottie-container {
+              max-width: 250px;
+            }
+          }
+        
