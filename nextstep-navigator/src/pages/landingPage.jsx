@@ -79,12 +79,12 @@ function LandingPage() {
                                             id="contact"
                                             name="contact"
                                             className="form-control form-control-lg"
-                                            placeholder="e.g., (123) 456-7890"
+                                            placeholder="e.g., +234-1456-7890"
                                         />
                                     </div>
 
                                     <div className="mb-4">
-                                        <p className="fw-medium">I am a:</p>
+                                        <p className="fw-medium" style={{ width: "fit-content" }}>I am a:</p>
                                         <div className="form-check mb-2 w-auto">
                                             <input className="form-check-input" type="checkbox" id="student" />
                                             <label className="form-check-label" htmlFor="student">
