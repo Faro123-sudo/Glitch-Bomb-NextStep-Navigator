@@ -82,27 +82,52 @@ function LandingPage() {
                                             placeholder="e.g., +234-1456-7890"
                                         />
                                     </div>
-
                                     <div className="mb-4">
                                         <p className="fw-medium" style={{ width: "fit-content" }}>I am a:</p>
-                                        <div className="form-check mb-2 w-auto">
-                                            <input className="form-check-input" type="checkbox" id="student" />
+
+                                        {/* Student */}
+                                        <div className="form-check mb-2 w-auto text-start">
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="userType"
+                                                id="student"
+                                                value="student"
+                                            />
                                             <label className="form-check-label" htmlFor="student">
                                                 Student (Grade 8-12)
                                             </label>
                                         </div>
-                                        <div className="form-check mb-2">
-                                            <input className="form-check-input" type="checkbox" id="graduate" />
+
+                                        {/* Graduate */}
+                                        <div className="form-check mb-2 text-start">
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="userType"
+                                                id="graduate"
+                                                value="graduate"
+                                            />
                                             <label className="form-check-label" htmlFor="graduate">
                                                 Graduate (UG/PG)
                                             </label>
                                         </div>
+
+                                        {/* UG/PG Info (kept left-aligned) */}
                                         <p className="text-start ms-4">
                                             <strong>UG:</strong> Undergraduate (Bachelor's Degree) <br />
                                             <strong>PG:</strong> Postgraduate (Master's Degree)
                                         </p>
-                                        <div className="form-check mb-3">
-                                            <input className="form-check-input" type="checkbox" id="working" />
+
+                                        {/* Working Professional */}
+                                        <div className="form-check mb-3 text-start">
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                name="userType"
+                                                id="working"
+                                                value="working"
+                                            />
                                             <label className="form-check-label" htmlFor="working">
                                                 Working Professional
                                             </label>
