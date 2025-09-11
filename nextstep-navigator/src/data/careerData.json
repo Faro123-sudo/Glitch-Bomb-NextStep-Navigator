@@ -411,23 +411,27 @@
     "guidanceTopics": [
       {
         "id": 1,
-        "title": "Preparing for University Admission",
-        "content": "Step-by-step guidance on writing personal statements, preparing for entrance exams, and building a strong application profile."
+        "title": "Stream Selection (Post-10th)",
+        "icon": "fa-solid fa-diagram-project",
+        "content": "Discover how to choose the right stream after 10th grade. Explore your interests, aptitude, and future opportunities in Science, Commerce, and Arts."
       },
       {
         "id": 2,
-        "title": "Career Coaching Sessions",
-        "content": "Book one-on-one sessions with certified career coaches to explore career options and create an action plan."
+        "title": "Study Abroad Guidelines",
+        "icon": "fa-solid fa-globe",
+        "content": "Step-by-step guide to studying abroad: entrance exams, application process, scholarships, and adapting to a new culture."
       },
       {
         "id": 3,
-        "title": "Scholarship Application Tips",
-        "content": "Learn how to find scholarships, write compelling essays, and submit strong applications."
+        "title": "Interview Tips",
+        "icon": "fa-solid fa-user-tie",
+        "content": "Ace your interviews with proven strategies: research, common questions, STAR technique, and professional etiquette for graduates and professionals."
       },
       {
         "id": 4,
-        "title": "Interview Preparation for College and Jobs",
-        "content": "Get practical advice and mock interview practice to boost your confidence for admissions and job interviews."
+        "title": "Resume Guidelines",
+        "icon": "fa-solid fa-file-lines",
+        "content": "Build a standout resume: structure, keywords, achievements, and tailoring for specific roles. Includes tips for graduates and working professionals."
       }
     ]
   }

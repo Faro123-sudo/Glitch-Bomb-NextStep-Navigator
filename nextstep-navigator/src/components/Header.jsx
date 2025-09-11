@@ -24,6 +24,7 @@ const Header = ({ onNavigate }) => {
     { label: "Success Stories", page: "successStories" },
     { label: "Admission & Coaching", page: "admissionCoaching" },
     { label: "Logout", page: "logout" },
+    { label: "Contact", page: "contact" },
   ];
 
   const menuVariants = {

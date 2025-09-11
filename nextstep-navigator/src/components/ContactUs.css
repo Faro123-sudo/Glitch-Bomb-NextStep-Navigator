@@ -1,0 +1,36 @@
+@media (min-width: 992px) {
+  .col-form-label {
+    text-align: right;
+    padding-right: 1rem;
+  }
+}
+
+
+.contact-info {
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+}
+
+
+.btn-gradient {
+    background: linear-gradient(45deg, #0d6efd, #6610f2);
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(45deg, #6610f2, #0dcaf0);
+    transform: translateY(-2px);
+}
+
+textarea {
+    resize: none;
+}
+
+.list-unstyled li {
+    font-size: 1rem;
+}
