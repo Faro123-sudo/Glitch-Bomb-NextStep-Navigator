@@ -1,5 +1,6 @@
 import React from "react";
 import Lottie from "lottie-react";
+import Logo from "../assets/logo.webp";
 import animationData from "../assets/animation/looking.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./staticFiles/landingPage.css";
@@ -11,6 +12,12 @@ const LandingPage = ({ onNavigate }) => {
         <div className="container">
           <div className="row text-center mb-5">
             <div className="col-12" data-aos="fade-up" data-aos-delay="300">
+              <img 
+                              src={Logo} 
+                              alt="NextStep Navigator Logo" 
+                              className="mb-4 fade-in" 
+                              style={{ height: '70px' }}
+                            />
               <h1 className="display-3 fw-bold text-primary mb-3">
                 NextStep Navigator
               </h1>
