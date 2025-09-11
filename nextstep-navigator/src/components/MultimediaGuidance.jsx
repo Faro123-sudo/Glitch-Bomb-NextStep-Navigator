@@ -58,6 +58,7 @@ export default function MultimediaGuidance() {
                     src={featuredVideo.url}
                     title={featuredVideo.title}
                     frameBorder="0"
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="rounded mb-2"
@@ -170,39 +171,44 @@ export default function MultimediaGuidance() {
         </div>
         {/* Podcasts Section */}
         <div className="col-md-6">
-          <div className="card shadow-lg border-0 h-100 multimedia-card">
+          <div className="card shadow-lg border-0 h-100 multimedia-card argon-podcast-card">
             <div className="card-body">
               <h2 className="card-title text-center mb-4 text-primary fw-bold">
-                <i className="bi bi-mic-fill me-2"></i>Podcasts
+                <i className="bi bi-mic-fill me-2 argon-accent"></i>Podcasts
               </h2>
               {filteredPodcasts.length === 0 && (
                 <div className="text-center text-muted py-3">No podcasts found.</div>
               )}
-              <ul className="list-group list-group-flush">
+              <ul className="list-group list-group-flush argon-podcast-list-scroll">
                 {filteredPodcasts.map((podcast) => (
-                  <li key={podcast.id} className="list-group-item">
-                    <div className="d-flex align-items-center">
-                      <i className="bi bi-mic-fill fs-2 text-primary me-3"></i>
-                      <div>
-                        <a
-                          href={podcast.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="fw-semibold text-decoration-none"
-                        >
-                          {podcast.title}
-                        </a>
-                        <button
-                          className="btn btn-link btn-sm p-0 ms-2"
-                          onClick={() => setShowTranscriptId(showTranscriptId === podcast.id ? null : podcast.id)}
-                        >
-                          {showTranscriptId === podcast.id ? "Hide Transcript" : "Show Transcript"}
-                        </button>
-                        {showTranscriptId === podcast.id && podcast.transcript && (
-                          <div className="mt-2 small text-muted">{podcast.transcript}</div>
-                        )}
-                      </div>
+                  <li key={podcast.id} className="list-group-item argon-podcast-list-item d-flex align-items-center">
+                    {/* Podcast cover/avatar */}
+                    <div className="argon-podcast-cover me-3">
+                      <i className="bi bi-mic-fill"></i>
                     </div>
+                    <div className="flex-grow-1">
+                      <div className="fw-bold argon-podcast-title">{podcast.title}</div>
+                      <div className="small text-muted argon-podcast-meta">{podcast.category} • {podcast.userType}</div>
+                      <button
+                        className="btn btn-link btn-sm p-0 mt-1 text-primary"
+                        onClick={() => setShowTranscriptId(showTranscriptId === podcast.id ? null : podcast.id)}
+                      >
+                        {showTranscriptId === podcast.id ? "Hide Transcript" : "Show Transcript"}
+                      </button>
+                      {showTranscriptId === podcast.id && podcast.transcript && (
+                        <div className="mt-2 small argon-podcast-transcript">{podcast.transcript}</div>
+                      )}
+                    </div>
+                    {/* Play button */}
+                    <a
+                      href={podcast.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-argon-play rounded-circle ms-3"
+                      title="Play Podcast"
+                    >
+                      <i className="bi bi-play-fill"></i>
+                    </a>
                   </li>
                 ))}
               </ul>
