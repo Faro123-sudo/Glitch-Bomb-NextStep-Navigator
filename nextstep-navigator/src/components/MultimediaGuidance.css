@@ -46,3 +46,26 @@
 .card-title i {
   color: #0d6efd; /* Match icon color to the primary button color */
 }
+
+/* Filter pill buttons */
+.btn.rounded-pill {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Embedded video styling */
+iframe {
+  border-radius: 1rem;
+  background: #000;
+}
+
+/* Transcript styling */
+.small.text-muted {
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.97em;
+}

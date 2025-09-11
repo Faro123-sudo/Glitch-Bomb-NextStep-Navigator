@@ -209,34 +209,68 @@
       {
         "id": 1,
         "title": "How to Choose a Career Path",
-        "url": "https://example.com/career-video"
+        "url": "https://www.youtube.com/embed/5MgBikgcWnY",
+        "category": "motivation",
+        "userType": "student",
+        "transcript": "In this video, we discuss how to choose a career path based on your interests and skills."
       },
       {
         "id": 2,
         "title": "Resume Building Tips",
-        "url": "https://example.com/resume-video"
+        "url": "https://www.youtube.com/embed/1B1s5P6uB9c",
+        "category": "job roles",
+        "userType": "graduate",
+        "transcript": "Learn how to build a strong resume that stands out to employers."
       },
       {
         "id": 3,
         "title": "Interview Preparation Strategies",
-        "url": "https://example.com/interview-video"
+        "url": "https://www.youtube.com/embed/2Xc9gXyf2G4",
+        "category": "interviews",
+        "userType": "job seeker",
+        "transcript": "This video covers key strategies for preparing for job interviews."
+      },
+      {
+        "id": 4,
+        "title": "Internship Success Stories",
+        "url": "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+        "category": "internships",
+        "userType": "student",
+        "transcript": "Hear from students who turned internships into full-time jobs."
       }
     ],
     "podcasts": [
       {
         "id": 1,
         "title": "Career Conversations Podcast",
-        "url": "https://example.com/career-podcast"
+        "url": "https://example.com/career-podcast",
+        "category": "motivation",
+        "userType": "student",
+        "transcript": "In this episode, we talk to professionals about their career journeys."
       },
       {
         "id": 2,
         "title": "Women in Tech",
-        "url": "https://example.com/women-in-tech-podcast"
+        "url": "https://example.com/women-in-tech-podcast",
+        "category": "job roles",
+        "userType": "graduate",
+        "transcript": "Women leaders in tech share their experiences and advice."
       },
       {
         "id": 3,
         "title": "Creative Careers",
-        "url": "https://example.com/creative-careers-podcast"
+        "url": "https://example.com/creative-careers-podcast",
+        "category": "motivation",
+        "userType": "student",
+        "transcript": "Exploring creative career paths with industry experts."
+      },
+      {
+        "id": 4,
+        "title": "Internship Insights",
+        "url": "https://example.com/internship-insights-podcast",
+        "category": "internships",
+        "userType": "student",
+        "transcript": "Tips and stories from successful interns."
       }
     ],
     "interactiveWorkshops": [
