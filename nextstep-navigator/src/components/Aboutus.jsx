@@ -1,11 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Aboutus.css"; // keep if you want custom styles
+import "./Aboutus.css";
 
 const AboutUs = () => {
     return (
         <div className="container py-5 about-container" data-aos="fade-up" data-aos-delay="300">
-            {/* Header Section */}
+            
             <section className="text-center mb-5 about-header" data-aos="fade-up" data-aos-delay="300">
                 <h1 className="display-4 fw-bold" data-aos="fade-up" data-aos-delay="400">About Us</h1>
                 <p className="lead text-muted">
@@ -27,7 +27,7 @@ const AboutUs = () => {
                 </p>
             </section>
 
-            {/* Team Section */}
+            
             <section className="about-team">
                 <h2 className="fw-semibold text-center mb-4">Meet the Team</h2>
                 <div className="row g-4 justify-content-center" data-aos="fade-up" data-aos-delay="200">

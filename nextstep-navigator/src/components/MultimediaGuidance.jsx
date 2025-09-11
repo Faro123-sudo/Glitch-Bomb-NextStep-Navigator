@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import data from "../data/careerData.json";
 import "./MultimediaGuidance.css";
 
-// Collect unique categories and user types
+
 const allVideos = data.multimediaGuidance.videos;
 const allPodcasts = data.multimediaGuidance.podcasts;
 const categories = [
@@ -22,7 +22,7 @@ export default function MultimediaGuidance() {
   const [selectedUserType, setSelectedUserType] = useState("All");
   const [showTranscriptId, setShowTranscriptId] = useState(null);
 
-  // Filtering logic
+  
   const filterFn = item =>
     (selectedCategory === "All" || item.category === selectedCategory) &&
     (selectedUserType === "All" || item.userType === selectedUserType);
@@ -30,7 +30,7 @@ export default function MultimediaGuidance() {
   const filteredVideos = allVideos.filter(filterFn);
   const filteredPodcasts = allPodcasts.filter(filterFn);
 
-  // Helper to check if a URL is a YouTube embed
+  
   const isYouTube = url => url.includes("youtube.com/embed/");
 
   return (
@@ -42,7 +42,7 @@ export default function MultimediaGuidance() {
         Watch and listen to professionals share real-world insights. Filter by category or user type to find what inspires you!
       </p>
 
-      {/* Featured Section */}
+      
       <div className="row mb-5">
         <div className="col-md-6 mb-3">
           <div className="card multimedia-card shadow border-0">
@@ -93,7 +93,7 @@ export default function MultimediaGuidance() {
         </div>
       </div>
 
-      {/* Filters */}
+      
       <div className="d-flex flex-wrap justify-content-center gap-3 mb-4">
         <div>
           <span className="fw-semibold me-2">Category:</span>
@@ -169,7 +169,7 @@ export default function MultimediaGuidance() {
             </div>
           </div>
         </div>
-        {/* Podcasts Section */}
+        
         <div className="col-md-6">
           <div className="card shadow-lg border-0 h-100 multimedia-card argon-podcast-card">
             <div className="card-body">
@@ -182,7 +182,7 @@ export default function MultimediaGuidance() {
               <ul className="list-group list-group-flush argon-podcast-list-scroll">
                 {filteredPodcasts.map((podcast) => (
                   <li key={podcast.id} className="list-group-item argon-podcast-list-item d-flex align-items-center">
-                    {/* Podcast cover/avatar */}
+                    
                     <div className="argon-podcast-cover me-3">
                       <i className="bi bi-mic-fill"></i>
                     </div>
@@ -199,7 +199,7 @@ export default function MultimediaGuidance() {
                         <div className="mt-2 small argon-podcast-transcript">{podcast.transcript}</div>
                       )}
                     </div>
-                    {/* Play button */}
+                    
                     <a
                       href={podcast.url}
                       target="_blank"
@@ -217,7 +217,7 @@ export default function MultimediaGuidance() {
         </div>
       </div>
 
-      {/* Interactive Workshops Section */}
+      
       <div className="row mt-5">
         <div className="col-12">
           <div className="card multimedia-card shadow border-0">
@@ -246,7 +246,7 @@ export default function MultimediaGuidance() {
         </div>
       </div>
 
-      {/* Suggest a Resource */}
+      
       <div className="text-center mt-5">
         <button className="btn btn-primary rounded-pill px-4 py-2">
           <i className="bi bi-plus-circle me-2"></i>Suggest a Resource

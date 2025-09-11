@@ -46,7 +46,7 @@ export default function SuccessStories() {
             }}
           >
             <div className="card h-100 shadow-lg border-0 success-story-card position-relative">
-              {/* Domain Tag */}
+              
               <span className="badge bg-secondary position-absolute top-0 start-0 m-3 domain-badge">
                 {story.domain}
               </span>
