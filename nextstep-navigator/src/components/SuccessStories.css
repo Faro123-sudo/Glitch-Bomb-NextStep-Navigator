@@ -40,6 +40,32 @@ body {
   border-color: #0d6efd;
 }
 
+/* Image styling for the card */
+.card-img-top {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  width: 100%;
+  object-fit: cover;
+  height: 220px;
+  background: #e9ecef;
+}
+
+/* Badge styling */
+.badge.bg-secondary {
+  background: linear-gradient(90deg, #0d6efd 60%, #6c63ff 100%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5em 1.2em;
+  border-radius: 2em;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(13,110,253,0.08);
+  border: none;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  display: inline-block;
+}
+
 /* For responsive design on smaller screens */
 @media (max-width: 768px) {
   .card-body {
