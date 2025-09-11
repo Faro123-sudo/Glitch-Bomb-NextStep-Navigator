@@ -1,9 +1,9 @@
-/* General page background */
+
 body {
   background-color: #f8f9fa; 
 }
 
-/* Card container styling */
+
 .success-story-card {
   border-radius: 1.5rem; 
   transition: transform 0.3s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
@@ -11,25 +11,25 @@ body {
   background: #fff;
 }
 
-/* Hover effect for lifting the cards */
+
 .success-story-card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 1.5rem 3rem rgba(13, 110, 253, 0.12);
 }
 
-/* Style for the card body */
+
 .card-body {
   padding: 2rem;
 }
 
-/* Story paragraph styling */
+
 .card-text {
   font-size: 0.95rem;
   line-height: 1.6;
   color: #495057;
 }
 
-/* Style for the "Read More" button */
+
 .btn-outline-primary {
   color: #0d6efd;
   border-color: #0d6efd;
@@ -41,7 +41,7 @@ body {
   border-color: #0d6efd;
 }
 
-/* Image styling for the card */
+
 .card-img-top {
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
@@ -51,7 +51,7 @@ body {
   background: #e9ecef;
 }
 
-/* Badge styling */
+
 .badge.bg-secondary {
   background: linear-gradient(90deg, #0d6efd 60%, #6c63ff 100%);
   color: #fff;
@@ -67,50 +67,6 @@ body {
   display: inline-block;
 }
 
-/* Domain pill filter styling */
-.domain-pill {
-  border-radius: 2em !important;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(13,110,253,0.06);
-  border: 2px solid #0d6efd;
-  background: #fff;
-  color: #0d6efd;
-  transition: all 0.2s;
-}
-.domain-pill.btn-primary {
-  background: linear-gradient(90deg, #0d6efd 60%, #6c63ff 100%);
-  color: #fff !important;
-  border: 2px solid #0d6efd;
-}
-.domain-pill:hover {
-  background: #e9f1ff;
-  color: #0d6efd;
-}
-
-/* Domain badge styling */
-.domain-badge {
-  font-size: 0.95rem;
-  padding: 0.45em 1.1em;
-  border-radius: 2em;
-  letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(13,110,253,0.08);
-  z-index: 2;
-}
-
-/* Card fade-in animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* For responsive design on smaller screens */
 @media (max-width: 768px) {
   .card-body {
     padding: 1.5rem;

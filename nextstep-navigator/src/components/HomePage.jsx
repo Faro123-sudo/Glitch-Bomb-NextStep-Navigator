@@ -10,7 +10,7 @@ function LandingPage() {
             <div className="min-vh-100 d-flex align-items-center justify-content-center py-5">
                 <div className="container">
                     <div className="row justify-content-center">
-                        {/* Header */}
+                        
                         <div className="col-12 text-center mb-4" data-aos="fade-up" data-aos-delay="300">
                             <h1 className="display-4 fw-bold text-primary mb-3" data-aos="zoom-in" data-aos-delay="300">
                                 Welcome to David

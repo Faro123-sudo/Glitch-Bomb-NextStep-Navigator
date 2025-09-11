@@ -1,6 +1,6 @@
 import React from "react";
 import data from "../data/careerData.json";
-import "./MultimediaGuidance.css"; // We'll create this file next
+import "./MultimediaGuidance.css";
 
 export default function MultimediaGuidance() {
   return (
@@ -10,7 +10,7 @@ export default function MultimediaGuidance() {
       </h1>
 
       <div className="row g-4 justify-content-center">
-        {/* Videos Section */}
+        
         <div className="col-md-6">
           <div className="card shadow-lg border-0 h-100 multimedia-card">
             <div className="card-body">
@@ -35,7 +35,7 @@ export default function MultimediaGuidance() {
           </div>
         </div>
 
-        {/* Podcasts Section */}
+        
         <div className="col-md-6">
           <div className="card shadow-lg border-0 h-100 multimedia-card">
             <div className="card-body">

@@ -55,7 +55,7 @@ const Header = ({ onNavigate }) => {
   return (
     <header className="bg-white text-dark shadow-sm sticky-top z-100">
       <nav className="navbar navbar-expand-lg navbar-light bg-white container">
-        {/* Logo */}
+       
         <h1
           className="navbar-brand h1 ms-4 mb-0 me-auto fs-3 fw-bold ps-4 ps-lg-0"
           onClick={() => handleNavigation("home")}
@@ -64,7 +64,7 @@ const Header = ({ onNavigate }) => {
           NextStep<span className="text-primary">.</span>
         </h1>
 
-        {/* Mobile Toggler Button */}
+        
         <button
           className="navbar-toggler border-0 p-0 me-4 me-lg-0"
           type="button"
@@ -74,7 +74,7 @@ const Header = ({ onNavigate }) => {
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* Desktop Navigation */}
+       
         <div className="d-none d-lg-block">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex flex-column flex-lg-row align-items-center">
             {navLinks.map((link) => (
@@ -86,7 +86,7 @@ const Header = ({ onNavigate }) => {
                   `}
                 >
                   {link.label}
-                  {/* Active underline */}
+                 
                   {activePage === link.page && (
                     <motion.div
                       layoutId="underline"
@@ -104,7 +104,7 @@ const Header = ({ onNavigate }) => {
         </div>
       </nav>
 
-      {/* Mobile Menu with Animation */}
+      
       <AnimatePresence>
         {isOpen && (
           <motion.div

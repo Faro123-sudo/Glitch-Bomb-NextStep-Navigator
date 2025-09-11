@@ -16,9 +16,7 @@ function DisplayPages() {
   const [activeSection, setActiveSection] = useState('home');
 
   const renderSection = () => {
-    // if (!data.career_bank) {
-    //   return <p className="text-center text-gray-500">Loading...</p>;
-    // }
+    
     switch (activeSection) {
       case 'careerBank':
         return <CareerBank />;
@@ -45,7 +43,7 @@ function DisplayPages() {
 
   return (
     <>
-      {/* <LandPage></LandPage> */}
+     
       <Header onNavigate={setActiveSection} />
       <main className="max-w-4xl mx-auto p-4">{renderSection()}</main>
 

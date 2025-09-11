@@ -1,40 +1,36 @@
-/* General Body and Section Styling */
+
 body {
-  background-color: #f0f2f5; /* Light gray background */
+  background-color: #f0f2f5;
 }
 
-/* Card Styling */
+
 .quiz-card {
-  border-radius: 1.5rem; /* Smoother rounded corners */
+  border-radius: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .quiz-card:hover {
-  transform: translateY(-8px); /* Lifts card on hover */
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important; /* Adds a more dramatic shadow */
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
 }
 
-/* Quiz Option Button Styling */
+
 .quiz-option-btn {
   font-weight: 500;
   transition: all 0.2s ease-in-out;
-  border: 1.5px solid #ced4da; /* Thicker border for clarity */
+  border: 1.5px solid #ced4da;
 }
 
 .quiz-option-btn:hover {
-  border-color: #6c757d; /* Darker border on hover */
-  transform: translateY(-2px); /* Slight lift on hover */
+  border-color: #6c757d;
+  transform: translateY(-2px);
 }
 
-/* Active State Styling for the Selected Option */
+
 .quiz-option-btn.active {
-  background-color: #0d6efd; /* A solid background color for the active state */
-  color: white; /* White text on a blue background */
-  border-color: #0d6efd; /* Matching border color */
-  box-shadow: 0 0.5rem 1rem rgba(13, 110, 253, 0.2); /* Subtle glow effect */
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+  box-shadow: 0 0.5rem 1rem rgba(13, 110, 253, 0.2);
 }
 
-/* Hide the default radio button */
-.btn-check:checked + .quiz-option-btn {
-  /* We don't need additional styling here as .active handles it */
-}
