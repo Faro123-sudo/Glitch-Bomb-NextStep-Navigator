@@ -1,0 +1,32 @@
+/* General body and container styling */
+body {
+  background-color: #f8f9fa; /* A light gray background */
+}
+
+/* Custom card styling for each topic */
+.admission-card {
+  border-radius: 1.5rem; /* Smoother rounded corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect to lift the card and add a stronger shadow */
+.admission-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.125);
+}
+
+/* Style for the card body */
+.card-body {
+  padding: 2rem;
+}
+
+/* Style for the card title */
+.card-title {
+  color: #0d6efd; /* Use the primary blue color for titles */
+}
+
+/* Style for the paragraph text */
+.card-text {
+  color: #495057; /* Dark gray for good readability */
+  line-height: 1.6;
+}

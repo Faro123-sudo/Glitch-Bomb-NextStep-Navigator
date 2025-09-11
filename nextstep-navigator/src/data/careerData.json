@@ -138,6 +138,16 @@
         "id": 1,
         "title": "How to Choose a Career Path",
         "url": "https://example.com/career-video"
+      },
+      {
+        "id": 2,
+        "title": "Resume Building Tips",
+        "url": "https://example.com/resume-video"
+      },
+      {
+        "id": 3,
+        "title": "Interview Preparation Strategies",
+        "url": "https://example.com/interview-video"
       }
     ],
     "podcasts": [
@@ -145,6 +155,30 @@
         "id": 1,
         "title": "Career Conversations Podcast",
         "url": "https://example.com/career-podcast"
+      },
+      {
+        "id": 2,
+        "title": "Women in Tech",
+        "url": "https://example.com/women-in-tech-podcast"
+      },
+      {
+        "id": 3,
+        "title": "Creative Careers",
+        "url": "https://example.com/creative-careers-podcast"
+      }
+    ],
+    "interactiveWorkshops": [
+      {
+        "id": 1,
+        "title": "Live Resume Review",
+        "date": "2025-10-10",
+        "url": "https://example.com/live-resume-workshop"
+      },
+      {
+        "id": 2,
+        "title": "Mock Interview Session",
+        "date": "2025-11-05",
+        "url": "https://example.com/mock-interview-workshop"
       }
     ]
   },
@@ -154,6 +188,16 @@
         "id": 1,
         "title": "Top 10 Careers for 2025",
         "url": "https://example.com/article"
+      },
+      {
+        "id": 2,
+        "title": "How to Write a Winning Resume",
+        "url": "https://example.com/resume-article"
+      },
+      {
+        "id": 3,
+        "title": "Emerging Skills in Technology",
+        "url": "https://example.com/tech-skills-article"
       }
     ],
     "ebooks": [
@@ -161,6 +205,11 @@
         "id": 1,
         "title": "Career Planning Guide",
         "url": "https://example.com/ebook"
+      },
+      {
+        "id": 2,
+        "title": "Interview Success Strategies",
+        "url": "https://example.com/interview-ebook"
       }
     ],
     "webinars": [
@@ -169,6 +218,12 @@
         "title": "Mastering Job Interviews",
         "date": "2025-09-15",
         "url": "https://example.com/webinar"
+      },
+      {
+        "id": 2,
+        "title": "Networking for Career Growth",
+        "date": "2025-10-20",
+        "url": "https://example.com/networking-webinar"
       }
     ]
   },
@@ -178,6 +233,24 @@
       "name": "Jane Doe",
       "career": "Entrepreneur",
       "story": "Jane started her own business after years of working in tech and now mentors young founders."
+    },
+    {
+      "id": 2,
+      "name": "Carlos Rivera",
+      "career": "Software Engineer",
+      "story": "Carlos transitioned from teaching to software engineering after completing an online bootcamp and now works at a leading tech company."
+    },
+    {
+      "id": 3,
+      "name": "Priya Singh",
+      "career": "Data Scientist",
+      "story": "Priya leveraged her background in mathematics to become a data scientist and now leads analytics projects in healthcare."
+    },
+    {
+      "id": 4,
+      "name": "Michael Lee",
+      "career": "Graphic Designer",
+      "story": "Michael turned his passion for art into a successful freelance graphic design business, working with global brands."
     }
   ],
   "admissionAndCoaching": {
@@ -191,6 +264,16 @@
         "id": 2,
         "title": "Career Coaching Sessions",
         "content": "Book one-on-one sessions with certified career coaches to explore career options and create an action plan."
+      },
+      {
+        "id": 3,
+        "title": "Scholarship Application Tips",
+        "content": "Learn how to find scholarships, write compelling essays, and submit strong applications."
+      },
+      {
+        "id": 4,
+        "title": "Interview Preparation for College and Jobs",
+        "content": "Get practical advice and mock interview practice to boost your confidence for admissions and job interviews."
       }
     ]
   }

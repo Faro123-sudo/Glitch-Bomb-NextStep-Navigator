@@ -1,18 +1,23 @@
 import React from "react";
 import data from "../data/careerData.json";
+import "./AdmissionAndCoaching.css"; 
 
 export default function AdmissionAndCoaching() {
   return (
-    <section className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Admission & Coaching</h1>
-      <ul className="space-y-4">
+    <section className="container py-5">
+      <h1 className="text-center mb-5 display-4 fw-bold text-primary">Admission & Coaching 🎓</h1>
+      <div className="row g-4 justify-content-center">
         {data.admissionAndCoaching.guidanceTopics.map((topic) => (
-          <li key={topic.id} className="border p-4 rounded-xl shadow-sm">
-            <h2 className="text-lg font-semibold">{topic.title}</h2>
-            <p>{topic.content}</p>
-          </li>
+          <div key={topic.id} className="col-lg-6">
+            <div className="card h-100 shadow-lg border-0 admission-card">
+              <div className="card-body">
+                <h5 className="card-title fw-bold mb-3">{topic.title}</h5>
+                <p className="card-text">{topic.content}</p>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

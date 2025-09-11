@@ -8,7 +8,7 @@ import "./staticFiles/landingPage.css";
 const LandingPage = ({ onNavigate }) => {
     return (
         <>
-            <div className="min-vh-100 d-flex align-items-center justify-content-center py-5">
+            <div className="min-vh-100 d-flex align-items-center justify-content-center py-5" style={{ backgroundColor: "#fff" }}>
                 <div className="container">
                     <div className="row justify-content-center">
                         {/* Header */}

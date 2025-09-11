@@ -1,0 +1,48 @@
+/* Custom background color for the section */
+.container-fluid {
+  background-color: #f8f9fa;
+}
+
+/* Card styling for a clean, professional look */
+.multimedia-card {
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a lifting effect on hover */
+.multimedia-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+/* Style the list items inside the card */
+.list-group-item {
+  border: none; /* Remove default list item borders */
+  padding-left: 0;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+/* Highlight list items on hover */
+.list-group-item:hover {
+  background-color: #e9ecef;
+}
+
+/* Style the anchor tags for better visibility */
+.list-group-item a {
+  color: #495057; /* Darker gray for readability */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+/* Change link color on hover */
+.list-group-item a:hover {
+  color: #0d6efd; /* Use a Bootstrap primary color for a consistent feel */
+}
+
+/* Style the heading icons */
+.card-title i {
+  color: #0d6efd; /* Match icon color to the primary button color */
+}

@@ -1,0 +1,48 @@
+/* General page background */
+body {
+  background-color: #f8f9fa; 
+}
+
+/* Card container styling */
+.success-story-card {
+  border-radius: 1.5rem; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; 
+}
+
+/* Hover effect for lifting the cards */
+.success-story-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.125);
+}
+
+/* Style for the card body */
+.card-body {
+  padding: 2rem;
+}
+
+/* Story paragraph styling */
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #495057;
+}
+
+/* Style for the "Read More" button */
+.btn-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+/* For responsive design on smaller screens */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+}
