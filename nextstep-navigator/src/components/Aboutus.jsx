@@ -4,10 +4,10 @@ import "./Aboutus.css"; // keep if you want custom styles
 
 const AboutUs = () => {
     return (
-        <div className="container py-5 about-container">
+        <div className="container py-5 about-container" data-aos="fade-up" data-aos-delay="300">
             {/* Header Section */}
-            <section className="text-center mb-5 about-header">
-                <h1 className="display-4 fw-bold">About Us</h1>
+            <section className="text-center mb-5 about-header" data-aos="fade-up" data-aos-delay="300">
+                <h1 className="display-4 fw-bold" data-aos="fade-up" data-aos-delay="400">About Us</h1>
                 <p className="lead text-muted">
                     Welcome to <strong>NextStep Navigation</strong>. We are dedicated to
                     providing the best possible navigation and support for students,
@@ -15,9 +15,8 @@ const AboutUs = () => {
                 </p>
             </section>
 
-            {/* Mission Section */}
-            <section className="mb-5 about-mission">
-                <h2 className="fw-semibold">Our Mission</h2>
+            <section className="mb-5 about-mission" data-aos="fade-up" data-aos-delay="300">
+                <h2 className="fw-semibold" data-aos="fade-up" data-aos-delay="400">Our Mission</h2>
                 <p className="text-muted">
                     Our mission is to empower individuals to make informed decisions about
                     their future. We provide a comprehensive and personalized navigation
@@ -31,7 +30,7 @@ const AboutUs = () => {
             {/* Team Section */}
             <section className="about-team">
                 <h2 className="fw-semibold text-center mb-4">Meet the Team</h2>
-                <div className="row g-4 justify-content-center">
+                <div className="row g-4 justify-content-center" data-aos="fade-up" data-aos-delay="200">
                     {[
                         { name: "David", role: "Team Member" },
                         { name: "Joy", role: "Team Member" },
