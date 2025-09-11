@@ -64,10 +64,12 @@ export default function ContactUs() {
 
     <form>
       {/* Name Field */}
-      <div className="row mb-3 align-items-center" style={{gap: "2rem"}}>
-        <label style={{ paddingLeft: "2rem", width: "fit-content" }} htmlFor="name" className="col-lg-3 col-form-label form-label-fixed fw-bold">
-          Name
-        </label>
+      <div className="row mb-3">
+        <div className="col-lg-3 d-flex align-items-center">
+          <label htmlFor="name" className="form-label fw-bold mb-0">
+            Name
+          </label>
+        </div>
         <div className="col-lg-9">
           <input
             type="text"
@@ -79,10 +81,12 @@ export default function ContactUs() {
       </div>
 
       {/* Email Field */}
-      <div className="row mb-3 align-items-center" style={{gap: "2rem"}}>
-        <label style={{ paddingLeft: "2rem", width: "fit-content" }} htmlFor="email" className="col-lg-3 col-form-label form-label-fixed fw-bold">
-          Email
-        </label>
+      <div className="row mb-3">
+        <div className="col-lg-3 d-flex align-items-center">
+          <label htmlFor="email" className="form-label fw-bold mb-0">
+            Email
+          </label>
+        </div>
         <div className="col-lg-9">
           <input
             type="email"
@@ -94,10 +98,12 @@ export default function ContactUs() {
       </div>
 
       {/* Message Field */}
-      <div className="row mb-3" style={{gap: "2rem"}}>
-        <label  style={{ paddingLeft: "2rem", width: "fit-content" }} htmlFor="message" className="col-lg-3 col-form-label form-label-fixed fw-bold">
-          Message
-        </label>
+      <div className="row mb-3">
+        <div className="col-lg-3 d-flex align-items-start">
+          <label htmlFor="message" className="form-label fw-bold mb-0">
+            Message
+          </label>
+        </div>
         <div className="col-lg-9">
           <textarea
             className="form-control"
@@ -124,6 +130,7 @@ export default function ContactUs() {
     </form>
   </div>
 </div>
+
 
 
 
