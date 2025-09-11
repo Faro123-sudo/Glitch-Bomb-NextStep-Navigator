@@ -3,25 +3,38 @@
     {
       "id": 1,
       "careerName": "Software Engineer",
-      "description": "Designs, develops, and maintains software applications and systems.",
-      "skillsRequired": ["Programming", "Problem-Solving", "Teamwork"],
-      "averageSalary": "$70,000 - $120,000",
-      "educationPath": "Bachelor's degree in Computer Science or related field"
+      "description": "Develops software applications and systems.",
+      "skillsRequired": [
+        "JavaScript",
+        "React",
+        "Node.js"
+      ],
+      "averageSalary": "$80,000",
+      "educationPath": "Bachelor's in Computer Science",
+      "industry": "Technology"
     },
     {
       "id": 2,
-      "careerName": "Doctor",
-      "description": "Diagnoses and treats illnesses and injuries, promotes health and wellness.",
-      "skillsRequired": ["Medical Knowledge", "Empathy", "Attention to Detail"],
-      "averageSalary": "$120,000 - $300,000",
-      "educationPath": "Medical School + Residency"
+      "careerName": "Nurse",
+      "description": "Provides healthcare and assistance to patients.",
+      "skillsRequired": [
+        "Patient Care",
+        "Communication"
+      ],
+      "averageSalary": "$60,000",
+      "educationPath": "Bachelor's in Nursing",
+      "industry": "Healthcare"
     }
   ],
   "quizQuestions": [
     {
       "id": 1,
       "question": "Do you enjoy working with numbers and data?",
-      "options": ["Yes", "No", "Sometimes"],
+      "options": [
+        "Yes",
+        "No",
+        "Sometimes"
+      ],
       "answersMapping": {
         "Yes": "Consider careers in Data Science, Accounting, or Engineering",
         "No": "Explore careers in Creative Arts or Communication",
@@ -31,7 +44,10 @@
     {
       "id": 2,
       "question": "Do you like working with people?",
-      "options": ["Yes", "No"],
+      "options": [
+        "Yes",
+        "No"
+      ],
       "answersMapping": {
         "Yes": "Teaching, Sales, and Counseling may suit you",
         "No": "Consider careers in Research or Software Development"

@@ -55,7 +55,7 @@ const Header = ({ onNavigate }) => {
       <nav className="navbar navbar-expand-lg navbar-light bg-white container">
         {/* Logo */}
         <h1
-          className="navbar-brand h1 mb-0 me-auto fs-3 fw-bold ps-4 ps-lg-0"
+          className="navbar-brand h1 ms-4 mb-0 me-auto fs-3 fw-bold ps-4 ps-lg-0"
           onClick={() => handleNavigation("home")}
           style={{ cursor: 'pointer' }}
         >

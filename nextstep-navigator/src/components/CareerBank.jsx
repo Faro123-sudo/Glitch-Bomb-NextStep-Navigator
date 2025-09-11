@@ -1,21 +1,241 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import data from "../data/careerData.json";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { FaGraduationCap, FaDollarSign, FaTools, FaFilter, FaSearch, FaSort, FaChevronDown, FaInfoCircle } from "react-icons/fa";
+import "./CareerBank.css";
 
 export default function CareerBank() {
+  const [search, setSearch] = useState("");
+  const [selectedIndustry, setSelectedIndustry] = useState("All");
+  const [sortOption, setSortOption] = useState("none");
+  const [expandedCard, setExpandedCard] = useState(null);
+
+  const industries = [
+    "All",
+    ...new Set(data.careerBank.map((career) => career.industry)),
+  ];
+
+  let filteredCareers = data.careerBank.filter((career) => {
+    const matchesSearch =
+      career.careerName.toLowerCase().includes(search.toLowerCase()) ||
+      career.skillsRequired.some((skill) =>
+        skill.toLowerCase().includes(search.toLowerCase())
+      );
+
+    const matchesIndustry =
+      selectedIndustry === "All" || career.industry === selectedIndustry;
+
+    return matchesSearch && matchesIndustry;
+  });
+
+  filteredCareers = filteredCareers.sort((a, b) => {
+    if (sortOption === "salary-asc") {
+      return (
+        parseInt(a.averageSalary.replace(/[^0-9]/g, "")) -
+        parseInt(b.averageSalary.replace(/[^0-9]/g, ""))
+      );
+    } else if (sortOption === "salary-desc") {
+      return (
+        parseInt(b.averageSalary.replace(/[^0-9]/g, "")) -
+        parseInt(a.averageSalary.replace(/[^0-9]/g, ""))
+      );
+    } else if (sortOption === "alpha-asc") {
+      return a.careerName.localeCompare(b.careerName);
+    } else if (sortOption === "alpha-desc") {
+      return b.careerName.localeCompare(a.careerName);
+    }
+    return 0;
+  });
+
+  const toggleCardExpand = (id) => {
+    if (expandedCard === id) {
+      setExpandedCard(null);
+    } else {
+      setExpandedCard(id);
+    }
+  };
+
   return (
-    <section className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Career Bank</h1>
-      <ul className="space-y-4">
-        {data.careerBank.map((career) => (
-          <li key={career.id} className="border p-4 rounded-xl shadow-sm">
-            <h2 className="text-xl font-semibold">{career.careerName}</h2>
-            <p>{career.description}</p>
-            <p><strong>Skills:</strong> {career.skillsRequired.join(", ")}</p>
-            <p><strong>Salary:</strong> {career.averageSalary}</p>
-            <p><strong>Education:</strong> {career.educationPath}</p>
-          </li>
-        ))}
-      </ul>
+    <section className="career-bank-section py-5">
+      <div className="container">
+        <div className="text-center mb-5">
+          <h1 className="display-5 fw-bold text-primary mb-3">Career Explorer</h1>
+          <p className="text-muted">Discover career paths that match your skills and interests</p>
+        </div>
+
+        <div className="controls-container mb-5 p-4 rounded-4 shadow-sm ">
+          <div className="row g-3">
+            <div className="col-lg-5">
+              <div className="search-box position-relative">
+                <FaSearch className="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" />
+                <input
+                  type="text"
+                  className="form-control ps-5 rounded-pill"
+                  placeholder="Search careers or skills..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+              </div>
+            </div>
+            
+            <div className="col-lg-4">
+              <div className="d-flex align-items-center h-100">
+                <FaFilter className="text-muted me-2 flex-shrink-0" />
+                <div className="industry-filters-scroll">
+                  {industries.map((industry) => (
+                    <button
+                      key={industry}
+                      className={`btn btn-sm rounded-pill mx-1 mb-1 ${
+                        selectedIndustry === industry 
+                          ? "btn-primary" 
+                          : "btn-outline-primary"
+                      }`}
+                      onClick={() => setSelectedIndustry(industry)}
+                    >
+                      {industry}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <div className="col-lg-3">
+              <div className="sort-dropdown position-relative">
+                <FaSort className="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted z-1" />
+                <select
+                  className="form-select ps-5 rounded-pill"
+                  value={sortOption}
+                  onChange={(e) => setSortOption(e.target.value)}
+                >
+                  <option value="none">Sort Options</option>
+                  <option value="salary-asc">Salary: Low to High</option>
+                  <option value="salary-desc">Salary: High to Low</option>
+                  <option value="alpha-asc">Alphabetical A-Z</option>
+                  <option value="alpha-desc">Alphabetical Z-A</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="results-info mb-4 d-flex justify-content-between align-items-center">
+          <p className="mb-0 text-muted">
+            Showing <strong>{filteredCareers.length}</strong> of <strong>{data.careerBank.length}</strong> careers
+            {search && <> for "<strong>{search}</strong>"</>}
+            {selectedIndustry !== "All" && <> in "<strong>{selectedIndustry}</strong>"</>}
+          </p>
+          
+          {sortOption !== "none" && (
+            <button 
+              className="btn btn-sm btn-outline-secondary"
+              onClick={() => setSortOption("none")}
+            >
+              Clear Sort
+            </button>
+          )}
+        </div>
+
+        <div className="row g-4">
+          {filteredCareers.length === 0 ? (
+            <div className="col-12 text-center py-5">
+              <div className="empty-state bg-light rounded-4 p-5">
+                <FaSearch className="display-1 text-muted mb-3" />
+                <h3 className="mb-3">No careers found</h3>
+                <p className="text-muted mb-4">
+                  Try adjusting your search or filter criteria
+                </p>
+                <button 
+                  className="btn btn-primary"
+                  onClick={() => {
+                    setSearch("");
+                    setSelectedIndustry("All");
+                    setSortOption("none");
+                  }}
+                >
+                  Reset Filters
+                </button>
+              </div>
+            </div>
+          ) : (
+            filteredCareers.map((career, index) => (
+              <div
+                key={career.id}
+                className="col-12 col-md-6 col-lg-4"
+              >
+                <div 
+                  className={`career-card card h-100 border-0 shadow-sm overflow-hidden ${
+                    expandedCard === career.id ? "expanded" : ""
+                  }`}
+                >
+                  <div className="card-header bg-white border-0 pb-0">
+                    <div className="d-flex justify-content-between align-items-start">
+                      <h3 className="card-title h5 text-primary mb-0">
+                        {career.careerName}
+                      </h3>
+                      <span className="badge bg-primary-subtle text-primary">
+                        {career.industry}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="card-body">
+                    <p className="card-text text-muted mb-3">
+                      {expandedCard === career.id 
+                        ? career.description 
+                        : `${career.description.substring(0, 120)}...`
+                      }
+                    </p>
+                    
+                    <div className="career-details">
+                      <div className="detail-item d-flex align-items-center mb-2">
+                        <FaDollarSign className="text-success me-2 flex-shrink-0" />
+                        <div>
+                          <small className="text-muted">Average Salary</small>
+                          <div className="fw-bold text-success">{career.averageSalary}</div>
+                        </div>
+                      </div>
+                      
+                      <div className="detail-item d-flex align-items-center mb-2">
+                        <FaGraduationCap className="text-warning me-2 flex-shrink-0" />
+                        <div>
+                          <small className="text-muted">Education Path</small>
+                          <div className="fw-bold">{career.educationPath}</div>
+                        </div>
+                      </div>
+                      
+                      <div className="detail-item">
+                        <div className="d-flex align-items-start mb-2">
+                          <FaTools className="text-info mt-1 me-2 flex-shrink-0" />
+                          <div>
+                            <small className="text-muted">Skills Required</small>
+                            <div className="skills-container mt-1">
+                              {career.skillsRequired.map((skill, i) => (
+                                <span key={i} className="badge bg-light text-dark me-1 mb-1">
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="card-footer border-0 pt-0">
+                    <button 
+                      className="btn btn-sm btn-outline-primary w-100"
+                      onClick={() => toggleCardExpand(career.id)}
+                    >
+                      {expandedCard === career.id ? "Show Less" : "See Full Details"}
+                      <FaChevronDown className={`ms-2 toggle-icon ${expandedCard === career.id ? "expanded" : ""}`} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,0 +1,120 @@
+.career-bank-section {
+  min-height: 100vh;
+}
+
+.controls-container {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.industry-filters-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.career-card {
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+}
+
+.career-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.career-card.expanded {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.career-card .card-body {
+  transition: max-height 0.3s ease;
+}
+
+.career-details .detail-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.career-details .detail-item:last-child {
+  border-bottom: none;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.empty-state {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+/* Animation for cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.col-12.col-md-6.col-lg-4 {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .industry-filters-scroll {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  
+  .controls-container .row {
+    flex-direction: column;
+    gap: 1rem !important;
+  }
+  
+  .results-info {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start !important;
+  }
+}
+
+/* Custom scrollbar for industry filters */
+.industry-filters-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.industry-filters-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.industry-filters-scroll::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+.industry-filters-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a5a5a5;
+}

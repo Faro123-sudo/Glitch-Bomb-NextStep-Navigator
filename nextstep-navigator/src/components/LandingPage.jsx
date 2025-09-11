@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./staticFiles/landingPage.css";
 
 
-function LandingPage() {
+const LandingPage = ({ onNavigate }) => {
     return (
         <>
             <div className="min-vh-100 d-flex align-items-center justify-content-center py-5">
@@ -13,7 +13,7 @@ function LandingPage() {
                     <div className="row justify-content-center">
                         {/* Header */}
                         <div className="col-12 text-center mb-4" data-aos="fade-up" data-aos-delay="300">
-                            <h1 className="display-4 fw-bold text-primary mb-3">
+                            <h1 className="display-4 fw-bold text-primary mb-3" data-aos="zoom-in" data-aos-delay="300">
                                 Welcome to NextStep Navigator
                             </h1>
                             <h2 className="fw-semibold text-secondary">
@@ -140,7 +140,7 @@ function LandingPage() {
                                         </small>
                                     </div>
 
-                                    <button type="submit" className="btn btn-primary btn-lg w-100 py-2 fw-bold">
+                                    <button type="submit" onClick={onNavigate} className="btn btn-primary btn-lg w-100 py-2 fw-bold">
                                         GET STARTED
                                     </button>
                                 </form>
