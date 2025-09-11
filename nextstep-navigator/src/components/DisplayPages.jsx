@@ -9,7 +9,7 @@ import Resources from "./ResourceLibrary";
 import SuccessStories from "./SuccessStories";
 import AdmissionCoaching from "./AdmissionAndCoaching";
 import AboutUs from './Aboutus.jsx';
-
+import ContactUs from './Contact.jsx';
 
 function DisplayPages() {
 
@@ -36,6 +36,10 @@ function DisplayPages() {
         return <AdmissionCoaching />;
       case 'home':
         return <HomePage />;
+      case 'logout':
+        return <LandPage />;
+      case 'contact':
+        return <ContactUs />;
       default:
         return <HomePage />;
     }

@@ -23,6 +23,8 @@ const Header = ({ onNavigate }) => {
     { label: "Resources", page: "resources" },
     { label: "Success Stories", page: "successStories" },
     { label: "Admission & Coaching", page: "admissionCoaching" },
+    { label: "Logout", page: "logout" },
+    { label: "Contact", page: "contact" },
   ];
 
   const menuVariants = {
