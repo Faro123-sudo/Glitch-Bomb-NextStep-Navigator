@@ -62,7 +62,7 @@ export default function CareerBank() {
     setSortOption("none");
   };
 
-  // Close dropdown when clicking outside
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (showIndustryDropdown && !event.target.closest('.industry-dropdown')) {
@@ -165,7 +165,7 @@ export default function CareerBank() {
             </div>
           </div>
           
-          {/* Active filters display */}
+          
           {(search || selectedIndustry !== "All" || sortOption !== "none") && (
             <div className="active-filters mt-3 d-flex flex-wrap align-items-center">
               <span className="me-2 text-muted">Active filters:</span>

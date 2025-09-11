@@ -1,48 +1,48 @@
-/* General page styling */
+
 body {
-  background-color: #f8f9fa; /* A light gray background */
+  background-color: #f8f9fa;
 }
 
-/* Style for the card containers */
+
 .library-card {
-  border-radius: 1.25rem; /* Rounded corners for a softer look */
+  border-radius: 1.25rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect to lift the cards */
+
 .library-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
-/* Style for list items within the cards */
+
 .list-group-item {
-  border: none; /* Removes the default list item borders */
-  padding: 0.75rem 0; /* Add vertical padding */
+  border: none;
+  padding: 0.75rem 0;
   background-color: transparent;
   transition: background-color 0.2s ease;
 }
 
-/* Hover effect for list items */
+
 .list-group-item:hover {
-  background-color: #e9ecef; /* Slightly darker background on hover */
-  border-radius: 0.5rem; /* Rounded corners for the hover state */
+  background-color: #e9ecef;
+  border-radius: 0.5rem;
 }
 
-/* Styling for the links */
+
 .list-group-item a {
-  color: #343a40; /* Dark gray for better readability */
+  color: #343a40;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
-/* Change link color on hover */
+
 .list-group-item a:hover {
-  color: #0d6efd; /* Blue color for active/hover state */
+  color: #0d6efd;
   
 }
 
-/* Special styling for the webinar join button */
+
 .btn-outline-primary {
   color: #0d6efd;
   border-color: #0d6efd;
@@ -55,7 +55,7 @@ body {
   border-color: #0d6efd;
 }
 
-/* Style for the icons in the titles */
+
 .card-title i {
-  color: #0d6efd; /* Matches the button and link hover color */
+  color: #0d6efd;
 }

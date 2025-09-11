@@ -1,6 +1,6 @@
 import React from "react";
 import data from "../data/careerData.json";
-import './ResourceLibrary.css'; // Don't forget to create this file
+import './ResourceLibrary.css';
 
 export default function ResourceLibrary() {
   return (
@@ -8,7 +8,7 @@ export default function ResourceLibrary() {
       <h1 className="text-center mb-5 display-4 fw-bold">Resource Library 📚</h1>
       <div className="row g-4 justify-content-center">
 
-        {/* Articles Section */}
+        
         <div className="col-lg-4 col-md-6">
           <div className="card h-100 shadow-lg border-0 library-card">
             <div className="card-body">
@@ -28,7 +28,7 @@ export default function ResourceLibrary() {
           </div>
         </div>
 
-        {/* E-books Section */}
+        
         <div className="col-lg-4 col-md-6">
           <div className="card h-100 shadow-lg border-0 library-card">
             <div className="card-body">
@@ -48,7 +48,7 @@ export default function ResourceLibrary() {
           </div>
         </div>
 
-        {/* Webinars Section */}
+        
         <div className="col-lg-4 col-md-12">
           <div className="card h-100 shadow-lg border-0 library-card">
             <div className="card-body">

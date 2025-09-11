@@ -121,7 +121,7 @@ export default function MultimediaGuidance() {
         </div>
       </div>
       <div className="row g-4 justify-content-center">
-        {/* Videos Section */}
+        
         <div className="col-md-6">
           <div className="card shadow-lg border-0 h-100 multimedia-card">
             <div className="card-body">

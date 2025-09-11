@@ -79,7 +79,7 @@ export default function Quiz() {
       <h1 className="text-center mb-4 display-4 fw-bold text-primary">Interest-Based Career Quiz 🎯</h1>
       <div className="row justify-content-center">
         <div className="col-lg-8">
-          {/* Interest Dropdown */}
+          
           <div className="mb-4">
             <label htmlFor="interest-select" className="form-label fw-bold">
               Select your area of interest:
@@ -99,7 +99,7 @@ export default function Quiz() {
             </select>
           </div>
 
-          {/* Quiz Questions */}
+          
           {selectedInterest && (
             <form onSubmit={handleSubmit}>
               {filteredQuestions.map((q) => (
@@ -142,7 +142,7 @@ export default function Quiz() {
             </form>
           )}
 
-          {/* Recommendations */}
+          
           {showRecommendations && (
             <div className="mt-5">
               <h3 className="fw-bold text-success mb-3">Recommended Streams & Careers:</h3>

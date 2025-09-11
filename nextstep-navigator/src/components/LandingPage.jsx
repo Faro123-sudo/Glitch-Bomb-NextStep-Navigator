@@ -32,7 +32,7 @@ const LandingPage = ({ onNavigate }) => {
               </p>
             </div>
 
-            {/* Form Column */}
+            
             <div className="col-md-6 col-lg-5" data-aos="fade-left" data-aos-delay="500">
               <div className="form-container p-4 p-md-5 shadow-lg rounded-3">
                 <form action="#" method="POST">
