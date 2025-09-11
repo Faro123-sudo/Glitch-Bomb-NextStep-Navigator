@@ -1,31 +1,60 @@
+/* Custom radio button styling when CHECKED */
+.btn-check:checked + .btn-outline-primary {
+  background-color: #0d6efd; /* Primary blue background when checked */
+  color: #fff;              /* White text when checked */
+  border-color: #0d6efd;
+}
 
-          .form-check {
-            width: fit-content !important;
-          }
-          .form-container {
-            background: white;
-            border-radius: 15px;
-          }
-          .form-check-input:checked {
-            background-color: #0d6efd;
-            border-color: #0d6efd;
-          }
-          .btn-primary {
-            background: linear-gradient(to right, #0d6efd, #0dcaf0);
-            border: none;
-            transition: all 0.3s ease;
-          }
-          .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          }
-          .lottie-container {
-            max-width: 300px;
-            margin: 0 auto;
-          }
-          @media (max-width: 768px) {
-            .lottie-container {
-              max-width: 250px;
-            }
-          }
-        
+/* Base styling for the outline primary button (radio label) */
+.btn-outline-primary {
+  color: #0d6efd;           /* Default blue text color */
+  border-color: #0d6efd;     /* Default blue border color */
+  transition: all 0.2s ease-in-out; /* Smooth transition for all changes */
+}
+
+/* Hover state for the labels: text goes white, background turns blue */
+.btn-outline-primary:hover {
+  background-color: #69a5ff !important; /* Primary blue background on hover */
+  border-color: #0066ff;     /* Primary blue border on hover */
+  color: #fff !important;    /* White text on hover (use !important for certainty) */
+}
+
+/* This selector ensures that when an already CHECKED button is hovered,
+   it maintains its checked style (blue background, white text).
+   It effectively overrides the generic :hover if it were to conflict. */
+.btn-check:checked + .btn-outline-primary:hover {
+  background-color: #0b5ed7; /* Slightly darker blue on hover when already checked for a subtle effect */
+  color: #fff;
+  border-color: #0b5ed7;
+}
+
+/* --- Your existing CSS for other elements (unmodified) --- */
+.form-check {
+  width: fit-content !important;
+}
+.form-container {
+  background: white;
+  border-radius: 15px;
+}
+.form-check-input:checked { /* This might be for a different type of form-check, or an older style */
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.btn-primary {
+  background: linear-gradient(to right, #0d6efd, #0dcaf0);
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.lottie-container {
+  max-width: 300px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .lottie-container {
+    max-width: 250px;
+  }
+}

@@ -4,154 +4,102 @@ import animationData from "../assets/animation/manWalking.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./staticFiles/landingPage.css";
 
-
 const LandingPage = ({ onNavigate }) => {
-    return (
-        <>
-            <div className="min-vh-100 d-flex align-items-center justify-content-center py-5" style={{ backgroundColor: "#fff" }}>
-                <div className="container">
-                    <div className="row justify-content-center">
-                        {/* Header */}
-                        <div className="col-12 text-center mb-4" data-aos="fade-up" data-aos-delay="300">
-                            <h1 className="display-4 fw-bold text-primary mb-3" data-aos="zoom-in" data-aos-delay="300">
-                                Welcome to NextStep Navigator
-                            </h1>
-                            <h2 className="fw-semibold text-secondary">
-                                Your Guide to the Future
-                            </h2>
-                        </div>
-
-                        {/* Lottie Animation */}
-                        <div className="col-md-5 text-center me-2 mb-5 mb-md-0"  data-aos="fade-up" data-aos-delay="300">
-                            <div className="lottie-container mb-4">
-                                <div load="lazy"
-                                    className="d-flex align-items-center justify-content-center rounded-circle mx-auto"
-                                    style={{ width: "300px", height: "300px" }}
-                                >
-                                    <Lottie
-                                        animationData={animationData}
-                                        loop={true}
-                                        style={{ width: "300px", height: "auto" }}
-                                    />
-                                </div>
-                            </div>
-                            <p className="text-muted px-3">
-                                Discover your path with personalized guidance and career insights tailored just for you.
-                            </p>
-                        </div>
-
-                        {/* Dummy Form */}
-                        <div className="col-md-7 col-lg-5" data-aos="fade-up" data-aos-delay="300">
-                            <div className="form-container p-4 p-md-5 shadow rounded">
-                                <form action="#" method="POST">
-                                    <div className="mb-3">
-                                        <label htmlFor="name" className="form-label fw-medium">
-                                            Enter Your Name:
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            className="form-control form-control-lg"
-                                            placeholder="e.g., John Doe"
-                                        />
-                                    </div>
-
-                                    <div className="mb-3">
-                                        <label htmlFor="email" className="form-label fw-medium">
-                                            Enter Your Email:
-                                        </label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            className="form-control form-control-lg"
-                                            placeholder="e.g., john.doe@example.com"
-                                        />
-                                    </div>
-
-                                    <div className="mb-4">
-                                        <label htmlFor="contact" className="form-label fw-medium">
-                                            Enter Your Contact:
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            id="contact"
-                                            name="contact"
-                                            className="form-control form-control-lg"
-                                            placeholder="e.g., +234-1456-7890"
-                                        />
-                                    </div>
-                                    <div className="mb-4">
-                                        <p className="fw-medium" style={{ width: "fit-content" }}>I am a:</p>
-
-                                        {/* Student */}
-                                        <div className="form-check mb-2 w-auto text-start">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                name="userType"
-                                                id="student"
-                                                value="student"
-                                            />
-                                            <label className="form-check-label" htmlFor="student">
-                                                Student (Grade 8-12)
-                                            </label>
-                                        </div>
-
-                                        {/* Graduate */}
-                                        <div className="form-check mb-2 text-start">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                name="userType"
-                                                id="graduate"
-                                                value="graduate"
-                                            />
-                                            <label className="form-check-label" htmlFor="graduate">
-                                                Graduate (UG/PG)
-                                            </label>
-                                        </div>
-
-                                        {/* UG/PG Info (kept left-aligned) */}
-                                        <p className="text-start ms-4">
-                                            <strong>UG:</strong> Undergraduate (Bachelor's Degree) <br />
-                                            <strong>PG:</strong> Postgraduate (Master's Degree)
-                                        </p>
-
-                                        {/* Working Professional */}
-                                        <div className="form-check mb-3 text-start">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                name="userType"
-                                                id="working"
-                                                value="working"
-                                            />
-                                            <label className="form-check-label" htmlFor="working">
-                                                Working Professional
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div className="mb-4">
-                                        <small className="text-muted">
-                                            We'll never share your contact information.
-                                        </small>
-                                    </div>
-
-                                    <button type="submit" onClick={onNavigate} className="btn btn-primary btn-lg w-100 py-2 fw-bold">
-                                        GET STARTED
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+  return (
+    <>
+      <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center py-5 landing-bg">
+        <div className="container">
+          <div className="row text-center mb-5">
+            <div className="col-12" data-aos="fade-up" data-aos-delay="300">
+              <h1 className="display-3 fw-bold text-primary mb-3">
+                NextStep Navigator
+              </h1>
+              <h2 className="fw-semibold text-secondary mb-4">
+                Your Guide to the Future
+              </h2>
             </div>
-        </>
-    );
-}
+          </div>
+          <div className="row justify-content-center align-items-center">
+            {/* Lottie Animation Column */}
+            <div className="col-md-6 col-lg-5 text-center mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="500">
+              <Lottie
+                animationData={animationData}
+                loop={true}
+                style={{ width: "100%", maxWidth: "400px", margin: "auto" }}
+              />
+              <p className="lead mt-4 text-muted px-3">
+                Discover your perfect career path with personalized guidance and insights tailored just for you.
+              </p>
+            </div>
+
+            {/* Form Column */}
+            <div className="col-md-6 col-lg-5" data-aos="fade-left" data-aos-delay="500">
+              <div className="form-container p-4 p-md-5 shadow-lg rounded-3">
+                <form action="#" method="POST">
+                  <h4 className="fw-bold mb-4 text-center">Get Started on Your Journey!</h4>
+                  <div className="mb-3">
+                    <label htmlFor="name" className="form-label fw-medium">
+                      Your Name:
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="form-control form-control-lg rounded-pill"
+                      placeholder="e.g., John Doe"
+                    />
+                  </div>
+
+                  <div className="mb-3">
+                    <label htmlFor="email" className="form-label fw-medium">
+                      Your Email:
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="form-control form-control-lg rounded-pill"
+                      placeholder="e.g., john.doe@example.com"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label htmlFor="userType" className="form-label fw-medium">
+                      I am a:
+                    </label>
+                    <div className="d-grid gap-2">
+                      <input type="radio" className="btn-check" name="userType" id="student" autoComplete="off" defaultChecked />
+                      <label className="btn btn-outline-primary rounded-pill py-2" htmlFor="student">Student (Grade 8-12)</label>
+
+                      <input type="radio" className="btn-check" name="userType" id="graduate" autoComplete="off" />
+                      <label className="btn btn-outline-primary rounded-pill py-2" htmlFor="graduate">Graduate (UG/PG)</label>
+
+                      <input type="radio" className="btn-check" name="userType" id="working" autoComplete="off" />
+                      <label className="btn btn-outline-primary rounded-pill py-2" htmlFor="working">Working Professional</label>
+                    </div>
+                  </div>
+
+                  <div className="mb-4 text-center">
+                    <small className="text-muted">
+                      We respect your privacy. Your information is secure with us.
+                    </small>
+                  </div>
+
+                  <button
+                    type="submit"
+                    onClick={onNavigate}
+                    className="btn btn-primary btn-lg w-100 py-2 fw-bold rounded-pill"
+                  >
+                    GET STARTED
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default LandingPage;
