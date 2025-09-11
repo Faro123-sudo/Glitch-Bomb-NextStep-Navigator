@@ -1,9 +1,8 @@
-/* General body and container styling */
+
 body {
-  background-color: #f8f9fa; /* A light gray background */
+  background-color: #f8f9fa; 
 }
 
-/* Custom card styling for each topic */
 .admission-card {
   border-radius: 1.5rem; /* Smoother rounded corners */
   transition: transform 0.3s ease, box-shadow 0.3s ease;

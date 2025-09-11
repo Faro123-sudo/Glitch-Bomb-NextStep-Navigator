@@ -4,14 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Header = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activePage, setActivePage] = useState("home"); // track current page
+  const [activePage, setActivePage] = useState("home"); 
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleNavigation = (page) => {
     setActivePage(page);
     onNavigate(page);
-    setIsOpen(false); // close menu on mobile
+    setIsOpen(false);
   };
 
   const navLinks = [

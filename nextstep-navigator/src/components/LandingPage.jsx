@@ -20,7 +20,7 @@ const LandingPage = ({ onNavigate }) => {
             </div>
           </div>
           <div className="row justify-content-center align-items-center">
-            {/* Lottie Animation Column */}
+            
             <div className="col-md-6 col-lg-5 text-center mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="500">
               <Lottie
                 animationData={animationData}
