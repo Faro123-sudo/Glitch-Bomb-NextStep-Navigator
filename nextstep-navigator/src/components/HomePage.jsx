@@ -31,10 +31,11 @@ function LandingPage() {
     }
   }, []);
 
-  return (
+  return (  
+    <>
+  <div id="code-container"></div>
     <div className="d-flex flex-column align-items-center justify-content-center landing-bg position-absolute top-0 start-0 h-100 w-100 overflow-hidden">
-      <div id="code-container"></div>
-
+    
       <div className="container position-relative z-2">
         <div className="row align-items-center min-vh-100 py-5">
           {/* Left Content */}
@@ -94,6 +95,7 @@ function LandingPage() {
         </div>
       </div> */}
     </div>
+    </>
   );
 }
 
