@@ -117,7 +117,13 @@
         "Yes": "Consider careers in Data Science, Accounting, or Engineering",
         "No": "Explore careers in Creative Arts or Communication",
         "Sometimes": "You might enjoy a mix like Marketing Analytics"
-      }
+      },
+      "industries": [
+        "Technology",
+        "Finance",
+        "Engineering",
+        "Business"
+      ]
     },
     {
       "id": 2,
@@ -129,7 +135,73 @@
       "answersMapping": {
         "Yes": "Teaching, Sales, and Counseling may suit you",
         "No": "Consider careers in Research or Software Development"
-      }
+      },
+      "industries": [
+        "Education",
+        "Business",
+        "Healthcare",
+        "Technology"
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Are you interested in technology and computers?",
+      "options": [
+        "Yes",
+        "No",
+        "A little"
+      ],
+      "answersMapping": {
+        "Yes": "Software Engineering, Data Science, or IT roles could be a good fit",
+        "No": "Consider roles in Healthcare, Education, or Arts",
+        "A little": "Marketing or Business Analysis may blend tech and other interests"
+      },
+      "industries": [
+        "Technology",
+        "Business",
+        "Creative Arts"
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Do you prefer creative tasks over analytical ones?",
+      "options": [
+        "Creative",
+        "Analytical",
+        "Both"
+      ],
+      "answersMapping": {
+        "Creative": "Graphic Design, Marketing, or Arts careers may suit you",
+        "Analytical": "Engineering, Accounting, or Data Science could be ideal",
+        "Both": "Product Management or UX Design might be a good mix"
+      },
+      "industries": [
+        "Creative Arts",
+        "Business",
+        "Engineering",
+        "Technology"
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Would you rather work indoors or outdoors?",
+      "options": [
+        "Indoors",
+        "Outdoors",
+        "No preference"
+      ],
+      "answersMapping": {
+        "Indoors": "Consider office-based roles like Software Engineer or Accountant",
+        "Outdoors": "Look into careers in Environmental Science or Field Research",
+        "No preference": "Many careers offer both, such as Teaching or Consulting"
+      },
+      "industries": [
+        "Technology",
+        "Finance",
+        "Education",
+        "Engineering",
+        "Healthcare"
+      ]
     }
   ],
   "multimediaGuidance": {
