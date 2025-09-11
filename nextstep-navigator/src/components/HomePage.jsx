@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./staticFiles/HomePage.css";
 import Logo from "../assets/logo.webp";
 import animationData from "../assets/animation/manWalking.json";
-// import arrowDown from "../assets/animation/arrow.json"; // Uncomment if you use scroll indicator
 
 function LandingPage() {
   useEffect(() => {
