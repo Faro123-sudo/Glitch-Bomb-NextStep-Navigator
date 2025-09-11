@@ -304,6 +304,16 @@
         "id": 3,
         "title": "Emerging Skills in Technology",
         "url": "https://example.com/tech-skills-article"
+      },
+      {
+        "id": 4,
+        "title": "Balancing Work and Life",
+        "url": "https://example.com/work-life-balance"
+      },
+      {
+        "id": 5,
+        "title": "Career Change: A Step-by-Step Guide",
+        "url": "https://example.com/career-change-guide"
       }
     ],
     "ebooks": [
@@ -316,6 +326,11 @@
         "id": 2,
         "title": "Interview Success Strategies",
         "url": "https://example.com/interview-ebook"
+      },
+      {
+        "id": 3,
+        "title": "The Ultimate Guide to Remote Work",
+        "url": "https://example.com/remote-work-ebook"
       }
     ],
     "webinars": [
@@ -330,6 +345,12 @@
         "title": "Networking for Career Growth",
         "date": "2025-10-20",
         "url": "https://example.com/networking-webinar"
+      },
+      {
+        "id": 3,
+        "title": "Building Your Personal Brand",
+        "date": "2025-12-01",
+        "url": "https://example.com/personal-brand-webinar"
       }
     ]
   },
