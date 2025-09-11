@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from "lottie-react";
-import animationData from "../assets/animation/manWalking.json";
+import animationData from "../assets/animation/looking.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./staticFiles/landingPage.css";
 
