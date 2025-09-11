@@ -36,8 +36,6 @@ function DisplayPages() {
         return <AdmissionCoaching />;
       case 'home':
         return <HomePage />;
-      case 'logout':
-        return <LandPage />;
       case 'contact':
         return <ContactUs />;
       default:
