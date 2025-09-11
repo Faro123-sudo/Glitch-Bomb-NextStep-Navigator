@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import data from "../data/careerData.json";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaGraduationCap, FaDollarSign, FaTools, FaFilter, FaSearch, FaSort, FaChevronDown, FaInfoCircle } from "react-icons/fa";
+import { FaGraduationCap, FaDollarSign, FaTools, FaFilter, FaSearch, FaSort, FaChevronDown, FaInfoCircle, FaTimes } from "react-icons/fa";
 import "./CareerBank.css";
 
 export default function CareerBank() {
@@ -9,6 +9,7 @@ export default function CareerBank() {
   const [selectedIndustry, setSelectedIndustry] = useState("All");
   const [sortOption, setSortOption] = useState("none");
   const [expandedCard, setExpandedCard] = useState(null);
+  const [showIndustryDropdown, setShowIndustryDropdown] = useState(false);
 
   const industries = [
     "All",
@@ -55,6 +56,26 @@ export default function CareerBank() {
     }
   };
 
+  const clearFilters = () => {
+    setSearch("");
+    setSelectedIndustry("All");
+    setSortOption("none");
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showIndustryDropdown && !event.target.closest('.industry-dropdown')) {
+        setShowIndustryDropdown(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showIndustryDropdown]);
+
   return (
     <section className="career-bank-section py-5">
       <div className="container">
@@ -63,7 +84,7 @@ export default function CareerBank() {
           <p className="text-muted">Discover career paths that match your skills and interests</p>
         </div>
 
-        <div className="controls-container mb-5 p-4 rounded-4 shadow-sm ">
+        <div className="controls-container mb-5 p-4 rounded-4 shadow-sm">
           <div className="row g-3">
             <div className="col-lg-5">
               <div className="search-box position-relative">
@@ -75,22 +96,39 @@ export default function CareerBank() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
+                {search && (
+                  <button
+                    className="btn btn-sm btn-link position-absolute top-50 end-0 translate-middle-y me-3"
+                    onClick={() => setSearch("")}
+                  >
+                    <FaTimes />
+                  </button>
+                )}
               </div>
             </div>
             
-            <div className="col-lg-4">
-              <div className="d-flex align-items-center h-100">
-                <FaFilter className="text-muted me-2 flex-shrink-0" />
-                <div className="industry-filters-scroll">
+            <div className="col-lg-3 industry-dropdown">
+              <div className="dropdown">
+                <button
+                  className="btn btn-outline-primary dropdown-toggle w-100 rounded-pill d-flex align-items-center justify-content-between"
+                  type="button"
+                  onClick={() => setShowIndustryDropdown(!showIndustryDropdown)}
+                >
+                  <span>
+                    <FaFilter className="me-2" />
+                    {selectedIndustry === "All" ? "All Industries" : selectedIndustry}
+                  </span>
+                </button>
+                <div className={`dropdown-menu w-100 p-3 ${showIndustryDropdown ? "show" : ""}`}>
+                  <h6 className="dropdown-header">Select Industry</h6>
                   {industries.map((industry) => (
                     <button
                       key={industry}
-                      className={`btn btn-sm rounded-pill mx-1 mb-1 ${
-                        selectedIndustry === industry 
-                          ? "btn-primary" 
-                          : "btn-outline-primary"
-                      }`}
-                      onClick={() => setSelectedIndustry(industry)}
+                      className={`dropdown-item ${selectedIndustry === industry ? "active" : ""}`}
+                      onClick={() => {
+                        setSelectedIndustry(industry);
+                        setShowIndustryDropdown(false);
+                      }}
                     >
                       {industry}
                     </button>
@@ -115,7 +153,58 @@ export default function CareerBank() {
                 </select>
               </div>
             </div>
+            
+            <div className="col-lg-1">
+              <button 
+                className="btn btn-outline-secondary w-100 rounded-pill"
+                onClick={clearFilters}
+                title="Clear all filters"
+              >
+                <FaTimes />
+              </button>
+            </div>
           </div>
+          
+          {/* Active filters display */}
+          {(search || selectedIndustry !== "All" || sortOption !== "none") && (
+            <div className="active-filters mt-3 d-flex flex-wrap align-items-center">
+              <span className="me-2 text-muted">Active filters:</span>
+              
+              {search && (
+                <span className="badge bg-primary me-2 mb-2">
+                  Search: {search}
+                  <button 
+                    className="ms-2 btn-close btn-close-white"
+                    onClick={() => setSearch("")}
+                  ></button>
+                </span>
+              )}
+              
+              {selectedIndustry !== "All" && (
+                <span className="badge bg-info me-2 mb-2">
+                  Industry: {selectedIndustry}
+                  <button 
+                    className="ms-2 btn-close btn-close-white"
+                    onClick={() => setSelectedIndustry("All")}
+                  ></button>
+                </span>
+              )}
+              
+              {sortOption !== "none" && (
+                <span className="badge bg-warning me-2 mb-2">
+                  Sorted: {
+                    sortOption === "salary-asc" ? "Salary: Low to High" :
+                    sortOption === "salary-desc" ? "Salary: High to Low" :
+                    sortOption === "alpha-asc" ? "A-Z" : "Z-A"
+                  }
+                  <button 
+                    className="ms-2 btn-close"
+                    onClick={() => setSortOption("none")}
+                  ></button>
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="results-info mb-4 d-flex justify-content-between align-items-center">
@@ -146,11 +235,7 @@ export default function CareerBank() {
                 </p>
                 <button 
                   className="btn btn-primary"
-                  onClick={() => {
-                    setSearch("");
-                    setSelectedIndustry("All");
-                    setSortOption("none");
-                  }}
+                  onClick={clearFilters}
                 >
                   Reset Filters
                 </button>
@@ -221,7 +306,7 @@ export default function CareerBank() {
                     </div>
                   </div>
                   
-                  <div className="card-footer border-0 pt-0">
+                  <div className="card-footer bg-white border-0 pt-0">
                     <button 
                       className="btn btn-sm btn-outline-primary w-100"
                       onClick={() => toggleCardExpand(career.id)}

@@ -24,6 +24,84 @@
       "averageSalary": "$60,000",
       "educationPath": "Bachelor's in Nursing",
       "industry": "Healthcare"
+    },
+    {
+      "id": 3,
+      "careerName": "Data Scientist",
+      "description": "Analyzes complex data to help organizations make decisions.",
+      "skillsRequired": [
+        "Python",
+        "Statistics",
+        "Machine Learning"
+      ],
+      "averageSalary": "$95,000",
+      "educationPath": "Master's in Data Science or related field",
+      "industry": "Technology"
+    },
+    {
+      "id": 4,
+      "careerName": "Graphic Designer",
+      "description": "Creates visual concepts to communicate ideas.",
+      "skillsRequired": [
+        "Adobe Photoshop",
+        "Creativity",
+        "Typography"
+      ],
+      "averageSalary": "$50,000",
+      "educationPath": "Bachelor's in Graphic Design",
+      "industry": "Creative Arts"
+    },
+    {
+      "id": 5,
+      "careerName": "Mechanical Engineer",
+      "description": "Designs and develops mechanical systems.",
+      "skillsRequired": [
+        "AutoCAD",
+        "Problem Solving",
+        "Mathematics"
+      ],
+      "averageSalary": "$75,000",
+      "educationPath": "Bachelor's in Mechanical Engineering",
+      "industry": "Engineering"
+    },
+    {
+      "id": 6,
+      "careerName": "Teacher",
+      "description": "Educates students in various subjects.",
+      "skillsRequired": [
+        "Classroom Management",
+        "Subject Knowledge",
+        "Communication"
+      ],
+      "averageSalary": "$55,000",
+      "educationPath": "Bachelor's in Education",
+      "industry": "Education"
+    },
+    {
+      "id": 7,
+      "careerName": "Accountant",
+      "description": "Manages financial records and prepares reports.",
+      "skillsRequired": [
+        "Accounting",
+        "Attention to Detail",
+        "Excel"
+      ],
+      "averageSalary": "$65,000",
+      "educationPath": "Bachelor's in Accounting",
+      "industry": "Finance"
+    },
+    {
+      "id": 8,
+      "careerName": "Marketing Manager",
+      "description": "Plans and oversees marketing strategies.",
+      "skillsRequired": [
+        "Marketing",
+        "Leadership",
+        "Analytics"
+      ],
+      "averageSalary": "$85,000",
+      "educationPath": "Bachelor's in Marketing or Business",
+      "industry": "Business"
     }
   ],
   "quizQuestions": [
