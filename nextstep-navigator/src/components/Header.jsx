@@ -17,11 +17,13 @@ const Header = ({ onNavigate }) => {
   const navLinks = [
     { label: "Home", page: "home" },
     { label: "Career Bank", page: "careerBank" },
+    { label: "About Us", page: "aboutUs" },
     { label: "Quiz", page: "quiz" },
     { label: "Multimedia", page: "multimedia" },
     { label: "Resources", page: "resources" },
     { label: "Success Stories", page: "successStories" },
     { label: "Admission & Coaching", page: "admissionCoaching" },
+    { label: "Logout", page: "logout" },
   ];
 
   const menuVariants = {

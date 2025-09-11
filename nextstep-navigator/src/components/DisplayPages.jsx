@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Header from './Header.jsx';
 import HomePage from './HomePage.jsx';
 import LandPage from './LandingPage.jsx';
@@ -8,6 +8,7 @@ import Multimedia from "./MultimediaGuidance";
 import Resources from "./ResourceLibrary";
 import SuccessStories from "./SuccessStories";
 import AdmissionCoaching from "./AdmissionAndCoaching";
+import AboutUs from './Aboutus.jsx';
 
 
 function DisplayPages() {
@@ -21,6 +22,8 @@ function DisplayPages() {
     switch (activeSection) {
       case 'careerBank':
         return <CareerBank />;
+      case 'aboutUs':
+        return <AboutUs />;
       case 'quiz':
         return <Quiz />;
       case 'multimedia':
@@ -33,6 +36,8 @@ function DisplayPages() {
         return <AdmissionCoaching />;
       case 'home':
         return <HomePage />;
+      case 'logout':
+        return <LandPage />;
       default:
         return <HomePage />;
     }

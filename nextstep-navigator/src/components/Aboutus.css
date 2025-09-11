@@ -1,0 +1,52 @@
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-header h1 {
+  color: #0d6efd; 
+  margin-bottom: 1rem;
+}
+
+.about-header p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-mission {
+  background-color: #f8f9fa; 
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.about-mission h2 {
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+/* Team Section */
+.about-team h2 {
+  margin-bottom: 2rem;
+  color: #0d6efd;
+}
+
+.about-team img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid #0d6efd;
+  transition: transform 0.3s ease;
+}
+
+.about-team img:hover {
+  transform: scale(1.05);
+}
+
+.about-team h5 {
+  margin-top: 0.5rem;
+}
+
+.about-team p {
+  font-size: 0.95rem;
+  color: #6c757d;
+}

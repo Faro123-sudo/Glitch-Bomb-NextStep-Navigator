@@ -242,7 +242,7 @@ export default function CareerBank() {
               </div>
             </div>
           ) : (
-            filteredCareers.map((career, index) => (
+            filteredCareers.map((career) => (
               <div
                 key={career.id}
                 className="col-12 col-md-6 col-lg-4"
