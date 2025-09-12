@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, User } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import {motion, AnimatePresence } from "framer-motion";
 import Logo from "../assets/logo.webp";
 import "./Header.css"; 
 
