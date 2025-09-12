@@ -86,15 +86,15 @@ export default function CareerBank() {
   return (
     <section className="career-bank-section py-5">
       <div className="container">
-        <div className="text-center mb-5">
+        <div className="text-center mb-5"data-aos="fade-right" data-aos-delay="500">
           <h1 className="display-5 fw-bold text-primary mb-3">Career Explorer</h1>
           <p className="text-muted">Discover career paths that match your skills and interests</p>
         </div>
 
-        <div className="controls-container mb-5 p-4 rounded-4 shadow-sm">
+        <div className="controls-container mb-5 p-4 rounded-4 shadow-sm" data-aos="fade-right" data-aos-delay="500">
           <div className="row g-3 align-items-center">
             {/* Search Input */}
-            <div className="col-lg-4 col-md-12">
+            <div className="col-lg-4 col-md-12" data-aos="zoom-in" data-aos-delay="500">
               <div className="input-group">
                 <span className="input-group-text"><FaSearch /></span>
                 <input
@@ -108,7 +108,7 @@ export default function CareerBank() {
             </div>
 
             {/* Industry Filter */}
-            <div className="col-lg-3 col-md-6">
+            <div className="col-lg-3 col-md-6"data-aos="zoom-in" data-aos-delay="500">
               <div className="input-group">
                 <span className="input-group-text"><FaFilter /></span>
                 <select
@@ -126,7 +126,7 @@ export default function CareerBank() {
             </div>
 
             {/* Sort Options */}
-            <div className="col-lg-3 col-md-6">
+            <div className="col-lg-3 col-md-6"data-aos="zoom-in" data-aos-delay="500">
               <div className="input-group">
                 <span className="input-group-text"><FaSort /></span>
                 <select
@@ -144,7 +144,7 @@ export default function CareerBank() {
             </div>
 
             {/* Clear Button */}
-            <div className="col-lg-2 col-md-12 text-end"><button className="btn btn-outline-secondary w-100" onClick={clearFilters}>Clear</button></div>
+            <div className="col-lg-2 col-md-12 text-end" data-aos="slide-left" data-aos-delay="500"><button className="btn btn-outline-secondary w-100" onClick={clearFilters}>Clear</button></div>
           </div>
         </div>
 
@@ -156,7 +156,7 @@ export default function CareerBank() {
             <button className="btn btn-primary" onClick={clearFilters}>Reset Filters</button>
           </div>
         ) : (
-          <div className="row g-4">
+          <div className="row g-4" data-aos="zoom-in" data-aos-delay="500">
             {filteredCareers.map((career) => (
               <div key={career.id} className="col-12 col-md-6 col-lg-4">
                 <div className="career-card card h-100" onClick={() => handleShowModal(career)}>
