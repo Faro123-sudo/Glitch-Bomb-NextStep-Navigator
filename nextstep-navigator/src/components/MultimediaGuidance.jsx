@@ -35,7 +35,7 @@ export default function MultimediaGuidance() {
 
   return (
     <section className="container py-5">
-      <h1 className="text-center mb-4 display-4 fw-bold text-dark">
+      <h1 className="text-center mb-4 display-4 fw-bold text-primary">
         Multimedia Guidance
       </h1>
       <p className="text-center text-muted mb-5 fs-5">

@@ -11,7 +11,8 @@ const Footer = ({ onNavigate }) => {
     window.scrollTo(0, 0);
   };
 
-  return (
+  return (<>
+      <hr style={{marginBottom: '20px'}}/>
     <footer className="footer-section text-dark pt-4 pb-3">
       <div className="container-fluid px-lg-5" style={{backgroundColor: '#fff'}}>
         <div className="row">
@@ -68,6 +69,7 @@ const Footer = ({ onNavigate }) => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 

@@ -1,260 +1,391 @@
-import React, { useState, useEffect } from 'react';
-import data from '../data/careerData.json';
-import './Quiz.css';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircleFill, Book, CameraVideo, Star } from 'react-bootstrap-icons';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+// Quiz.jsx
+import React, { useEffect, useMemo, useState } from "react";
+import { Modal, Button, ProgressBar } from "react-bootstrap";
+import defaultData from "../data/careerData.json";
+import "./Quiz.css"; // optional: add styles if you like
 
-const interests = [
-  ...new Set(data.careerBank.map((career) => career.industry)),
-];
+export default function Quiz({ userType = "" }) {
+  // pick quiz set from master data: careerData.json
+  const quizSets = defaultData.quizQuestions || {};
+  const normalizedType = (userType || "student").toLowerCase();
+  const questions = quizSets[normalizedType] || quizSets.student || [];
 
-function extractKeywords(mapping) {
-  // The mapping object now contains a 'careers' array. We can use it directly.
-  if (mapping && Array.isArray(mapping.careers)) {
-    return mapping.careers;
-  }
-  return [];
-}
+  // state for answers: { [questionId]: selectedOption }
+  const [answers, setAnswers] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showResults, setShowResults] = useState(false);
+  const [results, setResults] = useState({ ranked: [], followUpResources: [] });
 
-export default function Quiz() {
-  const [selectedInterest, setSelectedInterest] = useState('');
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [showRecommendations, setShowRecommendations] = useState(false);
-  const [userType, setUserType] = useState("");
-
-
+  // Reset quiz if userType changes (so UI matches the view)
   useEffect(() => {
-    const storedUserType = sessionStorage.getItem("userType");
-    if (storedUserType) {
-      setUserType(storedUserType);
-    }
-  }, []);
+    setAnswers({});
+    setCurrentIndex(0);
+    setShowResults(false);
+    setResults({ ranked: [], followUpResources: [] });
+  }, [normalizedType]);
 
-  const quizQuestions = data.quizQuestions[userType];
+  const totalQuestions = questions.length;
 
-  const filteredQuestions = selectedInterest
-    ? quizQuestions.filter(q =>
-        !q.industries || q.industries.includes(selectedInterest)
-      )
-    : [];
-
-  const handleInterestChange = (e) => {
-    setSelectedInterest(e.target.value);
-    setSelectedAnswers({});
-    setShowRecommendations(false);
+  // helper: set answer for question
+  const handleSelect = (questionId, option) => {
+    setAnswers((prev) => ({ ...prev, [questionId]: option }));
   };
 
-  const handleOptionChange = (questionId, option) => {
-    setSelectedAnswers({
-      ...selectedAnswers,
-      [questionId]: option,
-    });
+  const goNext = () => {
+    if (currentIndex < totalQuestions - 1) setCurrentIndex((i) => i + 1);
+  };
+  const goPrev = () => {
+    if (currentIndex > 0) setCurrentIndex((i) => i - 1);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowRecommendations(true);
-  };
+  // Score aggregator
+  const computeResults = () => {
+    const scoreMap = {}; // careerName -> numeric score
+    const resources = []; // list of followUpResources (dedup by title+type+url)
 
-  const recommendedCareers = data.careerBank.filter(
-    (career) => career.industry === selectedInterest
-  );
+    for (const q of questions) {
+      const qid = q.id;
+      const selected = answers[qid];
+      if (!selected) continue;
 
-  let bestMatches = [];
-  if (showRecommendations) {
-    let keywords = [];
-    filteredQuestions.forEach(q => {
-      const answer = selectedAnswers[q.id];
-      if (answer && q.answersMapping[answer]) {
-        keywords = keywords.concat(extractKeywords(q.answersMapping[answer]));
+      const mapping = q.answersMapping && q.answersMapping[selected];
+      if (!mapping) continue;
+
+      const weight = typeof mapping.weight === "number" ? mapping.weight : 1;
+      const careersList = Array.isArray(mapping.careers) ? mapping.careers : [];
+
+      // increment score for each career in mapping
+      for (const c of careersList) {
+        // normalize career key (string)
+        const key = String(c).trim();
+        if (!key) continue;
+        scoreMap[key] = (scoreMap[key] || 0) + weight;
       }
+
+      // collect resources
+      if (Array.isArray(mapping.followUpResources)) {
+        for (const r of mapping.followUpResources) {
+          // dedupe by type+title+url
+          const signature = `${r.type || ""}::${r.title || ""}::${r.url || ""}`;
+          if (!resources.some((x) => x._sig === signature)) {
+            resources.push({ ...r, _sig: signature });
+          }
+        }
+      }
+    }
+
+    // convert scoreMap to sorted array
+    const ranked = Object.entries(scoreMap)
+      .map(([careerName, score]) => ({ careerName, score }))
+      .sort((a, b) => b.score - a.score);
+
+    // Try to match the ranked careers against careerBank to show metadata (salary/education)
+    const bank = defaultData.careerBank || [];
+    const enrich = ranked.map((r) => {
+      const match =
+        bank.find(
+          (b) =>
+            b.careerName.toLowerCase() === r.careerName.toLowerCase() ||
+            r.careerName.toLowerCase().includes(b.careerName.toLowerCase()) ||
+            b.careerName.toLowerCase().includes(r.careerName.toLowerCase())
+        ) || null;
+      return {
+        ...r,
+        match: match
+          ? {
+              id: match.id,
+              careerName: match.careerName,
+              averageSalary: match.averageSalary,
+              educationPath: match.educationPath,
+              industry: match.industry,
+            }
+          : null,
+      };
     });
 
-    bestMatches = recommendedCareers.filter(career =>
-      keywords.some(keyword =>
-        career.careerName.toLowerCase().includes(keyword.toLowerCase()) ||
-        career.industry.toLowerCase().includes(keyword.toLowerCase())
-      )
-    );
-  }
+    // prepare followUpResources (remove _sig before saving)
+    const cleanedResources = resources.map(({ _sig, ...rest }) => rest);
 
+    setResults({ ranked: enrich, followUpResources: cleanedResources });
+    setShowResults(true);
+  };
 
-  const answeredQuestions = Object.keys(selectedAnswers).length;
-  const totalQuestions = filteredQuestions.length;
-  const progress = totalQuestions > 0 ? Math.round((answeredQuestions / totalQuestions) * 100) : 0;
+  // Quick guard for submit: require at least one answer
+  const canSubmit = useMemo(() => Object.keys(answers).length > 0, [answers]);
 
-  return (
-    <section className="container py-5 quiz-container">
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <h1 className="text-center mb-4 display-4 fw-bold text-primary">Your Career Discovery Quiz 🧭</h1>
-        <p className="text-center text-muted mb-5 fs-5">Answer a few questions based on your interests to unlock personalized career suggestions and start your journey.</p>
-      </motion.div>
-
-      <div className="row justify-content-center">
-        <div className="col-lg-7 col-md-8">
-          {/* Interest Selection */}
-          {!selectedInterest && (
-             <div className="mb-4 text-center p-5 bg-light rounded-3">
-                <label htmlFor="interest-select" className="form-label fw-bold fs-4 mb-3">
-                First, select an area of interest:
-                </label>
-                <select
-                id="interest-select"
-                className="form-select form-select-lg"
-                value={selectedInterest}
-                onChange={handleInterestChange}
-                >
-                <option value="">-- Choose an interest --</option>
-                {interests.map((interest, idx) => (
-                    <option key={idx} value={interest}>
-                    {interest}
-                    </option>
-                ))}
-                </select>
+  // UI for question item
+  const QuestionCard = ({ q, index }) => {
+    const selected = answers[q.id] || "";
+    return (
+      <div className="card quiz-question-card mb-3">
+        <div className="card-body">
+          <h5 className="card-title">
+            {index + 1}. {q.question}
+          </h5>
+          {q.tags && q.tags.length > 0 && (
+            <div className="mb-2">
+              {q.tags.map((t) => (
+                <span key={t} className="badge bg-light text-secondary me-1">
+                  {t}
+                </span>
+              ))}
             </div>
           )}
-         
-          <AnimatePresence>
-            {selectedInterest && !showRecommendations && (
-              <motion.form onSubmit={handleSubmit} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                {filteredQuestions.map((q, index) => (
-                  <motion.div
-                    key={q.id}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="card shadow-sm mb-4 quiz-card"
-                  >
-                    <div className="card-body">
-                      <div className="d-flex align-items-start">
-                        <div className="question-number me-3">{index + 1}</div>
-                        <h5 className="card-title fw-bold mb-3 flex-grow-1">{q.question}</h5>
-                      </div>
-<div className="d-grid gap-2 ps-md-5">
-  {q.options.map((option, i) => {
-    const isActive = selectedAnswers[q.id] === option;
-    return (
-      <label
-        key={i}
-        className={`btn w-100 text-start p-3 rounded-pill quiz-option-btn ${isActive ? 'active' : ''}`}
-        htmlFor={`q${q.id}-option${i}`}
-      >
-        <input
-          type="radio"
-          className="btn-check"
-          name={`question-${q.id}`}
-          id={`q${q.id}-option${i}`}
-          value={option}
-          checked={isActive}
-          onChange={() => handleOptionChange(q.id, option)}
-        />
-        <div className="d-flex justify-content-between align-items-center">
-          <span>{option}</span>
-          {isActive && <CheckCircleFill size={20} className="ms-2" />}
-        </div>
-      </label>
-    );
-  })}
-</div>
-                    </div>
-                  </motion.div>
-                ))}
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-lg w-100 mt-3"
-                  disabled={answeredQuestions !== totalQuestions || totalQuestions === 0}
-                >
-                  See My Recommendations
-                </button>
-              </motion.form>
-            )}
-          </AnimatePresence>
 
-          {/* --- RECOMMENDATION RESULTS --- */}
-          <AnimatePresence>
-            {showRecommendations && (
-              <motion.div className="mt-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                <h3 className="fw-bold text-success mb-4 text-center">Your Recommended Careers</h3>
-                {recommendedCareers.length > 0 ? (
-                  <div className="row g-4">
-                    {bestMatches.length > 0 && (
-                      <>
-                        <h5 className="text-primary fw-bold col-12">⭐ Best Matches for You</h5>
-                        {bestMatches.map((career) => (
-                          <div className="col-md-6" key={career.id}>
-                            <div className="recommendation-card best-match h-100">
-                              <h6 className="fw-bold">{career.careerName}</h6>
-                              <p className="text-muted small">{career.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </>
-                    )}
-                    <h5 className="text-dark fw-bold col-12 mt-4">Other Careers in {selectedInterest}</h5>
-                    {recommendedCareers.filter(c => !bestMatches.some(bm => bm.id === c.id)).map((career) => (
-                      <div className="col-md-6" key={career.id}>
-                        <div className="recommendation-card h-100">
-                          <h6 className="fw-bold">{career.careerName}</h6>
-                          <p className="text-muted small">{career.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-center">No careers found for the selected interest.</p>
-                )}
-
-                {/* --- WHAT'S NEXT SECTION --- */}
-                <div className="text-center p-4 mt-5 bg-light rounded-3 whats-next-card">
-                    <h4 className="fw-bold mb-3">What's Next?</h4>
-                    <p className="text-muted">Your journey doesn't stop here. Use these results to explore more.</p>
-                    <div className="d-flex flex-wrap justify-content-center gap-3 mt-4">
-                        <button className="btn btn-outline-primary"><Book className="me-2"/>Explore the Career Bank</button>
-                        <button className="btn btn-outline-primary"><CameraVideo className="me-2"/>Watch Expert Videos</button>
-                        <button className="btn btn-outline-primary"><Star className="me-2"/>Read Success Stories</button>
-                    </div>
+          <div role="radiogroup" aria-labelledby={`q-${q.id}-label`}>
+            {q.options.map((opt) => {
+              const optId = `q-${q.id}-${opt}`;
+              return (
+                <div className="form-check" key={opt}>
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name={`q-${q.id}`}
+                    id={optId}
+                    checked={selected === opt}
+                    onChange={() => handleSelect(q.id, opt)}
+                  />
+                  <label className="form-check-label" htmlFor={optId}>
+                    {opt}
+                  </label>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* --- SIDEBAR --- */}
-        <div className="col-lg-4 col-md-4 d-none d-md-block">
-          <div className="quiz-sidebar">
-            {selectedInterest && !showRecommendations && (
-                <div className="text-center mb-4">
-                    <div style={{ width: 150, height: 150, margin: 'auto' }}>
-                        <CircularProgressbar
-                            value={progress}
-                            text={`${progress}%`}
-                            styles={buildStyles({
-                                rotation: 0.25,
-                                strokeLinecap: 'round',
-                                textSize: '16px',
-                                pathTransitionDuration: 0.5,
-                                pathColor: `#0d6efd`,
-                                textColor: '#0d6efd',
-                                trailColor: '#e9ecef',
-                                backgroundColor: '#3e98c7',
-                            })}
-                        />
-                    </div>
-                    <p className="fw-bold mt-3">Quiz Progress</p>
-                </div>
-            )}
-            <div className="info-card">
-                <h5 className="fw-bold">Why this quiz?</h5>
-                <ul>
-                    <li><strong>Personalized:</strong> Get suggestions based on what you actually like.</li>
-                    <li><strong>Discover:</strong> Uncover careers you might not have considered.</li>
-                    <li><strong>Guided:</strong> A simple first step in your career exploration journey.</li>
-                </ul>
-            </div>
+              );
+            })}
           </div>
         </div>
+      </div>
+    );
+  };
+
+  // Reset / retake
+  const handleRetake = () => {
+    setAnswers({});
+    setCurrentIndex(0);
+    setShowResults(false);
+    setResults({ ranked: [], followUpResources: [] });
+  };
+
+  // If there are no questions for the user type
+  if (!questions || questions.length === 0) {
+    return (
+      <section className="quiz-section py-5">
+        <div className="container text-center">
+          <h2>No quiz available</h2>
+          <p className="text-muted">There are no quiz questions for the selected view.</p>
+        </div>
+      </section>
+    );
+  }
+
+  // Progress percent
+  const progressPercent = Math.round(((currentIndex + 1) / totalQuestions) * 100);
+
+  return (
+    <section className="quiz-section py-5">
+      <div className="container">
+        <div className="text-center mb-4">
+          <h2 className="fw-bold">Career Interest Quiz</h2>
+          <p className="text-muted">Answer a few quick questions to get personalised career suggestions.</p>
+        </div>
+
+        <div className="row">
+          <div className="col-12 col-md-8 mx-auto">
+            <div className="mb-3">
+              <ProgressBar now={progressPercent} label={`${progressPercent}%`} />
+            </div>
+
+            <QuestionCard q={questions[currentIndex]} index={currentIndex} />
+
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <button
+                  className="btn btn-outline-secondary me-2"
+                  onClick={goPrev}
+                  disabled={currentIndex === 0}
+                >
+                  Previous
+                </button>
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => {
+                    // Quick helper: mark question as "skip" by setting empty if not answered yet
+                    if (!answers[questions[currentIndex].id]) {
+                      handleSelect(questions[currentIndex].id, "");
+                    }
+                    goNext();
+                  }}
+                  disabled={currentIndex === totalQuestions - 1}
+                >
+                  Next
+                </button>
+              </div>
+
+              <div>
+                <button
+                  className="btn btn-light me-2"
+                  onClick={() => {
+                    // Jump to first unanswered question if any
+                    const firstUnanswered = questions.findIndex((q) => !answers[q.id]);
+                    if (firstUnanswered >= 0) setCurrentIndex(firstUnanswered);
+                    else setCurrentIndex(0);
+                  }}
+                >
+                  Jump to unanswered
+                </button>
+
+                <button
+                  className="btn btn-primary"
+                  onClick={computeResults}
+                  disabled={!canSubmit}
+                >
+                  Submit & See Results
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-3 text-muted small">
+              Answered {Object.keys(answers).filter((k) => answers[k]).length} of {totalQuestions}
+            </div>
+
+            {/* Optionally show a small summary of selected answers */}
+            {Object.keys(answers).length > 0 && (
+              <div className="mt-4">
+                <h6>Your current selections (quick view)</h6>
+                <ul className="list-group">
+                  {questions.map((q) => (
+                    <li key={q.id} className="list-group-item d-flex justify-content-between align-items-center">
+                      <div style={{ maxWidth: "70%" }}>
+                        <small className="text-muted">{q.question}</small>
+                        <div>{answers[q.id] || <em className="text-muted">No answer</em>}</div>
+                      </div>
+                      <div>
+                        <button
+                          className="btn btn-sm btn-outline-secondary"
+                          onClick={() => setCurrentIndex(questions.findIndex((x) => x.id === q.id))}
+                        >
+                          Edit
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          
+        </div>
+
+        {/* RESULTS MODAL */}
+        <Modal show={showResults} onHide={() => setShowResults(false)} size="lg" centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Recommended Career Paths</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {results.ranked.length === 0 ? (
+              <p className="text-muted">No strong matches found — try answering more questions.</p>
+            ) : (
+              <>
+                <p className="mb-3">
+                  Based on your answers, here are the top career suggestions (ranked).
+                </p>
+
+                <div className="list-group mb-3">
+                  {results.ranked.slice(0, 8).map((r, i) => (
+                    <div key={r.careerName} className="list-group-item">
+                      <div className="d-flex justify-content-between align-items-start">
+                        <div>
+                          <strong className="me-2">{i + 1}. {r.careerName}</strong>
+                          {r.match && (
+                            <small className="text-muted"> — {r.match.industry} • {r.match.averageSalary}</small>
+                          )}
+                          <div className="mt-1">
+                            <small className="text-muted">
+                              Score: {r.score}
+                              {r.match && r.match.educationPath ? ` • Education: ${r.match.educationPath}` : ""}
+                            </small>
+                          </div>
+                        </div>
+                        <div className="text-end">
+                          {r.match ? (
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                // Quick UX: navigate to CareerBank details by scrolling and highlighting
+                                // If you later implement route-based navigation, link to that route.
+                                const msg = `Open CareerBank and search for: ${r.match.careerName}`;
+                                window.alert(msg);
+                              }}
+                              className="btn btn-sm btn-outline-primary"
+                            >
+                              View in Career Bank
+                            </a>
+                          ) : (
+                            <button
+                              className="btn btn-sm btn-outline-secondary"
+                              onClick={() =>
+                                window.alert(
+                                  `No direct CareerBank match for "${r.careerName}". Try searching in Career Bank.`
+                                )
+                              }
+                            >
+                              Search Career Bank
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                      {/* optional short description from match */}
+                      {r.match && r.match.careerName && (
+                        <div className="mt-2">
+                          <small className="text-muted">
+                            {r.match.careerName} — {r.match.industry} • {r.match.educationPath}
+                          </small>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {results.followUpResources.length > 0 && (
+                  <>
+                    <h6>Suggested next steps & resources</h6>
+                    <div className="row">
+                      {results.followUpResources.map((res, idx) => (
+                        <div key={idx} className="col-12 col-md-6 mb-2">
+                          <div className="card p-2">
+                            <div className="d-flex justify-content-between align-items-center">
+                              <div>
+                                <div className="small text-muted text-uppercase">{res.type}</div>
+                                <div className="fw-semibold">{res.title}</div>
+                                {res.description && <div className="small text-muted">{res.description}</div>}
+                              </div>
+                              {res.url && (
+                                <div>
+                                  <a className="btn btn-sm btn-primary" href={res.url} target="_blank" rel="noreferrer">
+                                    Open
+                                  </a>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowResults(false)}>
+              Close
+            </Button>
+            <Button variant="outline-primary" onClick={handleRetake}>
+              Retake Quiz
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </section>
   );

@@ -1,58 +1,141 @@
+// CareerBank.jsx
 import React, { useState, useEffect } from "react";
-import data from "../data/careerData.json";
+import defaultData from "../data/careerData.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 import Lottie from "lottie-react";
 import lookingAnimation from "../assets/animation/looking.json";
-import { FaGraduationCap, FaDollarSign, FaTools, FaFilter, FaSearch, FaSort, FaChevronDown, FaInfoCircle, FaTimes } from "react-icons/fa";
+import {
+  FaGraduationCap,
+  FaDollarSign,
+  FaTools,
+  FaFilter,
+  FaSearch,
+  FaSort,
+  FaChevronDown,
+  FaInfoCircle,
+  FaTimes,
+} from "react-icons/fa";
 import "./CareerBank.css";
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
-export default function CareerBank() {
+export default function CareerBank({ userType = "" }) {
   const [search, setSearch] = useState("");
   const [selectedIndustry, setSelectedIndustry] = useState("All");
   const [sortOption, setSortOption] = useState("none");
   const [selectedCareer, setSelectedCareer] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [data, setData] = useState(defaultData); // data used for rendering
+  const [loadingData, setLoadingData] = useState(false);
+  const [showAll, setShowAll] = useState(false); // when userType is set, default to prioritized view
 
+  // Try to load user-specific data file if userType set, otherwise fall back
+  useEffect(() => {
+    let cancelled = false;
+    async function loadData() {
+      if (!userType) {
+        setData(defaultData);
+        return;
+      }
+
+      setLoadingData(true);
+      const path = `/data/career_${userType}.json`; // e.g., career_student.json placed in public/data
+      try {
+        const res = await fetch(path);
+        if (!res.ok) {
+          // user-specific file doesn't exist — fallback to defaultData
+          setData(defaultData);
+        } else {
+          const json = await res.json();
+          // if the user-specific file has the same shape (careerBank array), use it
+          if (!cancelled) setData(json);
+        }
+      } catch (err) {
+        console.warn("No user-specific career data found or fetch failed:", err);
+        if (!cancelled) setData(defaultData);
+      } finally {
+        if (!cancelled) setLoadingData(false);
+      }
+    }
+
+    loadData();
+    return () => {
+      cancelled = true;
+    };
+  }, [userType]);
+
+  // Utility: determine industries from active data set
   const industries = [
     "All",
-    ...new Set(data.careerBank.map((career) => career.industry)),
+    ...new Set((data.careerBank || []).map((career) => career.industry || "Other")),
   ];
 
-  let filteredCareers = data.careerBank.filter((career) => {
-    const matchesSearch =
-      career.careerName.toLowerCase().includes(search.toLowerCase()) ||
-      career.skillsRequired.some((skill) =>
-        skill.toLowerCase().includes(search.toLowerCase())
-      );
+  // Filtering + prioritization logic:
+  // - If showAll is true OR no userType, include all careers.
+  // - If userType is set and showAll is false:
+  //    * If career.audiences exists (array) and includes userType -> include & mark priority 0
+  //    * else mark priority 1 (still include but after prioritized items).
+  const computePrioritizedList = () => {
+    const list = (data.careerBank || []).map((career) => {
+      const audiences = Array.isArray(career.audiences)
+        ? career.audiences.map((a) => a.toLowerCase())
+        : [];
+      const hasAudience = userType && audiences.includes(userType.toLowerCase());
+      return { ...career, __priority: hasAudience ? 0 : 1 };
+    });
 
-    const matchesIndustry =
-      selectedIndustry === "All" || career.industry === selectedIndustry;
+    // If not showing all and userType specified, keep both priority 0 and 1 (but we will sort by priority).
+    // If you would prefer to hide non-matching careers, change filter below to keep only __priority === 0.
+    let filtered = list;
 
-    return matchesSearch && matchesIndustry;
-  });
+    // Apply search + industry filter first
+    filtered = filtered.filter((career) => {
+      const matchesSearch =
+        career.careerName.toLowerCase().includes(search.toLowerCase()) ||
+        (career.skillsRequired || []).some((skill) =>
+          skill.toLowerCase().includes(search.toLowerCase())
+        );
 
-  filteredCareers = filteredCareers.sort((a, b) => {
-    if (sortOption === "salary-asc") {
-      return (
-        parseInt(a.averageSalary.replace(/[^0-9]/g, "")) -
-        parseInt(b.averageSalary.replace(/[^0-9]/g, ""))
-      );
-    } else if (sortOption === "salary-desc") {
-      return (
-        parseInt(b.averageSalary.replace(/[^0-9]/g, "")) -
-        parseInt(a.averageSalary.replace(/[^0-9]/g, ""))
-      );
-    } else if (sortOption === "alpha-asc") {
-      return a.careerName.localeCompare(b.careerName);
-    } else if (sortOption === "alpha-desc") {
-      return b.careerName.localeCompare(a.careerName);
+      const matchesIndustry = selectedIndustry === "All" || career.industry === selectedIndustry;
+
+      return matchesSearch && matchesIndustry;
+    });
+
+    // If userType is set and showAll is false, sort so matching audiences come first
+    if (userType && !showAll) {
+      filtered.sort((a, b) => {
+        if (a.__priority !== b.__priority) return a.__priority - b.__priority;
+        // tie-breaker: keep original order or apply alphabet sort
+        return a.careerName.localeCompare(b.careerName);
+      });
     }
-    return 0;
-  });
+
+    // Apply sortOption (salary/name)
+    filtered = filtered.sort((a, b) => {
+      if (sortOption === "salary-asc") {
+        return (
+          (parseInt(a.averageSalary.replace(/[^0-9]/g, "")) || 0) -
+          (parseInt(b.averageSalary.replace(/[^0-9]/g, "")) || 0)
+        );
+      } else if (sortOption === "salary-desc") {
+        return (
+          (parseInt(b.averageSalary.replace(/[^0-9]/g, "")) || 0) -
+          (parseInt(a.averageSalary.replace(/[^0-9]/g, "")) || 0)
+        );
+      } else if (sortOption === "alpha-asc") {
+        return a.careerName.localeCompare(b.careerName);
+      } else if (sortOption === "alpha-desc") {
+        return b.careerName.localeCompare(a.careerName);
+      }
+      return 0;
+    });
+
+    return filtered;
+  };
+
+  let filteredCareers = computePrioritizedList();
 
   const handleShowModal = (career) => {
     setSelectedCareer(career);
@@ -68,6 +151,7 @@ export default function CareerBank() {
     setSearch("");
     setSelectedIndustry("All");
     setSortOption("none");
+    setShowAll(false);
   };
 
   const salaryChartData = {
@@ -75,7 +159,9 @@ export default function CareerBank() {
     datasets: [
       {
         label: "Average Salary",
-        data: filteredCareers.map((c) => parseInt(c.averageSalary.replace(/[^0-9]/g, ""))),
+        data: filteredCareers.map((c) =>
+          parseInt((c.averageSalary || "0").replace(/[^0-9]/g, "")) || 0
+        ),
         backgroundColor: "rgba(75, 192, 192, 0.6)",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
@@ -86,17 +172,33 @@ export default function CareerBank() {
   return (
     <section className="career-bank-section py-5">
       <div className="container">
-        <div className="text-center mb-5"data-aos="fade-right" data-aos-delay="500">
-          <h1 className="display-5 fw-bold text-primary mb-3">Career Explorer</h1>
-          <p className="text-muted">Discover career paths that match your skills and interests</p>
+        <div className="text-center mb-3" data-aos="fade-right" data-aos-delay="300">
+          <h1 className="display-5 fw-bold text-primary mb-1">Career Explorer</h1>
+          <p className="text-muted">
+            Discover career paths that match your skills and interests
+            {userType ? (
+              <>
+                {" — "}
+                <span className="badge bg-primary text-white">{userType.toUpperCase()} view</span>
+                {!showAll && (
+                  <small className="text-muted ms-2"> (prioritised recommendations shown)</small>
+                )}
+              </>
+            ) : null}
+          </p>
         </div>
 
-        <div className="controls-container mb-5 p-4 rounded-4 shadow-sm" data-aos="fade-right" data-aos-delay="500">
-          <div className="row g-3 align-items-center">
-            {/* Search Input */}
+        <div
+          className="controls-container mb-4 p-3 rounded-4 shadow-sm"
+          data-aos="fade-right"
+          data-aos-delay="400"
+        >
+          <div className="row g-2 align-items-center">
             <div className="col-lg-4 col-md-12" data-aos="zoom-in" data-aos-delay="500">
               <div className="input-group">
-                <span className="input-group-text"><FaSearch /></span>
+                <span className="input-group-text">
+                  <FaSearch />
+                </span>
                 <input
                   type="text"
                   className="form-control"
@@ -107,10 +209,11 @@ export default function CareerBank() {
               </div>
             </div>
 
-            {/* Industry Filter */}
-            <div className="col-lg-3 col-md-6"data-aos="zoom-in" data-aos-delay="500">
+            <div className="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="500">
               <div className="input-group">
-                <span className="input-group-text"><FaFilter /></span>
+                <span className="input-group-text">
+                  <FaFilter />
+                </span>
                 <select
                   className="form-select"
                   value={selectedIndustry}
@@ -125,10 +228,11 @@ export default function CareerBank() {
               </div>
             </div>
 
-            {/* Sort Options */}
-            <div className="col-lg-3 col-md-6"data-aos="zoom-in" data-aos-delay="500">
+            <div className="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="500">
               <div className="input-group">
-                <span className="input-group-text"><FaSort /></span>
+                <span className="input-group-text">
+                  <FaSort />
+                </span>
                 <select
                   className="form-select"
                   value={sortOption}
@@ -143,96 +247,169 @@ export default function CareerBank() {
               </div>
             </div>
 
-            {/* Clear Button */}
-            <div className="col-lg-2 col-md-12 text-end" data-aos="slide-left" data-aos-delay="500"><button className="btn btn-outline-secondary w-100" onClick={clearFilters}>Clear</button></div>
+            <div className="col-lg-2 col-md-12 text-end d-flex flex-column align-items-end">
+              <div className="mb-2 w-100">
+                <button className="btn btn-outline-secondary w-100" onClick={clearFilters}>
+                  Clear
+                </button>
+              </div>
+              {userType && (
+                <div className="w-100">
+                  <button
+                    className="btn btn-sm btn-outline-primary w-100"
+                    onClick={() => setShowAll((s) => !s)}
+                    aria-pressed={showAll}
+                    title="Toggle showing all careers"
+                  >
+                    {showAll ? "Showing: All careers" : `Showing: Prioritised for ${userType}`}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
-        {filteredCareers.length === 0 ? (
+        {loadingData ? (
+          <div className="text-center py-5">
+            <p className="text-muted">Loading career data...</p>
+          </div>
+        ) : filteredCareers.length === 0 ? (
           <div className="text-center py-5">
             <Lottie animationData={lookingAnimation} className="empty-state-animation" />
             <h3 className="mb-3">No careers found</h3>
             <p className="text-muted mb-4">Try adjusting your search or filter criteria</p>
-            <button className="btn btn-primary" onClick={clearFilters}>Reset Filters</button>
+            <button className="btn btn-primary" onClick={clearFilters}>
+              Reset Filters
+            </button>
           </div>
         ) : (
-          <div className="row g-4" data-aos="zoom-in" data-aos-delay="500">
-            {filteredCareers.map((career) => (
-              <div key={career.id} className="col-12 col-md-6 col-lg-4">
-                <div className="career-card card h-100" onClick={() => handleShowModal(career)}>
-                  <div className="card-header">
-                    <h3 className="card-title h5">{career.careerName}</h3>
-                    <span className="badge bg-primary-subtle text-primary">{career.industry}</span>
-                  </div>
-                  <div className="card-body">
-                    <p className="card-text text-muted mb-3">{career.description.substring(0, 120)}...</p>
-                    <div className="d-flex align-items-center mb-2">
-                      <FaDollarSign className="text-success me-2" />
-                      <span className="fw-bold text-success">{career.averageSalary}</span>
+          <>
+            <div className="row g-4" data-aos="zoom-in" data-aos-delay="500">
+              {filteredCareers.map((career) => (
+                <div key={career.id} className="col-12 col-md-6 col-lg-4">
+                  <div
+                    className="career-card card h-100"
+                    onClick={() => handleShowModal(career)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") handleShowModal(career);
+                    }}
+                  >
+                    <div className="card-header d-flex justify-content-between align-items-start">
+                      <h3 className="card-title h5">{career.careerName}</h3>
+                      <div>
+                        <span className="badge bg-primary-subtle text-primary me-1">
+                          {career.industry}
+                        </span>
+                        {/* Audience badge if present */}
+                        {career.audiences && career.audiences.length > 0 && (
+                          <span className="badge bg-info-subtle text-info ms-1">
+                            {career.audiences.join(", ")}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    <div className="d-flex align-items-center">
-                      <FaGraduationCap className="text-warning me-2" />
-                      <span>{career.educationPath}</span>
+                    <div className="card-body">
+                      <p className="card-text text-muted mb-3">
+                        {(career.description || "").substring(0, 120)}...
+                      </p>
+                      <div className="d-flex align-items-center mb-2">
+                        <FaDollarSign className="text-success me-2" />
+                        <span className="fw-bold text-success">{career.averageSalary}</span>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <FaGraduationCap className="text-warning me-2" />
+                        <span>{career.educationPath}</span>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <button
+                        className="btn btn-sm btn-outline-primary w-100"
+                        onClick={() => handleShowModal(career)}
+                      >
+                        See Full Details
+                      </button>
                     </div>
                   </div>
-                  <div className="card-footer">
-                    <button className="btn btn-sm btn-outline-primary w-100">See Full Details</button>
-                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
 
-        {selectedCareer && (
-          <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
-            <Modal.Header closeButton>
-              <Modal.Title>{selectedCareer.careerName}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <p><strong>Industry:</strong> {selectedCareer.industry}</p>
-              <p><strong>Average Salary:</strong> {selectedCareer.averageSalary}</p>
-              <p><strong>Education Path:</strong> {selectedCareer.educationPath}</p>
-              <p><strong>Job Outlook:</strong> {selectedCareer.jobOutlook}</p>
-              <p><strong>Description:</strong> {selectedCareer.description}</p>
-              <p><strong>Day in the Life:</strong> {selectedCareer.dayInTheLife}</p>
-              <div>
-                <strong>Skills Required:</strong>
-                <div className="skills-container mt-2">
-                  {selectedCareer.skillsRequired.map((skill, i) => (
-                    <span key={i} className="badge me-1 mb-1">{skill}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-3">
-                <strong>Related Roles:</strong>
-                <ul className="list-unstyled mt-2">
-                  {selectedCareer.relatedRoles.map((role, i) => (
-                    <li key={i}>{role}</li>
-                  ))}
-                </ul>
-              </div>
-              {selectedCareer.careerVideo && (
-                <div className="mt-4">
-                  <h5>Career Video</h5>
-                  <div className="ratio ratio-16x9">
-                    <iframe src={selectedCareer.careerVideo} title={selectedCareer.careerName} allowFullScreen></iframe>
-                  </div>
-                </div>
-              )}
-            </Modal.Body>
-            <Modal.Footer>
-              <button className="btn btn-secondary" onClick={handleCloseModal}>Close</button>
-            </Modal.Footer>
-          </Modal>
-        )}
+            {selectedCareer && (
+              <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
+                <Modal.Header closeButton>
+                  <Modal.Title>{selectedCareer.careerName}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <p>
+                    <strong>Industry:</strong> {selectedCareer.industry}
+                  </p>
+                  <p>
+                    <strong>Average Salary:</strong> {selectedCareer.averageSalary}
+                  </p>
+                  <p>
+                    <strong>Education Path:</strong> {selectedCareer.educationPath}
+                  </p>
+                  <p>
+                    <strong>Job Outlook:</strong> {selectedCareer.jobOutlook}
+                  </p>
+                  <p>
+                    <strong>Description:</strong> {selectedCareer.description}
+                  </p>
+                  <p>
+                    <strong>Day in the Life:</strong> {selectedCareer.dayInTheLife}
+                  </p>
 
-        <div className="mt-5">
-          <h2 className="text-center mb-4">Salary Comparison</h2>
-          <div className="salary-chart-container">
-            <Bar data={salaryChartData} options={{ maintainAspectRatio: false }} />
-          </div>
-        </div>
+                  <div>
+                    <strong>Skills Required:</strong>
+                    <div className="skills-container mt-2">
+                      {selectedCareer.skillsRequired?.map((skill, i) => (
+                        <span key={i} className="badge me-1 mb-1">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-3">
+                    <strong>Related Roles:</strong>
+                    <ul className="list-unstyled mt-2">
+                      {selectedCareer.relatedRoles?.map((role, i) => (
+                        <li key={i}>{role}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {selectedCareer.careerVideo && (
+                    <div className="mt-4">
+                      <h5>Career Video</h5>
+                      <div className="ratio ratio-16x9">
+                        <iframe
+                          src={selectedCareer.careerVideo}
+                          title={selectedCareer.careerName}
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    </div>
+                  )}
+                </Modal.Body>
+                <Modal.Footer>
+                  <button className="btn btn-secondary" onClick={handleCloseModal}>
+                    Close
+                  </button>
+                </Modal.Footer>
+              </Modal>
+            )}
+
+            <div className="mt-5">
+              <h2 className="text-center mb-4">Salary Comparison</h2>
+              <div className="salary-chart-container" style={{ minHeight: 240 }}>
+                <Bar data={salaryChartData} options={{ maintainAspectRatio: false }} />
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
