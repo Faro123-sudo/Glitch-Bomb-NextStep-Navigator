@@ -124,32 +124,32 @@ export default function Quiz() {
                         <div className="question-number me-3">{index + 1}</div>
                         <h5 className="card-title fw-bold mb-3 flex-grow-1">{q.question}</h5>
                       </div>
-                      <div className="d-grid gap-2 ps-md-5">
-                        {q.options.map((option, i) => {
-                          const isActive = selectedAnswers[q.id] === option;
-                          return (
-                            <label
-                              key={i}
-                              className={`btn text-start p-3 rounded-pill quiz-option-btn ${isActive ? 'active' : ''}`}
-                              htmlFor={`q${q.id}-option${i}`}
-                            >
-                              <input
-                                type="radio"
-                                className="btn-check"
-                                name={`question-${q.id}`}
-                                id={`q${q.id}-option${i}`}
-                                value={option}
-                                checked={isActive}
-                                onChange={() => handleOptionChange(q.id, option)}
-                              />
-                              <div className="d-flex justify-content-between align-items-center">
-                                <span>{option}</span>
-                                {isActive && <CheckCircleFill size={20} className="ms-2" />}
-                              </div>
-                            </label>
-                          );
-                        })}
-                      </div>
+<div className="d-grid gap-2 ps-md-5">
+  {q.options.map((option, i) => {
+    const isActive = selectedAnswers[q.id] === option;
+    return (
+      <label
+        key={i}
+        className={`btn w-100 text-start p-3 rounded-pill quiz-option-btn ${isActive ? 'active' : ''}`}
+        htmlFor={`q${q.id}-option${i}`}
+      >
+        <input
+          type="radio"
+          className="btn-check"
+          name={`question-${q.id}`}
+          id={`q${q.id}-option${i}`}
+          value={option}
+          checked={isActive}
+          onChange={() => handleOptionChange(q.id, option)}
+        />
+        <div className="d-flex justify-content-between align-items-center">
+          <span>{option}</span>
+          {isActive && <CheckCircleFill size={20} className="ms-2" />}
+        </div>
+      </label>
+    );
+  })}
+</div>
                     </div>
                   </motion.div>
                 ))}
