@@ -1,9 +1,3 @@
-/* General background styling */
-/* .landing-bg {
-  min-height: 100vh;
-  padding: 4rem 0;
-  background-color: #f8f9fa;
-} */
 
 .hero-section {
   min-height: calc(100vh - 8rem); /* Adjust based on padding */
@@ -140,6 +134,7 @@
     margin-top: 1.25rem;
     max-width: 100%;
   }
+
 
   .landing-description {
     margin-left: 0 !important;

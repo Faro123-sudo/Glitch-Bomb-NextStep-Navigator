@@ -4,7 +4,6 @@ import DisplayPages from "./components/DisplayPages.jsx";
 import './App.css'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Feedback from "./components/Feedback.jsx";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -33,7 +32,6 @@ setIsAuthenticated(true);};
         <DisplayPages />
       ) : (
 <LandingPage onNavigate={handleLogin} />      )}
-       <Feedback />
     </>
   );
 }
