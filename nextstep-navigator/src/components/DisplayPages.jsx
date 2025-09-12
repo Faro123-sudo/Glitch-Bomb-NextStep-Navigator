@@ -47,17 +47,8 @@ function DisplayPages() {
         return <AdmissionCoaching userType={userType} />;
       case "contact":
         return <ContactUs />;
-      case "studentStream":
-        return <div>Student Stream page (create <strong>StudentStream</strong> component)</div>;
-      case "studentStudyTips":
-        return <div>Student Study Tips (create component)</div>;
-      case "studentScholarships":
-        return <div>Student Scholarships (create component)</div>;
-      case "graduateResume":
-        return <div>Graduate Resume page (create component)</div>;
-      case "proChangePlanner":
-        return <div>Professional Change Planner (create component)</div>;
       case "home":
+        <HomePage userType={userType} />;
       default:
         return <HomePage userType={userType} />;
     }
