@@ -1,32 +1,28 @@
-/* Custom radio button styling when CHECKED */
 .btn-check:checked + .btn-outline-primary {
-  background-color: #0d6efd; /* Primary blue background when checked */
-  color: #fff;              /* White text when checked */
+  background-color: #0d6efd; 
+  color: #fff;              
   border-color: #0d6efd;
 }
 
-/* Base styling for the outline primary button (radio label) */
 .btn-outline-primary {
-  color: #0d6efd;           /* Default blue text color */
-  border-color: #0d6efd;     /* Default blue border color */
-  transition: all 0.2s ease-in-out; /* Smooth transition for all changes */
+  color: #0d6efd;
+  border-color: #0d6efd;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Hover state for the labels: text goes white, background turns blue */
 .btn-outline-primary:hover {
-  background-color: #69a5ff !important; /* Primary blue background on hover */
-  border-color: #0066ff;     /* Primary blue border on hover */
-  color: #fff !important;    /* White text on hover (use !important for certainty) */
+  background-color: #69a5ff !important;
+  border-color: #0066ff;
+  color: #fff !important;
 }
 
 
 .btn-check:checked + .btn-outline-primary:hover {
-  background-color: #0b5ed7; /* Slightly darker blue on hover when already checked for a subtle effect */
+  background-color: #0b5ed7;
   color: #fff;
   border-color: #0b5ed7;
 }
 
-/* --- Your existing CSS for other elements (unmodified) --- */
 .form-check {
   width: fit-content !important;
 }
@@ -34,7 +30,7 @@
   background: white;
   border-radius: 15px;
 }
-.form-check-input:checked { /* This might be for a different type of form-check, or an older style */
+.form-check-input:checked {
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
@@ -65,7 +61,7 @@
   position: absolute;
   bottom: -20px;
   font-size: 14px;
-  color: rgba(0, 123, 255, 0.7); /* bootstrap primary blue */
+  color: rgba(0, 123, 255, 0.7);
   animation: floatUp linear infinite;
   white-space: nowrap;
 }
