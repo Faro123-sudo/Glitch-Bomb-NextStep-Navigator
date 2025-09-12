@@ -1,0 +1,118 @@
+.geoclock-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #e9ecef;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  min-width: 280px;
+}
+
+.clock-icon {
+  font-size: 1.5rem;
+  color: #adb5bd;
+}
+
+.time-container {
+  text-align: left;
+}
+
+.time-display {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.date-display {
+  font-size: 0.8rem;
+  color: #adb5bd;
+}
+
+.timezone-info {
+  font-size: 0.8rem;
+  color: #adb5bd;
+}
+
+.tz-abbreviation {
+  font-weight: bold;
+}
+
+.clock-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.clock-error {
+  font-size: 0.75rem;
+  color: #ffc107;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+.change-tz-btn {
+  color: #adb5bd;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.3rem;
+}
+
+.change-tz-btn:hover {
+  color: #ffffff;
+}
+
+/* Compact mode */
+.geoclock-wrapper.compact {
+  min-width: auto;
+  padding: 0.25rem 0.75rem;
+}
+.geoclock-wrapper.compact .time-display {
+  font-size: 1.1rem;
+}
+.geoclock-wrapper.compact .clock-icon {
+  font-size: 1.1rem;
+}
+.geoclock-wrapper.compact .clock-controls {
+  display: none; /* Hide controls in compact mode */
+}
+
+/* Timezone Selector Modal */
+.timezone-selector-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.timezone-selector-modal {
+  background: #2c3034;
+  color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.timezone-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.timezone-group-header {
+  font-weight: bold;
+  color: #adb5bd;
+  padding: 0.75rem 0.5rem 0.25rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}

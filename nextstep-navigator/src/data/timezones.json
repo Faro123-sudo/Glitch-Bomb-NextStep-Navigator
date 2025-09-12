@@ -1,0 +1,37 @@
+[
+  { "group": "Common", "zones": [
+    { "name": "Africa/Lagos", "label": "Lagos (WAT)" },
+    { "name": "Europe/London", "label": "London (GMT/BST)" },
+    { "name": "America/New_York", "label": "New York (EST/EDT)" },
+    { "name": "Asia/Shanghai", "label": "Shanghai (CST)" },
+    { "name": "Asia/Tokyo", "label": "Tokyo (JST)" },
+    { "name": "Australia/Sydney", "label": "Sydney (AEST/AEDT)" }
+  ]},
+  { "group": "Africa", "zones": [
+    { "name": "Africa/Cairo", "label": "Cairo (EET)" },
+    { "name": "Africa/Johannesburg", "label": "Johannesburg (SAST)" },
+    { "name": "Africa/Nairobi", "label": "Nairobi (EAT)" }
+  ]},
+  { "group": "America", "zones": [
+    { "name": "America/Los_Angeles", "label": "Los Angeles (PST/PDT)" },
+    { "name": "America/Chicago", "label": "Chicago (CST/CDT)" },
+    { "name": "America/Denver", "label": "Denver (MST/MDT)" },
+    { "name": "America/Sao_Paulo", "label": "São Paulo (BRT)" }
+  ]},
+  { "group": "Asia", "zones": [
+    { "name": "Asia/Dubai", "label": "Dubai (GST)" },
+    { "name": "Asia/Kolkata", "label": "Kolkata (IST)" },
+    { "name": "Asia/Singapore", "label": "Singapore (SGT)" },
+    { "name": "Asia/Seoul", "label": "Seoul (KST)" }
+  ]},
+  { "group": "Europe", "zones": [
+    { "name": "Europe/Paris", "label": "Paris (CET/CEST)" },
+    { "name": "Europe/Berlin", "label": "Berlin (CET/CEST)" },
+    { "name": "Europe/Moscow", "label": "Moscow (MSK)" },
+    { "name": "Europe/Istanbul", "label": "Istanbul (TRT)" }
+  ]},
+  { "group": "Oceania", "zones": [
+    { "name": "Australia/Perth", "label": "Perth (AWST)" },
+    { "name": "Pacific/Auckland", "label": "Auckland (NZST/NZDT)" }
+  ]}
+]

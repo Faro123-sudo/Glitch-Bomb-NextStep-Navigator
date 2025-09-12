@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "chart.js": "^4.5.0"
+    "chart.js": "^4.5.0",
+    "framer-motion": "^11.0.8",
+    "geo-tz": "^7.1.0"
   }
 }
