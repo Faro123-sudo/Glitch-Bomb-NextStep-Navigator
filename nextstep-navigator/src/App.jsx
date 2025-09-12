@@ -6,21 +6,27 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function App() {
-  const [showHome, setShowHome] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     AOS.init({
       duration: 1000, // animation duration in ms
       once: true, // whether animation should happen only once
     });
+
+    // Check if user data exists in session storage
+    const username = sessionStorage.getItem("username");
+    if (username) {
+      setIsAuthenticated(true);
+    }
   }, []);
 
   return (
     <>
-      {showHome ? (
+      {isAuthenticated ? (
         <DisplayPages />
       ) : (
-        <LandingPage onNavigate={() => setShowHome(true)} />
+        <LandingPage onNavigate={() => setIsAuthenticated(true)} />
       )}
     </>
   );

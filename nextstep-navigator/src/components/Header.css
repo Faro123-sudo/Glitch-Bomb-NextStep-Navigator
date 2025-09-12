@@ -1,0 +1,24 @@
+/* Floating, rounded navbar style */
+.floating-navbar-container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar.rounded-navbar {
+  background: rgba(255, 255, 255, 0.719);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-radius: 50px; /* This makes it a pill shape */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Mobile menu with rounded corners */
+.mobile-menu {
+  border-radius: 1.5rem;
+  overflow: hidden; /* Ensures content respects the border radius */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
