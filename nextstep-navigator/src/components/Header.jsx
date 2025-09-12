@@ -9,6 +9,7 @@ const Header = ({ onNavigate }) => {
   const [activePage, setActivePage] = useState("home");
   const [username, setUsername] = useState("");
 
+
   useEffect(() => {
     const storedUsername = sessionStorage.getItem("username");
     if (storedUsername) {
@@ -22,6 +23,7 @@ const Header = ({ onNavigate }) => {
     setActivePage(page);
     onNavigate(page);
     setIsOpen(false);
+    window.scrollTo(0, 0);
   };
 
   const navLinks = [
