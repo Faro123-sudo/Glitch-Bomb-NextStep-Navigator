@@ -22,7 +22,7 @@ import Feedback from "./Feedback.jsx";
 
 function DisplayPages() {
   const [activeSection, setActiveSection] = useState("home");
-  const [userType, setUserType] = useState(() => sessionStorage.getItem("userType") || "");
+  const [userType, setUserType] = useState(() => sessionStorage.getItem("userType") || "guest");
 
   useEffect(() => {
     if (userType) sessionStorage.setItem("userType", userType);
