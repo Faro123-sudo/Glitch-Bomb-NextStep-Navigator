@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import data from '../data/careerData.json';
 import './Quiz.css';
-
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircleFill, Book, CameraVideo, Star } from 'react-bootstrap-icons';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const interests = [
   ...new Set(data.careerBank.map((career) => career.industry)),
 ];
 
-
 function extractKeywords(mapping) {
-
   return mapping
     .replace(/careers? in |roles? in |may suit you|could be (a )?good fit|might be a good mix|such as |like |Consider |Explore |Look into |office-based roles |Many careers offer both, /gi, '')
     .split(/,| or | and /i)
@@ -17,11 +18,11 @@ function extractKeywords(mapping) {
     .filter(Boolean);
 }
 
+
 export default function Quiz() {
   const [selectedInterest, setSelectedInterest] = useState('');
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showRecommendations, setShowRecommendations] = useState(false);
-
 
   const quizQuestions = data.quizQuestions;
 
@@ -31,7 +32,6 @@ export default function Quiz() {
       )
     : [];
 
- 
   const handleInterestChange = (e) => {
     setSelectedInterest(e.target.value);
     setSelectedAnswers({});
@@ -45,7 +45,6 @@ export default function Quiz() {
     });
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowRecommendations(true);
@@ -55,12 +54,10 @@ export default function Quiz() {
     (career) => career.industry === selectedInterest
   );
 
-
   let bestMatches = [];
   if (showRecommendations) {
-
     let keywords = [];
-    data.quizQuestions.forEach(q => {
+    filteredQuestions.forEach(q => {
       const answer = selectedAnswers[q.id];
       if (answer && q.answersMapping[answer]) {
         keywords = keywords.concat(extractKeywords(q.answersMapping[answer]));
@@ -69,130 +66,186 @@ export default function Quiz() {
 
     bestMatches = recommendedCareers.filter(career =>
       keywords.some(keyword =>
-        career.careerName.toLowerCase().includes(keyword.toLowerCase())
+        career.careerName.toLowerCase().includes(keyword.toLowerCase()) ||
+        career.industry.toLowerCase().includes(keyword.toLowerCase())
       )
     );
   }
 
-  return (
-    <section className="container py-5">
-      <h1 className="text-center mb-4 display-4 fw-bold text-primary">Interest-Based Career Quiz 🎯</h1>
-<div className="row justify-content-center">
-  <div className="col-lg-8 col-md-10 col-sm-12">
-    
-    <div className="mb-4">
-      <label htmlFor="interest-select" className="form-label fw-bold">
-        Select your area of interest:
-      </label>
-      <select
-        id="interest-select"
-        className="form-select"
-        value={selectedInterest}
-        onChange={handleInterestChange}
-      >
-        <option value="">-- Choose an interest --</option>
-        {interests.map((interest, idx) => (
-          <option key={idx} value={interest}>
-            {interest}
-          </option>
-        ))}
-      </select>
-    </div>
-          
-          {selectedInterest && (
-            <form onSubmit={handleSubmit}>
-              {filteredQuestions.map((q) => (
-                <div key={q.id} className="card shadow-lg mb-4 quiz-card border-0">
-                  <div className="card-body">
-                    <h5 className="card-title fw-bold mb-3">{q.question}</h5>
-                    <div className="d-grid gap-2">
-                      {q.options.map((option, i) => (
-                        <label
-                          key={i}
-                          className={`btn btn-outline-secondary text-start py-3 rounded-pill quiz-option-btn ${
-                            selectedAnswers[q.id] === option ? 'active' : ''
-                          }`}
-                          htmlFor={`q${q.id}-option${i}`}
-                        >
-                          <input
-                            type="radio"
-                            className="btn-check"
-                            name={`question-${q.id}`}
-                            id={`q${q.id}-option${i}`}
-                            autoComplete="off"
-                            value={option}
-                            checked={selectedAnswers[q.id] === option}
-                            onChange={() => handleOptionChange(q.id, option)}
-                          />
-                          {option}
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg w-100 mt-3"
-                disabled={Object.keys(selectedAnswers).length !== filteredQuestions.length}
-              >
-                Get Recommendations
-              </button>
-            </form>
-          )}
 
-          
-          {showRecommendations && (
-            <div className="mt-5">
-              <h3 className="fw-bold text-success mb-3">Recommended Streams & Careers:</h3>
-              {recommendedCareers.length > 0 ? (
-                <>
-                  {bestMatches.length > 0 && (
-                    <>
-                      <h5 className="text-primary">Best Matches for Your Answers:</h5>
-                      <ul className="list-group mb-3">
-                        {bestMatches.map((career) => (
-                          <li key={career.id} className="list-group-item list-group-item-success">
-                            <strong>{career.careerName}</strong> <br />
-                            <span className="text-muted">{career.description}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-                  <h5>All Careers in {selectedInterest}:</h5>
-                  <ul className="list-group">
-                    {recommendedCareers.map((career) => (
-                      <li
-                        key={career.id}
-                        className={`list-group-item${bestMatches.some(bm => bm.id === career.id) ? ' list-group-item-success' : ''}`}
-                      >
-                        <strong>{career.careerName}</strong> <br />
-                        <span className="text-muted">{career.description}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <p>No careers found for the selected interest.</p>
-              )}
-              
-              <div className="mt-4">
-                <h5 className="fw-bold">Quiz Insights:</h5>
-                <ul>
-                  {quizQuestions.map((q) => (
-                    <li key={q.id}>
-                      <strong>{q.question}</strong>
-                      <br />
-                      <span>
-                        {q.answersMapping[selectedAnswers[q.id]]}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+  const answeredQuestions = Object.keys(selectedAnswers).length;
+  const totalQuestions = filteredQuestions.length;
+  const progress = totalQuestions > 0 ? Math.round((answeredQuestions / totalQuestions) * 100) : 0;
+
+  return (
+    <section className="container py-5 quiz-container">
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <h1 className="text-center mb-4 display-4 fw-bold text-primary">Your Career Discovery Quiz 🧭</h1>
+        <p className="text-center text-muted mb-5 fs-5">Answer a few questions based on your interests to unlock personalized career suggestions and start your journey.</p>
+      </motion.div>
+
+      <div className="row justify-content-center">
+        <div className="col-lg-7 col-md-8">
+          {/* Interest Selection */}
+          {!selectedInterest && (
+             <div className="mb-4 text-center p-5 bg-light rounded-3">
+                <label htmlFor="interest-select" className="form-label fw-bold fs-4 mb-3">
+                First, select an area of interest:
+                </label>
+                <select
+                id="interest-select"
+                className="form-select form-select-lg"
+                value={selectedInterest}
+                onChange={handleInterestChange}
+                >
+                <option value="">-- Choose an interest --</option>
+                {interests.map((interest, idx) => (
+                    <option key={idx} value={interest}>
+                    {interest}
+                    </option>
+                ))}
+                </select>
             </div>
           )}
+         
+          <AnimatePresence>
+            {selectedInterest && !showRecommendations && (
+              <motion.form onSubmit={handleSubmit} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                {filteredQuestions.map((q, index) => (
+                  <motion.div
+                    key={q.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="card shadow-sm mb-4 quiz-card"
+                  >
+                    <div className="card-body">
+                      <div className="d-flex align-items-start">
+                        <div className="question-number me-3">{index + 1}</div>
+                        <h5 className="card-title fw-bold mb-3 flex-grow-1">{q.question}</h5>
+                      </div>
+                      <div className="d-grid gap-2 ps-md-5">
+                        {q.options.map((option, i) => {
+                          const isActive = selectedAnswers[q.id] === option;
+                          return (
+                            <label
+                              key={i}
+                              className={`btn text-start p-3 rounded-pill quiz-option-btn ${isActive ? 'active' : ''}`}
+                              htmlFor={`q${q.id}-option${i}`}
+                            >
+                              <input
+                                type="radio"
+                                className="btn-check"
+                                name={`question-${q.id}`}
+                                id={`q${q.id}-option${i}`}
+                                value={option}
+                                checked={isActive}
+                                onChange={() => handleOptionChange(q.id, option)}
+                              />
+                              <div className="d-flex justify-content-between align-items-center">
+                                <span>{option}</span>
+                                {isActive && <CheckCircleFill size={20} className="ms-2" />}
+                              </div>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg w-100 mt-3"
+                  disabled={answeredQuestions !== totalQuestions || totalQuestions === 0}
+                >
+                  See My Recommendations
+                </button>
+              </motion.form>
+            )}
+          </AnimatePresence>
+
+          {/* --- RECOMMENDATION RESULTS --- */}
+          <AnimatePresence>
+            {showRecommendations && (
+              <motion.div className="mt-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <h3 className="fw-bold text-success mb-4 text-center">Your Recommended Careers</h3>
+                {recommendedCareers.length > 0 ? (
+                  <div className="row g-4">
+                    {bestMatches.length > 0 && (
+                      <>
+                        <h5 className="text-primary fw-bold col-12">⭐ Best Matches for You</h5>
+                        {bestMatches.map((career) => (
+                          <div className="col-md-6" key={career.id}>
+                            <div className="recommendation-card best-match h-100">
+                              <h6 className="fw-bold">{career.careerName}</h6>
+                              <p className="text-muted small">{career.description}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </>
+                    )}
+                    <h5 className="text-dark fw-bold col-12 mt-4">Other Careers in {selectedInterest}</h5>
+                    {recommendedCareers.filter(c => !bestMatches.some(bm => bm.id === c.id)).map((career) => (
+                      <div className="col-md-6" key={career.id}>
+                        <div className="recommendation-card h-100">
+                          <h6 className="fw-bold">{career.careerName}</h6>
+                          <p className="text-muted small">{career.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-center">No careers found for the selected interest.</p>
+                )}
+
+                {/* --- WHAT'S NEXT SECTION --- */}
+                <div className="text-center p-4 mt-5 bg-light rounded-3 whats-next-card">
+                    <h4 className="fw-bold mb-3">What's Next?</h4>
+                    <p className="text-muted">Your journey doesn't stop here. Use these results to explore more.</p>
+                    <div className="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                        <button className="btn btn-outline-primary"><Book className="me-2"/>Explore the Career Bank</button>
+                        <button className="btn btn-outline-primary"><CameraVideo className="me-2"/>Watch Expert Videos</button>
+                        <button className="btn btn-outline-primary"><Star className="me-2"/>Read Success Stories</button>
+                    </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* --- SIDEBAR --- */}
+        <div className="col-lg-4 col-md-4 d-none d-md-block">
+          <div className="quiz-sidebar">
+            {selectedInterest && !showRecommendations && (
+                <div className="text-center mb-4">
+                    <div style={{ width: 150, height: 150, margin: 'auto' }}>
+                        <CircularProgressbar
+                            value={progress}
+                            text={`${progress}%`}
+                            styles={buildStyles({
+                                rotation: 0.25,
+                                strokeLinecap: 'round',
+                                textSize: '16px',
+                                pathTransitionDuration: 0.5,
+                                pathColor: `#0d6efd`,
+                                textColor: '#0d6efd',
+                                trailColor: '#e9ecef',
+                                backgroundColor: '#3e98c7',
+                            })}
+                        />
+                    </div>
+                    <p className="fw-bold mt-3">Quiz Progress</p>
+                </div>
+            )}
+            <div className="info-card">
+                <h5 className="fw-bold">Why this quiz?</h5>
+                <ul>
+                    <li><strong>Personalized:</strong> Get suggestions based on what you actually like.</li>
+                    <li><strong>Discover:</strong> Uncover careers you might not have considered.</li>
+                    <li><strong>Guided:</strong> A simple first step in your career exploration journey.</li>
+                </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
