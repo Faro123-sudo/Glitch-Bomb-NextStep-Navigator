@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaCommentDots } from "react-icons/fa";
 import "./ContactUs.css";
