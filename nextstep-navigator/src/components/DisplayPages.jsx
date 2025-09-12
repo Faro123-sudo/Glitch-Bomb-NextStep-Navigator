@@ -10,6 +10,7 @@ import SuccessStories from "./SuccessStories";
 import AdmissionCoaching from "./AdmissionAndCoaching";
 import AboutUs from './Aboutus.jsx';
 import ContactUs from './Contact.jsx';
+import Feedback from "./Feedback.jsx";
 
 function DisplayPages() {
 
@@ -46,7 +47,8 @@ function DisplayPages() {
      
       <Header onNavigate={setActiveSection} />
       <main className="max-w-4xl mx-auto p-4">{renderSection()}</main>
-
+      
+       <Feedback />
     </>
   )
 }

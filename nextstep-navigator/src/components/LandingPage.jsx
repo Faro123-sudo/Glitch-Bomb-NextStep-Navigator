@@ -24,7 +24,7 @@ const LandingPage = ({ onNavigate }) => {
 
   return (
     <>
-      <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center py-5 landing-bg">
+      <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center landing-bg" style={{ paddingTop: '0px !important;' }}>
         <div className="container">
           <div className="row text-center mb-5">
             <div className="col-12" data-aos="fade-up" data-aos-delay="300">

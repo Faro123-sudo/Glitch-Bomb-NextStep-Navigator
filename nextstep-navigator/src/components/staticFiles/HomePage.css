@@ -1,4 +1,4 @@
-/* Hero Section */
+
 .hero-section {
   min-height: calc(100vh - 8rem);
   display: flex;
@@ -163,6 +163,7 @@
   .landing-subtitle {
     font-size: 0.9rem;
   }
+
 
   .landing-description {
     font-size: 0.85rem;

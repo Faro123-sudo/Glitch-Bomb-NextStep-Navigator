@@ -19,9 +19,7 @@
   color: #fff !important;    /* White text on hover (use !important for certainty) */
 }
 
-/* This selector ensures that when an already CHECKED button is hovered,
-   it maintains its checked style (blue background, white text).
-   It effectively overrides the generic :hover if it were to conflict. */
+
 .btn-check:checked + .btn-outline-primary:hover {
   background-color: #0b5ed7; /* Slightly darker blue on hover when already checked for a subtle effect */
   color: #fff;
