@@ -98,8 +98,7 @@ function LandingPage() {
         />
       </div>
 
-      {/* Features Section */}
-      <section className="features-section py-5">
+      <section className="features-section py-5" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="display-5 fw-bold" data-aos="zoom-in" data-aos-delay="500">Unlock Your Potential</h2>
