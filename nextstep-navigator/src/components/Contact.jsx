@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaCommentDots } from "react-icons/fa";
 import "./ContactUs.css";
 import animationData from "../assets/animation/contact.json";
 import Lottie from "lottie-react";
 
-export default function ContactUs() {
 
+export default function ContactUs() {
+ const [showFeedback, setShowFeedback] = useState(false);
     return (
         <section className="contact-section py-5">
             <div className="container">
@@ -138,7 +139,7 @@ export default function ContactUs() {
 
             </div>
 
-            {/* Optional Google Map (Animated) */}
+            {/*Google Map Implemented */}
             <div className="mt-5" data-aos="fade-up">
                 <iframe
                     title="Google Map"
@@ -150,6 +151,41 @@ export default function ContactUs() {
                     loading="lazy"
                 ></iframe>
             </div>
+
+             {/*Feedback Button */}
+      <button
+        className="btn btn-primary rounded-circle shadow-lg feedback-btn"
+        onClick={() => setShowFeedback(true)}
+      >
+        <FaCommentDots size={24} />
+      </button>
+      
+      {showFeedback && (
+        <div className="feedback-modal d-flex align-items-center justify-content-center">
+          <div className="card shadow-lg p-4 rounded-4 feedback-card">
+            <h5 className="fw-bold text-center mb-3">We’d love your feedback 💬</h5>
+            <textarea
+              className="form-control mb-3"
+              rows="4"
+              placeholder="Share your thoughts..."
+            ></textarea>
+            <div className="d-flex justify-content-between">
+              <button className="btn btn-secondary" onClick={() => setShowFeedback(false)}>
+                Cancel
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={() => {
+                  alert("Thank you for your feedback!");
+                  setShowFeedback(false);
+                }}
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
         </section >
     );
 }
