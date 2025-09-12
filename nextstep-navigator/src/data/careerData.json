@@ -783,79 +783,87 @@
     ]
   },
   "successStories": [
-    {
-      "id": 1,
-      "name": "Jane Doe",
-      "career": "Entrepreneur",
-      "domain": "Business",
-      "photo": "./images/images.webp",
-      "story": "Jane started her own business after years of working in tech and now mentors young founders."
-    },
-    {
-      "id": 2,
-      "name": "Carlos Rivera",
-      "career": "Software Engineer",
-      "domain": "Technology",
-      "photo": "./images/carlos.webp",
-      "story": "Carlos transitioned from teaching to software engineering after completing an online bootcamp and now works at a leading tech company."
-    },
-    {
-      "id": 3,
-      "name": "Priya Singh",
-      "career": "Data Scientist",
-      "domain": "Technology",
-      "photo": "./images/priya.webp",
-      "story": "Priya leveraged her background in mathematics to become a data scientist and now leads analytics projects in healthcare."
-    },
-    {
-      "id": 4,
-      "name": "Michael Dave",
-      "career": "Graphic Designer",
-      "domain": "Creative Arts",
-      "photo": "./images/michael.webp",
-      "story": "Michael turned his passion for art into a successful freelance graphic design business, working with global brands."
-    },
-    {
-      "id": 5,
-      "name": "Aisha Patel",
-      "career": "Nurse",
-      "domain": "Healthcare",
-      "photo": "./images/aisha.webp",
-      "story": "Aisha found her calling in nursing, helping patients recover and supporting families through difficult times. She now leads a team at a major hospital."
-    },
-    {
-      "id": 6,
-      "name": "David Adeleke",
-      "career": "Mechanical Engineer",
-      "domain": "Engineering",
-      "photo": "./images/david.webp",
-      "story": "David's curiosity for how things work led him to engineering. He now designs eco-friendly vehicles and mentors young engineers."
-    },
-    {
-      "id": 7,
-      "name": "Fatima Al-Sayed",
-      "career": "Marketing Manager",
-      "domain": "Business",
-      "photo": "./images/fatima.webp",
-      "story": "Fatima started as a marketing intern and rose to lead global campaigns for a tech startup, inspiring others with her creativity and leadership."
-    },
-    {
-      "id": 8,
-      "name": "Liam O'Connor",
-      "career": "Teacher",
-      "domain": "Education",
-      "photo": "./images/liam.webp",
-      "story": "Liam's passion for teaching has impacted hundreds of students. He now develops innovative curricula and trains new teachers."
-    },
-    {
-      "id": 9,
-      "name": "Sophia Rossi",
-      "career": "Accountant",
-      "domain": "Finance",
-      "photo": "./images/sophia.webp",
-      "story": "Sophia turned her love for numbers into a successful accounting career, helping small businesses thrive and mentoring young professionals."
-    }
-  ],
+  {
+    "id": 1,
+    "name": "Jane Doe",
+    "career": "Entrepreneur",
+    "domain": "Business",
+    "photo": "./images/images.webp",
+    "story": "Jane started her own business after years of working in tech and now mentors young founders.",
+    "audiences": ["graduate", "professional"] 
+  },
+  {
+    "id": 2,
+    "name": "Carlos Rivera",
+    "career": "Software Engineer",
+    "domain": "Technology",
+    "photo": "./images/carlos.webp",
+    "story": "Carlos transitioned from teaching to software engineering after completing an online bootcamp and now works at a leading tech company.",
+    "audiences": ["student", "graduate"] 
+  },
+  {
+    "id": 3,
+    "name": "Priya Singh",
+    "career": "Data Scientist",
+    "domain": "Technology",
+    "photo": "./images/priya.webp",
+    "story": "Priya leveraged her background in mathematics to become a data scientist and now leads analytics projects in healthcare.",
+    "audiences": ["graduate", "professional"] 
+  },
+  {
+    "id": 4,
+    "name": "Michael Dave",
+    "career": "Graphic Designer",
+    "domain": "Creative Arts",
+    "photo": "./images/michael.webp",
+    "story": "Michael turned his passion for art into a successful freelance graphic design business, working with global brands.",
+    "audiences": ["student", "graduate", "professional"] 
+  },
+  {
+    "id": 5,
+    "name": "Aisha Patel",
+    "career": "Nurse",
+    "domain": "Healthcare",
+    "photo": "./images/aisha.webp",
+    "story": "Aisha found her calling in nursing, helping patients recover and supporting families through difficult times. She now leads a team at a major hospital.",
+    "audiences": ["student", "graduate"] 
+  },
+  {
+    "id": 6,
+    "name": "David Adeleke",
+    "career": "Mechanical Engineer",
+    "domain": "Engineering",
+    "photo": "./images/david.webp",
+    "story": "David's curiosity for how things work led him to engineering. He now designs eco-friendly vehicles and mentors young engineers.",
+    "audiences": ["student", "graduate"]  },
+  {
+    "id": 7,
+    "name": "Fatima Al-Sayed",
+    "career": "Marketing Manager",
+    "domain": "Business",
+    "photo": "./images/fatima.webp",
+    "story": "Fatima started as a marketing intern and rose to lead global campaigns for a tech startup, inspiring others with her creativity and leadership.",
+    "audiences": ["graduate", "professional"]
+  },
+  {
+    "id": 8,
+    "name": "Liam O'Connor",
+    "career": "Teacher",
+    "domain": "Education",
+    "photo": "./images/liam.webp",
+    "story": "Liam's passion for teaching has impacted hundreds of students. He now develops innovative curricula and trains new teachers.",
+    "audiences": ["student", "graduate"] 
+  },
+  {
+    "id": 9,
+    "name": "Sophia Rossi",
+    "career": "Accountant",
+    "domain": "Finance",
+    "photo": "./images/sophia.webp",
+    "story": "Sophia turned her love for numbers into a successful accounting career, helping small businesses thrive and mentoring young professionals.",
+    "audiences": ["graduate", "professional"]   }
+],
+
   "admissionAndCoaching": {
     "guidanceTopics": [
       {
