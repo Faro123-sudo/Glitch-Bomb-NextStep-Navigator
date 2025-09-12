@@ -79,11 +79,11 @@ const LandingPage = ({ onNavigate }) => {
                       <input type="radio" className="btn-check" name="userType" id="student" value="student" checked={userType === 'student'} onChange={(e) => setUserType(e.target.value)} />
                       <label className="btn btn-outline-primary rounded-pill py-2" htmlFor="student">Student (Grade 8-12)</label>
 
-                      <input type="radio" className="btn-check" name="userType" id="graduate" value="graduate" checked={userType === 'graduate'} onChange={(e) => setUserType(e.target.value)} />
+                      <input type="radio" className="btn-check" name="userType" id="graduate" value="graduate" checked={userType === 'graduate'} onChange={(e) => setUserType(e.target.value)}  />
                       <label className="btn btn-outline-primary rounded-pill py-2" htmlFor="graduate">Graduate (UG/PG)</label>
 
-                      <input type="radio" className="btn-check" name="userType" id="working" value="working" checked={userType === 'working'} onChange={(e) => setUserType(e.target.value)} />
-                      <label className="btn btn-outline-primary rounded-pill py-2" htmlFor="working">Working Professional</label>
+                      <input type="radio" className="btn-check" name="userType" id="professional" value="professional" checked={userType === 'professional'} onChange={(e) => setUserType(e.target.value)} />
+                      <label className="btn btn-outline-primary rounded-pill py-2" htmlFor="professional">Working Professional</label>
                     </div>
                   </div>
                   <div className="mb-4 text-center">

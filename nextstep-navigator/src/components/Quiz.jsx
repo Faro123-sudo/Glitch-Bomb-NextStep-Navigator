@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import data from '../data/careerData.json';
 import './Quiz.css';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,20 +11,28 @@ const interests = [
 ];
 
 function extractKeywords(mapping) {
-  return mapping
-    .replace(/careers? in |roles? in |may suit you|could be (a )?good fit|might be a good mix|such as |like |Consider |Explore |Look into |office-based roles |Many careers offer both, /gi, '')
-    .split(/,| or | and /i)
-    .map(s => s.trim())
-    .filter(Boolean);
+  // The mapping object now contains a 'careers' array. We can use it directly.
+  if (mapping && Array.isArray(mapping.careers)) {
+    return mapping.careers;
+  }
+  return [];
 }
-
 
 export default function Quiz() {
   const [selectedInterest, setSelectedInterest] = useState('');
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showRecommendations, setShowRecommendations] = useState(false);
+  const [userType, setUserType] = useState("");
 
-  const quizQuestions = data.quizQuestions;
+
+  useEffect(() => {
+    const storedUserType = sessionStorage.getItem("userType");
+    if (storedUserType) {
+      setUserType(storedUserType);
+    }
+  }, []);
+
+  const quizQuestions = data.quizQuestions[userType];
 
   const filteredQuestions = selectedInterest
     ? quizQuestions.filter(q =>

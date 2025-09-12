@@ -131,32 +131,405 @@
       "careerVideo": "https://www.youtube.com/embed/watch?v=example10"
     }
   ],
-  "quizQuestions": [
-    {
-      "id": 1,
-      "question": "Which of these activities sounds most interesting to you?",
-      "options": ["Building things", "Helping people", "Analyzing data", "Creating art"],
-      "industries": ["Technology", "Healthcare", "Creative Arts", "Engineering", "Finance", "Business"],
-      "answersMapping": {
-        "Building things": "Careers in Technology or Engineering may suit you.",
-        "Helping people": "Roles in Healthcare or Education could be a good fit.",
-        "Analyzing data": "Consider careers like Data Scientist or Accountant.",
-        "Creating art": "Explore roles such as Graphic Designer or Animator."
+  "quizQuestions": {
+    "student": [
+      {
+        "id": 101,
+        "question": "Which of these activities sounds most interesting to you?",
+        "options": ["Building things", "Helping people", "Analyzing data", "Creating art"],
+        "industries": ["Technology", "Engineering", "Healthcare", "Creative Arts", "Education"],
+        "difficulty": "easy",
+        "tags": ["interests", "career-discovery"],
+        "answersMapping": {
+          "Building things": {
+            "message": "Careers in Technology or Engineering may suit you.",
+            "careers": ["Mechanical Engineer", "Civil Engineer", "Junior Developer", "Robotics Technician"]
+          },
+          "Helping people": {
+            "message": "Roles in Healthcare or Education could be a good fit.",
+            "careers": ["Nurse", "Primary School Teacher", "Community Health Worker"]
+          },
+          "Analyzing data": {
+            "message": "Consider careers that emphasise numbers and logic.",
+            "careers": ["Data Analyst (entry)", "Statistician (trainee)", "Accounting Assistant"]
+          },
+          "Creating art": {
+            "message": "Explore creative roles such as graphic design or media.",
+            "careers": ["Graphic Designer (junior)", "Animator (assistant)", "Illustrator"]
+          }
+        }
+      },
+      {
+        "id": 102,
+        "question": "What kind of school projects excite you most?",
+        "options": ["Science fair builds", "Group presentations", "Art exhibitions", "Code or apps"],
+        "industries": ["Education", "Technology", "Creative Arts", "Engineering"],
+        "difficulty": "easy",
+        "tags": ["project-type", "skills"],
+        "answersMapping": {
+          "Science fair builds": {
+            "message": "You might enjoy hands-on engineering or research tracks.",
+            "careers": ["Mechanical Engineer", "Lab Technician", "Product Design Intern"]
+          },
+          "Group presentations": {
+            "message": "Communication and teamwork strengths — consider business or education.",
+            "careers": ["Sales Associate (trainee)", "Junior Marketing Assistant", "Teaching Assistant"]
+          },
+          "Art exhibitions": {
+            "message": "Creative arts paths like design or media could fit well.",
+            "careers": ["Graphic Designer (assistant)", "Gallery Assistant", "Multimedia Intern"]
+          },
+          "Code or apps": {
+            "message": "Tech-oriented paths (software, game dev) could be fulfilling.",
+            "careers": ["Junior Developer", "QA Tester", "App Design Intern"]
+          }
+        }
+      },
+      {
+        "id": 103,
+        "question": "How soon do you want to start earning while learning?",
+        "options": ["Immediately (part-time)", "After finishing school", "I prefer full-time study", "I’m not sure"],
+        "industries": ["Trades", "Retail", "Education", "Technology"],
+        "difficulty": "easy",
+        "tags": ["practicality", "time-horizon"],
+        "answersMapping": {
+          "Immediately (part-time)": {
+            "message": "Consider vocational/trade certificates or part-time roles.",
+            "careers": ["Apprentice Electrician", "Retail Associate", "Hospitality Trainee"]
+          },
+          "After finishing school": {
+            "message": "Explore internship and entry-level programs post-graduation.",
+            "careers": ["Internships", "Graduate Trainee Programs"]
+          },
+          "I prefer full-time study": {
+            "message": "Look at UG degree programs and scholarship opportunities.",
+            "careers": ["Academic tracks", "Research trainee roles"]
+          },
+          "I’m not sure": {
+            "message": "Try exploratory quizzes and short taster courses to decide.",
+            "careers": ["Short courses", "Online micro-credentials"]
+          }
+        }
+      },
+      {
+        "id": 104,
+        "question": "Which subject at school do you enjoy most?",
+        "options": ["Maths", "Biology / Science", "English / Languages", "Art / Design"],
+        "industries": ["Education", "Healthcare", "Engineering", "Creative Arts"],
+        "difficulty": "easy",
+        "tags": ["academic", "strengths"],
+        "answersMapping": {
+          "Maths": {
+            "message": "Math skills open doors to engineering, finance, and data.",
+            "careers": ["Engineer", "Actuarial Trainee", "Data Analyst"]
+          },
+          "Biology / Science": {
+            "message": "Biology fits careers in healthcare, lab science, and research.",
+            "careers": ["Lab Technician", "Nursing (trainee)", "Biomedical Research Assistant"]
+          },
+          "English / Languages": {
+            "message": "Strong language skills help in communication, law, and media.",
+            "careers": ["Content Writer (junior)", "Public Relations Assistant", "Translator"]
+          },
+          "Art / Design": {
+            "message": "Consider visual arts, product design, or media production.",
+            "careers": ["Graphic Designer (junior)", "UX Design Intern", "Photography Assistant"]
+          }
+        }
+      },
+      {
+        "id": 105,
+        "question": "Do you prefer structured guidance or self-directed learning?",
+        "options": ["Structured (timetables, teachers)", "Self-directed (online, projects)", "Mix of both", "Not sure"],
+        "industries": ["Education", "Technology", "Creative Arts"],
+        "difficulty": "easy",
+        "tags": ["learning-style"],
+        "answersMapping": {
+          "Structured (timetables, teachers)": {
+            "message": "You may thrive in formal study programs and degree paths.",
+            "careers": ["University paths", "Vocational qualifications"]
+          },
+          "Self-directed (online, projects)": {
+            "message": "Bootcamps and portfolio-driven careers could suit you.",
+            "careers": ["Freelance Designer", "Self-taught Developer", "Content Creator"]
+          },
+          "Mix of both": {
+            "message": "Look for blended programmes, internships, and apprenticeships.",
+            "careers": ["Apprenticeships", "Industry-led internships"]
+          },
+          "Not sure": {
+            "message": "Start with short courses/club projects to discover what works.",
+            "careers": ["Micro-credentials", "Extracurricular clubs"]
+          }
+        }
       }
-    },
-    {
-      "id": 2,
-      "question": "What kind of work environment do you prefer?",
-      "options": ["A busy, collaborative office", "A quiet, focused space", "Working outdoors or on-site", "A flexible, remote setting"],
-      "industries": ["Technology", "Healthcare", "Creative Arts", "Engineering", "Finance", "Business", "Education", "Trades", "Hospitality"],
-      "answersMapping": {
-        "A busy, collaborative office": "Look into office-based roles like Marketing Manager or Accountant.",
-        "A quiet, focused space": "Careers like Software Engineer or Graphic Designer might be a good mix.",
-        "Working outdoors or on-site": "Consider careers such as Mechanical Engineer or Electrician.",
-        "A flexible, remote setting": "Many careers offer both, like Software Engineer and Data Scientist."
+    ],
+    "graduate": [
+      {
+        "id": 201,
+        "question": "What's your immediate goal after graduation?",
+        "options": ["Get a full-time job", "Pursue further studies", "Intern / apprenticeship", "Start a business"],
+        "industries": ["Business", "Technology", "Research", "Entrepreneurship"],
+        "difficulty": "medium",
+        "tags": ["post-grad", "goals"],
+        "answersMapping": {
+          "Get a full-time job": {
+            "message": "Focus on resume polish, placement drives and graduate roles.",
+            "careers": ["Graduate Engineer", "Junior Analyst", "Management Trainee"]
+          },
+          "Pursue further studies": {
+            "message": "Look into PG programs, funding, and SOP/CV preparation.",
+            "careers": ["Masters Programs", "Research Assistantships"]
+          },
+          "Intern / apprenticeship": {
+            "message": "Internships can be a gateway to full-time roles.",
+            "careers": ["Industry Intern", "Research Intern", "Software Intern"]
+          },
+          "Start a business": {
+            "message": "Explore entrepreneurship programs and startup incubators.",
+            "careers": ["Founder/Co-founder", "Startup roles"]
+          }
+        }
+      },
+      {
+        "id": 202,
+        "question": "Which skill would you most like to improve before job hunting?",
+        "options": ["Coding / Technical", "Communication / Public speaking", "Data analysis", "Project management"],
+        "industries": ["Technology", "Business", "Finance", "Research"],
+        "difficulty": "medium",
+        "tags": ["skills-gap"],
+        "answersMapping": {
+          "Coding / Technical": {
+            "message": "Consider coding bootcamps and project-based portfolios.",
+            "careers": ["Software Developer", "QA Engineer", "DevOps (entry)"]
+          },
+          "Communication / Public speaking": {
+            "message": "Join presentation clubs, internship interviews and workshops.",
+            "careers": ["Client-Facing Roles", "Sales Trainee", "PR Assistant"]
+          },
+          "Data analysis": {
+            "message": "Short data courses and portfolio projects will help.",
+            "careers": ["Data Analyst (junior)", "Business Analyst (entry)"]
+          },
+          "Project management": {
+            "message": "Certifications and internships that expose you to workflows help.",
+            "careers": ["Project Coordinator", "Junior PM"]
+          }
+        }
+      },
+      {
+        "id": 203,
+        "question": "What kind of employer do you prefer?",
+        "options": ["Large corporate", "Fast-paced startup", "NGO / Public sector", "Small-to-medium business"],
+        "industries": ["Business", "Technology", "NGO", "Government"],
+        "difficulty": "medium",
+        "tags": ["workplace-culture"],
+        "answersMapping": {
+          "Large corporate": {
+            "message": "Structured graduate programs and stability are common here.",
+            "careers": ["Graduate Trainee", "Corporate Analyst"]
+          },
+          "Fast-paced startup": {
+            "message": "Expect diverse tasks and fast learning; portfolio & initiative matter.",
+            "careers": ["Full-Stack Developer (junior)", "Product Associate"]
+          },
+          "NGO / Public sector": {
+            "message": "Roles may value domain knowledge and mission alignment.",
+            "careers": ["Program Officer (junior)", "Research Assistant"]
+          },
+          "Small-to-medium business": {
+            "message": "Multitasking roles and broader exposure—great for rapid skill building.",
+            "careers": ["Operations Associate", "Business Development (entry)"]
+          }
+        }
+      },
+      {
+        "id": 204,
+        "question": "How do you prefer to apply for opportunities?",
+        "options": ["Campus placements", "Direct company applications", "Referral / network", "Freelance platforms"],
+        "industries": ["Business", "Technology", "Creative"],
+        "difficulty": "medium",
+        "tags": ["job-search"],
+        "answersMapping": {
+          "Campus placements": {
+            "message": "Prepare for aptitude tests, company-specific interviews and CV shortlisting.",
+            "careers": ["Company-specific graduate roles", "Trainee positions"]
+          },
+          "Direct company applications": {
+            "message": "Tailored CVs and cover letters work best for direct applications.",
+            "careers": ["Role-specific junior positions"]
+          },
+          "Referral / network": {
+            "message": "Networking can significantly increase interview chances.",
+            "careers": ["Referrals to junior roles, internships"]
+          },
+          "Freelance platforms": {
+            "message": "Build a strong profile and portfolio for short-term gigs.",
+            "careers": ["Freelance Designer", "Contract Developer"]
+          }
+        }
+      },
+      {
+        "id": 205,
+        "question": "Which project work do you prefer for your portfolio?",
+        "options": ["Long-term research", "Team product builds", "Commercial projects", "Creative showcases"],
+        "industries": ["Research", "Technology", "Business", "Creative Arts"],
+        "difficulty": "medium",
+        "tags": ["portfolio"],
+        "answersMapping": {
+          "Long-term research": {
+            "message": "Suitable if you aim for research or PG study.",
+            "careers": ["Research Assistant", "Academic roles"]
+          },
+          "Team product builds": {
+            "message": "Great for product/engineering roles—shows collaboration and delivery.",
+            "careers": ["Product Developer", "Software Engineer (entry)"]
+          },
+          "Commercial projects": {
+            "message": "Client-facing projects demonstrate business impact.",
+            "careers": ["Consulting (entry)", "Business Analyst"]
+          },
+          "Creative showcases": {
+            "message": "A portfolio of finished creative work helps land design/media roles.",
+            "careers": ["Graphic Designer", "Animator", "Video Editor"]
+          }
+        }
       }
-    }
-  ],
+    ],
+    "professional": [
+      {
+        "id": 301,
+        "question": "Why are you considering a career change now?",
+        "options": ["Growth & promotion", "Better work-life balance", "Higher pay", "To follow passion"],
+        "industries": ["Business", "Technology", "Healthcare", "Creative Arts"],
+        "difficulty": "hard",
+        "tags": ["career-change", "motivation"],
+        "answersMapping": {
+          "Growth & promotion": {
+            "message": "Focus on upskilling, certification and internal mobility strategies.",
+            "careers": ["Senior Specialist", "Team Lead", "Manager (after promotion)"]
+          },
+          "Better work-life balance": {
+            "message": "Explore roles with flexible policies or remote-friendly companies.",
+            "careers": ["Remote Developer", "Freelance Consultant", "Project Coordinator (flex)"]
+          },
+          "Higher pay": {
+            "message": "Map skills to market demand and negotiate with evidence of impact.",
+            "careers": ["Senior Analyst", "Senior Developer", "Consultant"]
+          },
+          "To follow passion": {
+            "message": "Plan a staged transition—side projects, part-time training and networking.",
+            "careers": ["Startup Founder", "Freelance Creative", "Specialist Consultant"]
+          }
+        }
+      },
+      {
+        "id": 302,
+        "question": "Which skill would add the most value to your CV right now?",
+        "options": ["Advanced data skills / ML", "Product management", "Cloud / DevOps", "Leadership & people management"],
+        "industries": ["Technology", "Business", "Finance"],
+        "difficulty": "hard",
+        "tags": ["upskill", "senior-skills"],
+        "answersMapping": {
+          "Advanced data skills / ML": {
+            "message": "High ROI for data-heavy roles; consider certification + projects.",
+            "careers": ["Data Scientist", "ML Engineer"]
+          },
+          "Product management": {
+            "message": "Great for moving toward cross-functional leadership roles.",
+            "careers": ["Product Manager", "Product Owner"]
+          },
+          "Cloud / DevOps": {
+            "message": "Cloud certifications paired with deployments boost technical leadership hires.",
+            "careers": ["DevOps Engineer", "Cloud Engineer", "Site Reliability Engineer"]
+          },
+          "Leadership & people management": {
+            "message": "Leadership training and documented impact enable manager-level moves.",
+            "careers": ["Team Lead", "Engineering Manager", "Head of Ops"]
+          }
+        }
+      },
+      {
+        "id": 303,
+        "question": "What’s your preferred transition timeline?",
+        "options": ["Immediate (1–3 months)", "Short-term (3–6 months)", "Medium (6–12 months)", "Long-term (12+ months)"],
+        "industries": ["Business", "Technology"],
+        "difficulty": "hard",
+        "tags": ["planning"],
+        "answersMapping": {
+          "Immediate (1–3 months)": {
+            "message": "Target internal moves or roles that value transferrable skills; expect faster interviews.",
+            "careers": ["Lateral moves", "Short-term contract roles"]
+          },
+          "Short-term (3–6 months)": {
+            "message": "Use focused certifications and networking to change roles.",
+            "careers": ["Specialist roles after upskilling"]
+          },
+          "Medium (6–12 months)": {
+            "message": "Plan for certifications plus a portfolio of transition projects.",
+            "careers": ["Mid-level role changes", "Product/PM transitions"]
+          },
+          "Long-term (12+ months)": {
+            "message": "A full career pivot—consider formal education or deep reskilling.",
+            "careers": ["Senior career pivot (e.g., to data/AI)"]
+          }
+        }
+      },
+      {
+        "id": 304,
+        "question": "Which outcome is most important when negotiating a new role?",
+        "options": ["Higher base salary", "Better title / seniority", "Flexible hours / remote", "Clear career growth path"],
+        "industries": ["Business", "Technology", "Finance"],
+        "difficulty": "hard",
+        "tags": ["negotiation"],
+        "answersMapping": {
+          "Higher base salary": {
+            "message": "Benchmark market salaries and prepare a negotiation script with evidence.",
+            "careers": ["Senior Specialist", "Lead roles"]
+          },
+          "Better title / seniority": {
+            "message": "Titles matter for future mobility—align responsibilities with requested title.",
+            "careers": ["Senior Manager", "Director-track"]
+          },
+          "Flexible hours / remote": {
+            "message": "Negotiate clear policies and outputs/OKRs to secure flexibility.",
+            "careers": ["Remote-friendly roles", "Consultancy contracts"]
+          },
+          "Clear career growth path": {
+            "message": "Ask for milestones and promotion timelines; capture them in writing if possible.",
+            "careers": ["Leadership-track roles"]
+          }
+        }
+      },
+      {
+        "id": 305,
+        "question": "Which evidence best demonstrates your readiness for a higher role?",
+        "options": ["Quantified impact (metrics)", "Led a cross-functional project", "Built a product/feature end-to-end", "Managed & grown a team"],
+        "industries": ["Business", "Technology"],
+        "difficulty": "hard",
+        "tags": ["promotion"],
+        "answersMapping": {
+          "Quantified impact (metrics)": {
+            "message": "Numbers are persuasive—collect KPIs and measurable outcomes.",
+            "careers": ["Senior Analyst", "Head of Growth"]
+          },
+          "Led a cross-functional project": {
+            "message": "Cross-functional leadership indicates readiness for product/ops leadership.",
+            "careers": ["Product Lead", "Program Manager"]
+          },
+          "Built a product/feature end-to-end": {
+            "message": "Product delivery experience supports senior product and engineering roles.",
+            "careers": ["Senior Product Manager", "Engineering Lead"]
+          },
+          "Managed & grown a team": {
+            "message": "Direct people management experience is crucial for management positions.",
+            "careers": ["Team Lead", "Manager"]
+          }
+        }
+      }
+    ]
+  },
+
   "multimediaGuidance": {
     "videos": [
       {
