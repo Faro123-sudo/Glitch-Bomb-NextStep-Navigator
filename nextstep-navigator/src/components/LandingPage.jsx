@@ -12,10 +12,8 @@ const LandingPage = ({ onNavigate }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name.trim()) {
-      // Save user data to session storage
       sessionStorage.setItem("username", name);
       sessionStorage.setItem("userType", userType);
-      // Trigger navigation
       onNavigate();
     } else {
       alert("Please enter your name.");

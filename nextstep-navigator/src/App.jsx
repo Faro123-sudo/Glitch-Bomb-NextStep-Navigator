@@ -14,6 +14,7 @@ function App() {
       once: true, 
     });
 
+    
     const username = sessionStorage.getItem("username");
     if (username) {
       setIsAuthenticated(true);
@@ -22,7 +23,7 @@ function App() {
 
   // inside LandingPage login button handler
 const handleLogin = () => {
-  sessionStorage.setItem("username", "testUser"); // or actual username
+  sessionStorage.getItem("username"); // or actual username
 setIsAuthenticated(true);};
 
 
