@@ -1,25 +1,16 @@
 // Breadcrumbs.jsx
 import React from "react";
 
-/**
- * Breadcrumbs builds a simple trail from activeSection + userType.
- * - activeSection: the key you use in DisplayPages (e.g., 'careerBank','quiz','home')
- * - userType: 'student' | 'graduate' | 'professional' | ''
- *
- * It returns an array like: Home › Students › Interest Quiz
- */
-
 const pageTitles = {
   home: "Home",
   careerBank: "Career Bank",
   aboutUs: "About Us",
   quiz: "Interest Quiz",
-  multimedia: "Multimedia",
+  multimedia: "Multimedia Guidance",
   resources: "Resources",
   successStories: "Success Stories",
   admissionCoaching: "Admission & Coaching",
   contact: "Contact",
-  // placeholders for user-specific pages (add components if you create them)
   studentStream: "Stream Selection",
   studentStudyTips: "Study Tips",
   studentScholarships: "Scholarships",
@@ -37,21 +28,30 @@ const userAreaLabel = {
   professional: "Professionals",
 };
 
-export default function Breadcrumbs({ activeSection = "home", userType = "" }) {
-  // Build crumbs
+export default function Breadcrumbs({
+  activeSection = "home",
+  userType = "",
+  extraCrumbs = [],
+}) {
+  // Base crumbs start with Home
   const crumbs = [{ title: "Home", key: "home" }];
 
+  // UserType breadcrumb (if available)
   if (userType) {
     crumbs.push({ title: userAreaLabel[userType] || "Area", key: userType });
   }
 
-  // If activeSection is 'home' but userType present, show Dashboard as last crumb
+  // Active section (skip if it's home + no userType)
   if (activeSection === "home" && userType) {
     crumbs.push({ title: "Dashboard", key: "dashboard" });
   } else if (activeSection && activeSection !== "home") {
-    // Show mapped title (if exists) else humanize the key
     const title = pageTitles[activeSection] || activeSection.replace(/([A-Z])/g, " $1");
     crumbs.push({ title, key: activeSection });
+  }
+
+  // Append extra crumbs dynamically (like filters or sub-pages)
+  if (extraCrumbs.length > 0) {
+    crumbs.push(...extraCrumbs.map((c, i) => ({ title: c, key: `extra-${i}` })));
   }
 
   return (
@@ -65,7 +65,13 @@ export default function Breadcrumbs({ activeSection = "home", userType = "" }) {
               className={`breadcrumb-item ${isLast ? "active" : ""}`}
               aria-current={isLast ? "page" : undefined}
             >
-              {isLast ? c.title : <a href="#" onClick={(e) => e.preventDefault()}>{c.title}</a>}
+              {isLast ? (
+                c.title
+              ) : (
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  {c.title}
+                </a>
+              )}
             </li>
           );
         })}

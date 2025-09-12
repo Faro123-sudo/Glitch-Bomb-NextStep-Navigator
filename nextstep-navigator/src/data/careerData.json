@@ -679,36 +679,127 @@
       }
     ]
   },
+  
   "multimediaGuidance": {
-    "videos": [
-      {
-        "id": 1,
-        "title": "A Day in the Life of a Software Engineer",
-        "url": "https://www.youtube.com/embed/watch?v=example1",
-        "category": "Technology",
-        "userType": "Graduate",
-        "transcript": "This video shows a typical day for a software engineer..."
-      }
-    ],
-    "podcasts": [
-      {
-        "id": 1,
-        "title": "The Future of Healthcare",
-        "url": "#",
-        "category": "Healthcare",
-        "userType": "Student",
-        "transcript": "In this podcast, we discuss emerging trends in healthcare..."
-      }
-    ],
-    "interactiveWorkshops": [
-      {
-        "id": 1,
-        "title": "Resume Building 101",
-        "date": "2024-10-15",
-        "url": "#"
-      }
-    ]
-  },
+  "videos": [
+    {
+      "id": 1,
+      "title": "A Day in the Life of a Software Engineer",
+      "url": "https://www.youtube.com/embed/watch?v=example1",
+      "category": "Technology",
+      "userType": "Graduate",
+      "transcript": "This video shows a typical day for a software engineer, including stand-up meetings, coding sessions, and pair programming."
+    },
+    {
+      "id": 2,
+      "title": "Choosing the Right University Major",
+      "url": "https://www.youtube.com/embed/watch?v=example2",
+      "category": "Education",
+      "userType": "Student",
+      "transcript": "In this video, guidance counselors explain how to align your strengths and interests with university majors."
+    },
+    {
+      "id": 3,
+      "title": "How to Transition to a New Career Path",
+      "url": "https://www.youtube.com/embed/watch?v=example3",
+      "category": "Career Change",
+      "userType": "Professional",
+      "transcript": "Career coaches share strategies for professionals planning a shift into a new industry."
+    },
+    {
+      "id": 4,
+      "title": "Creative Careers in Design",
+      "url": "https://www.youtube.com/embed/watch?v=example4",
+      "category": "Creative Arts",
+      "userType": "Student",
+      "transcript": "Design experts discuss opportunities in graphic design, UI/UX, and animation."
+    },
+    {
+      "id": 5,
+      "title": "Finance Careers Explained",
+      "url": "https://www.youtube.com/embed/watch?v=example5",
+      "category": "Finance",
+      "userType": "Graduate",
+      "transcript": "This video explores different finance roles such as investment analyst, accountant, and financial advisor."
+    }
+  ],
+  "podcasts": [
+    {
+      "id": 1,
+      "title": "The Future of Healthcare",
+      "url": "#",
+      "category": "Healthcare",
+      "userType": "Student",
+      "transcript": "In this podcast, we discuss emerging trends in healthcare and opportunities for aspiring medical professionals."
+    },
+    {
+      "id": 2,
+      "title": "Building Your First Tech Startup",
+      "url": "#",
+      "category": "Business",
+      "userType": "Graduate",
+      "transcript": "This episode features young entrepreneurs who turned their ideas into successful startups."
+    },
+    {
+      "id": 3,
+      "title": "Leadership in the Modern Workplace",
+      "url": "#",
+      "category": "Management",
+      "userType": "Professional",
+      "transcript": "We talk about the evolving role of leaders and how professionals can prepare for management roles."
+    },
+    {
+      "id": 4,
+      "title": "The Importance of Networking",
+      "url": "#",
+      "category": "Career Development",
+      "userType": "Graduate",
+      "transcript": "Industry experts share tips on building a strong professional network right after graduation."
+    },
+    {
+      "id": 5,
+      "title": "Creativity and Innovation",
+      "url": "#",
+      "category": "Creative Arts",
+      "userType": "Student",
+      "transcript": "Artists and creators discuss how to stay inspired and turn ideas into real projects."
+    }
+  ],
+  "interactiveWorkshops": [
+    {
+      "id": 1,
+      "title": "Resume Building 101",
+      "date": "2024-10-15",
+      "url": "#"
+    },
+    {
+      "id": 2,
+      "title": "Ace Your First Job Interview",
+      "date": "2024-11-05",
+      "url": "#"
+    },
+    {
+      "id": 3,
+      "title": "Portfolio Review for Designers",
+      "date": "2024-12-02",
+      "url": "#"
+    },
+    {
+      "id": 4,
+      "title": "Networking Masterclass",
+      "date": "2025-01-10",
+      "url": "#"
+    },
+    {
+      "id": 5,
+      "title": "Career Pivot Bootcamp",
+      "date": "2025-02-18",
+      "url": "#"
+    }
+  ]
+},
+
+
   "resourceLibrary": {
     "articles": [
       {
