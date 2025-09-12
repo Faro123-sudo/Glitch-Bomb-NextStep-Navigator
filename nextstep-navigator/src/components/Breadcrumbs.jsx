@@ -1,5 +1,6 @@
 // Breadcrumbs.jsx
 import React from "react";
+import "./Breadcrumbs.css";
 
 const pageTitles = {
   home: "Home",
