@@ -33,55 +33,59 @@ function LandingPage() {
 
   return (  
     <>
-  <div id="code-container"></div>
-    <div className="d-flex flex-column align-items-center justify-content-center landing-bg position-absolute top-0 start-0 h-100 w-100 overflow-hidden">
-    
-      <div className="container position-relative z-2">
-        <div className="row align-items-center min-vh-100 py-5">
-          {/* Left Content */}
-          <div className="col-lg-6 order-lg-1 order-2" data-aos="fade-right" data-aos-delay="300">
-            <div className="mb-4 text-center text-lg-start">
-              <img 
-                src={Logo} 
-                alt="NextStep Navigator Logo" 
-                className="mb-4 fade-in" 
-                style={{ height: '70px' }}
-              />
-              <h1 className="display-3 fw-bold text-primary mb-3 slide-in-left">
-                NextStep <span className="text-accent">Navigator</span>
-              </h1>
-              <h2 className="fw-semibold text-secondary mb-4 fade-in">
-                Your Guide to the Future
-              </h2>
-              <p className="lead text-muted mb-4">
-                Discover your path forward with personalized guidance and actionable insights to reach your career and educational goals.
-              </p>
-              <div className="d-flex gap-3 justify-content-center flex-wrap">
-                <button className="btn btn-primary btn-lg px-4 py-2 rounded-pill shadow hover-lift">
-                  Get Started
-                </button>
-                <button className="btn btn-outline-primary btn-lg px-4 py-2 rounded-pill shadow-sm hover-lift">
-                  Learn More
-                </button>
+      <div id="code-container"></div>
+      <div className="d-flex flex-column align-items-center justify-content-center landing-bg position-absolute overflow-hidden">
+        <div className="container position-relative z-2">
+          <div className="row align-items-center">
+            {/* Left Content */}
+            <div
+              className="col-lg-6 order-1"  
+              data-aos="fade-right"
+              data-aos-delay="300"
+            >
+              <div id="logo-container" className="mb-4 text-center text-lg-start" style={{ marginLeft: "87px !important" }}>
+                <img 
+                  src={Logo} 
+                  alt="NextStep Navigator Logo" 
+                  className="mb-4 fade-in landing-logo"
+                />
+                <h1 className="display-3 fw-bold text-primary mb-3 slide-in-left landing-title">
+                  NextStep <span style={{ color: "#31a8cc" }}>Navigator</span>
+                </h1>
+                <h2 className="fw-semibold text-secondary mb-4 fade-in landing-subtitle">
+                  Your Guide to the Future
+                </h2>
+                <p className="lead text-muted mb-4 landing-description">
+                  Discover your path forward with personalized guidance and actionable insights to reach your career and educational goals.
+                </p>
+                <div className="d-flex gap-3 justify-content-center flex-wrap">
+                  <button className="btn btn-primary btn-lg px-4 py-2 rounded-pill shadow hover-lift">
+                    Get Started
+                  </button>
+                  <button className="btn btn-outline-primary btn-lg px-4 py-2 rounded-pill shadow-sm hover-lift">
+                    Learn More
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="col-lg-6 order-lg-2 order-1 text-center mb-5 mb-lg-0" data-aos="fade-left" data-aos-delay="500">
-            <div className="hero-animation-container">
-              <Lottie 
-                animationData={animationData} 
-                loop={true} 
-                className="hero-animation"
-                style={{ maxWidth: "100%", height: "auto" }}
-              />
+            {/* Right Content (Animation) */}
+            <div
+              className="col-lg-6 order-2 text-center mb-5 mb-lg-0" 
+              data-aos="fade-left"
+              data-aos-delay="500"
+            >
+              <div className="hero-animation-container">
+                <Lottie 
+                  animationData={animationData} 
+                  loop={true} 
+                  className="hero-animation"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-
-    </div>
     </>
   );
 }

@@ -3,288 +3,188 @@
     {
       "id": 1,
       "careerName": "Software Engineer",
-      "description": "Develops software applications and systems.",
-      "skillsRequired": [
-        "JavaScript",
-        "React",
-        "Node.js"
-      ],
-      "averageSalary": "$80,000",
+      "description": "Develops, tests, and maintains software applications and systems to meet user needs.",
+      "skillsRequired": ["JavaScript", "React", "Node.js", "Python", "SQL"],
+      "averageSalary": "$95,000",
       "educationPath": "Bachelor's in Computer Science",
-      "industry": "Technology"
+      "industry": "Technology",
+      "jobOutlook": "22% (Much faster than average)",
+      "relatedRoles": ["Data Scientist", "DevOps Engineer", "Product Manager"],
+      "dayInTheLife": "A typical day involves writing code, collaborating with team members on features, debugging issues, and attending stand-up meetings to discuss progress.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example1"
     },
     {
       "id": 2,
-      "careerName": "Nurse",
-      "description": "Provides healthcare and assistance to patients.",
-      "skillsRequired": [
-        "Patient Care",
-        "Communication"
-      ],
-      "averageSalary": "$60,000",
-      "educationPath": "Bachelor's in Nursing",
-      "industry": "Healthcare"
+      "careerName": "Registered Nurse",
+      "description": "Provides and coordinates patient care, educates patients and the public about various health conditions.",
+      "skillsRequired": ["Patient Care", "Communication", "Critical Thinking", "EMR Systems"],
+      "averageSalary": "$75,000",
+      "educationPath": "Associate's or Bachelor's in Nursing",
+      "industry": "Healthcare",
+      "jobOutlook": "9% (Faster than average)",
+      "relatedRoles": ["Nurse Practitioner", "Clinical Nurse Specialist", "Healthcare Administrator"],
+      "dayInTheLife": "A day can include assessing patients' conditions, administering medications, recording observations in medical records, and collaborating with doctors.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example2"
     },
     {
       "id": 3,
       "careerName": "Data Scientist",
-      "description": "Analyzes complex data to help organizations make decisions.",
-      "skillsRequired": [
-        "Python",
-        "Statistics",
-        "Machine Learning"
-      ],
-      "averageSalary": "$95,000",
-      "educationPath": "Master's in Data Science or related field",
-      "industry": "Technology"
+      "description": "Analyzes complex data to extract meaningful insights and help organizations make data-driven decisions.",
+      "skillsRequired": ["Python", "R", "Statistics", "Machine Learning", "Data Visualization"],
+      "averageSalary": "$120,000",
+      "educationPath": "Master's or PhD in Data Science or related field",
+      "industry": "Technology",
+      "jobOutlook": "31% (Much faster than average)",
+      "relatedRoles": ["Machine Learning Engineer", "Business Intelligence Analyst", "Data Analyst"],
+      "dayInTheLife": "Work involves collecting and cleaning large datasets, building predictive models, and presenting findings to stakeholders through reports and visualizations.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example3"
     },
     {
       "id": 4,
       "careerName": "Graphic Designer",
-      "description": "Creates visual concepts to communicate ideas.",
-      "skillsRequired": [
-        "Adobe Photoshop",
-        "Creativity",
-        "Typography"
-      ],
-      "averageSalary": "$50,000",
+      "description": "Creates visual concepts, using computer software or by hand, to communicate ideas that inspire, inform, and captivate consumers.",
+      "skillsRequired": ["Adobe Creative Suite", "Typography", "UI/UX Design", "Creativity"],
+      "averageSalary": "$55,000",
       "educationPath": "Bachelor's in Graphic Design",
-      "industry": "Creative Arts"
+      "industry": "Creative Arts",
+      "jobOutlook": "4% (As fast as average)",
+      "relatedRoles": ["Art Director", "Web Designer", "Animator"],
+      "dayInTheLife": "A day includes brainstorming with clients, sketching out ideas, using design software to create visuals, and revising work based on feedback.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example4"
     },
     {
       "id": 5,
       "careerName": "Mechanical Engineer",
-      "description": "Designs and develops mechanical systems.",
-      "skillsRequired": [
-        "AutoCAD",
-        "Problem Solving",
-        "Mathematics"
-      ],
-      "averageSalary": "$75,000",
+      "description": "Designs, develops, builds, and tests mechanical and thermal sensors and devices, including tools, engines, and machines.",
+      "skillsRequired": ["AutoCAD", "SolidWorks", "Problem Solving", "Thermodynamics"],
+      "averageSalary": "$90,000",
       "educationPath": "Bachelor's in Mechanical Engineering",
-      "industry": "Engineering"
+      "industry": "Engineering",
+      "jobOutlook": "7% (Faster than average)",
+      "relatedRoles": ["Aerospace Engineer", "Robotics Engineer", "Manufacturing Engineer"],
+      "dayInTheLife": "Activities often include developing and testing prototypes, analyzing data, creating technical drawings, and managing projects.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example5"
     },
     {
       "id": 6,
-      "careerName": "Teacher",
-      "description": "Educates students in various subjects.",
-      "skillsRequired": [
-        "Classroom Management",
-        "Subject Knowledge",
-        "Communication"
-      ],
-      "averageSalary": "$55,000",
-      "educationPath": "Bachelor's in Education",
-      "industry": "Education"
+      "careerName": "High School Teacher",
+      "description": "Educates students in a specific subject at the secondary level, preparing them for college and future careers.",
+      "skillsRequired": ["Subject-Matter Expertise", "Classroom Management", "Communication", "Patience"],
+      "averageSalary": "$62,000",
+      "educationPath": "Bachelor's in Education and Teaching License",
+      "industry": "Education",
+      "jobOutlook": "5% (As fast as average)",
+      "relatedRoles": ["School Counselor", "Principal", "Instructional Coordinator"],
+      "dayInTheLife": "A day consists of delivering lessons, grading assignments, communicating with parents, and providing extra help to students.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example6"
     },
     {
       "id": 7,
       "careerName": "Accountant",
-      "description": "Manages financial records and prepares reports.",
-      "skillsRequired": [
-        "Accounting",
-        "Attention to Detail",
-        "Excel"
-      ],
-      "averageSalary": "$65,000",
+      "description": "Examines, analyzes, and interprets accounting records to prepare financial statements, give advice, or audit and evaluate statements prepared by others.",
+      "skillsRequired": ["GAAP", "QuickBooks", "Attention to Detail", "Excel"],
+      "averageSalary": "$73,000",
       "educationPath": "Bachelor's in Accounting",
-      "industry": "Finance"
+      "industry": "Finance",
+      "jobOutlook": "7% (Faster than average)",
+      "relatedRoles": ["Financial Analyst", "Auditor", "Forensic Accountant"],
+      "dayInTheLife": "Daily tasks include reconciling bank statements, preparing tax returns, and ensuring compliance with financial regulations.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example7"
     },
     {
       "id": 8,
       "careerName": "Marketing Manager",
-      "description": "Plans and oversees marketing strategies.",
-      "skillsRequired": [
-        "Marketing",
-        "Leadership",
-        "Analytics"
-      ],
-      "averageSalary": "$85,000",
+      "description": "Plans and oversees marketing campaigns to promote a company's brand, products, or services.",
+      "skillsRequired": ["SEO/SEM", "Content Marketing", "Analytics", "Leadership"],
+      "averageSalary": "$110,000",
       "educationPath": "Bachelor's in Marketing or Business",
-      "industry": "Business"
+      "industry": "Business",
+      "jobOutlook": "10% (Faster than average)",
+      "relatedRoles": ["Digital Marketing Specialist", "Brand Manager", "Public Relations Manager"],
+      "dayInTheLife": "A typical day involves analyzing market trends, managing a marketing team, setting budgets, and collaborating with sales and product teams.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example8"
+    },
+    {
+      "id": 9,
+      "careerName": "Electrician",
+      "description": "Installs, maintains, and repairs electrical wiring, equipment, and fixtures. Ensures that work is in accordance with relevant codes.",
+      "skillsRequired": ["Blueprint Reading", "Troubleshooting", "Knowledge of Electrical Codes"],
+      "averageSalary": "$58,000",
+      "educationPath": "Apprenticeship/Trade School",
+      "industry": "Trades",
+      "jobOutlook": "8% (Faster than average)",
+      "relatedRoles": ["Construction Manager", "Electrical Inspector"],
+      "dayInTheLife": "A day can involve installing wiring in new buildings, troubleshooting electrical problems, or repairing outdated systems.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example9"
+    },
+    {
+      "id": 10,
+      "careerName": "Chef",
+      "description": "Oversees the daily food preparation at restaurants and other places where food is served. Directs kitchen staff and handles any food-related concerns.",
+      "skillsRequired": ["Culinary Skills", "Creativity", "Leadership", "Time Management"],
+      "averageSalary": "$53,000",
+      "educationPath": "Culinary School or Apprenticeship",
+      "industry": "Hospitality",
+      "jobOutlook": "25% (Much faster than average)",
+      "relatedRoles": ["Restaurant Manager", "Food Stylist", "Caterer"],
+      "dayInTheLife": "A day in the life of a chef includes planning menus, managing kitchen staff, ordering supplies, and ensuring food quality and presentation.",
+      "careerVideo": "https://www.youtube.com/embed/watch?v=example10"
     }
   ],
   "quizQuestions": [
     {
       "id": 1,
-      "question": "Do you enjoy working with numbers and data?",
-      "options": [
-        "Yes",
-        "No",
-        "Sometimes"
-      ],
+      "question": "Which of these activities sounds most interesting to you?",
+      "options": ["Building things", "Helping people", "Analyzing data", "Creating art"],
+      "industries": ["Technology", "Healthcare", "Creative Arts", "Engineering", "Finance", "Business"],
       "answersMapping": {
-        "Yes": "Consider careers in Data Science, Accounting, or Engineering",
-        "No": "Explore careers in Creative Arts or Communication",
-        "Sometimes": "You might enjoy a mix like Marketing Analytics"
-      },
-      "industries": [
-        "Technology",
-        "Finance",
-        "Engineering",
-        "Business"
-      ]
+        "Building things": "Careers in Technology or Engineering may suit you.",
+        "Helping people": "Roles in Healthcare or Education could be a good fit.",
+        "Analyzing data": "Consider careers like Data Scientist or Accountant.",
+        "Creating art": "Explore roles such as Graphic Designer or Animator."
+      }
     },
     {
       "id": 2,
-      "question": "Do you like working with people?",
-      "options": [
-        "Yes",
-        "No"
-      ],
+      "question": "What kind of work environment do you prefer?",
+      "options": ["A busy, collaborative office", "A quiet, focused space", "Working outdoors or on-site", "A flexible, remote setting"],
+      "industries": ["Technology", "Healthcare", "Creative Arts", "Engineering", "Finance", "Business", "Education", "Trades", "Hospitality"],
       "answersMapping": {
-        "Yes": "Teaching, Sales, and Counseling may suit you",
-        "No": "Consider careers in Research or Software Development"
-      },
-      "industries": [
-        "Education",
-        "Business",
-        "Healthcare",
-        "Technology"
-      ]
-    },
-    {
-      "id": 3,
-      "question": "Are you interested in technology and computers?",
-      "options": [
-        "Yes",
-        "No",
-        "A little"
-      ],
-      "answersMapping": {
-        "Yes": "Software Engineering, Data Science, or IT roles could be a good fit",
-        "No": "Consider roles in Healthcare, Education, or Arts",
-        "A little": "Marketing or Business Analysis may blend tech and other interests"
-      },
-      "industries": [
-        "Technology",
-        "Business",
-        "Creative Arts"
-      ]
-    },
-    {
-      "id": 4,
-      "question": "Do you prefer creative tasks over analytical ones?",
-      "options": [
-        "Creative",
-        "Analytical",
-        "Both"
-      ],
-      "answersMapping": {
-        "Creative": "Graphic Design, Marketing, or Arts careers may suit you",
-        "Analytical": "Engineering, Accounting, or Data Science could be ideal",
-        "Both": "Product Management or UX Design might be a good mix"
-      },
-      "industries": [
-        "Creative Arts",
-        "Business",
-        "Engineering",
-        "Technology"
-      ]
-    },
-    {
-      "id": 5,
-      "question": "Would you rather work indoors or outdoors?",
-      "options": [
-        "Indoors",
-        "Outdoors",
-        "No preference"
-      ],
-      "answersMapping": {
-        "Indoors": "Consider office-based roles like Software Engineer or Accountant",
-        "Outdoors": "Look into careers in Environmental Science or Field Research",
-        "No preference": "Many careers offer both, such as Teaching or Consulting"
-      },
-      "industries": [
-        "Technology",
-        "Finance",
-        "Education",
-        "Engineering",
-        "Healthcare"
-      ]
+        "A busy, collaborative office": "Look into office-based roles like Marketing Manager or Accountant.",
+        "A quiet, focused space": "Careers like Software Engineer or Graphic Designer might be a good mix.",
+        "Working outdoors or on-site": "Consider careers such as Mechanical Engineer or Electrician.",
+        "A flexible, remote setting": "Many careers offer both, like Software Engineer and Data Scientist."
+      }
     }
   ],
+ 
   "multimediaGuidance": {
     "videos": [
       {
         "id": 1,
-        "title": "How to Choose a Career Path",
-        "url": "https://www.youtube.com/embed/5MgBikgcWnY",
-        "category": "motivation",
-        "userType": "student",
-        "transcript": "In this video, we discuss how to choose a career path based on your interests and skills."
-      },
-      {
-        "id": 2,
-        "title": "Resume Building Tips",
-        "url": "https://www.youtube.com/embed/1B1s5P6uB9c",
-        "category": "job roles",
-        "userType": "graduate",
-        "transcript": "Learn how to build a strong resume that stands out to employers."
-      },
-      {
-        "id": 3,
-        "title": "Interview Preparation Strategies",
-        "url": "https://www.youtube.com/embed/2Xc9gXyf2G4",
-        "category": "interviews",
-        "userType": "job seeker",
-        "transcript": "This video covers key strategies for preparing for job interviews."
-      },
-      {
-        "id": 4,
-        "title": "Internship Success Stories",
-        "url": "https://www.youtube.com/embed/3JZ_D3ELwOQ",
-        "category": "internships",
-        "userType": "student",
-        "transcript": "Hear from students who turned internships into full-time jobs."
+        "title": "A Day in the Life of a Software Engineer",
+        "url": "https://www.youtube.com/embed/watch?v=example1",
+        "category": "Technology",
+        "userType": "Graduate",
+        "transcript": "This video shows a typical day for a software engineer..."
       }
     ],
     "podcasts": [
       {
         "id": 1,
-        "title": "Career Conversations Podcast",
-        "url": "https://example.com/career-podcast",
-        "category": "motivation",
-        "userType": "student",
-        "transcript": "In this episode, we talk to professionals about their career journeys."
-      },
-      {
-        "id": 2,
-        "title": "Women in Tech",
-        "url": "https://example.com/women-in-tech-podcast",
-        "category": "job roles",
-        "userType": "graduate",
-        "transcript": "Women leaders in tech share their experiences and advice."
-      },
-      {
-        "id": 3,
-        "title": "Creative Careers",
-        "url": "https://example.com/creative-careers-podcast",
-        "category": "motivation",
-        "userType": "student",
-        "transcript": "Exploring creative career paths with industry experts."
-      },
-      {
-        "id": 4,
-        "title": "Internship Insights",
-        "url": "https://example.com/internship-insights-podcast",
-        "category": "internships",
-        "userType": "student",
-        "transcript": "Tips and stories from successful interns."
+        "title": "The Future of Healthcare",
+        "url": "#",
+        "category": "Healthcare",
+        "userType": "Student",
+        "transcript": "In this podcast, we discuss emerging trends in healthcare..."
       }
     ],
     "interactiveWorkshops": [
       {
         "id": 1,
-        "title": "Live Resume Review",
-        "date": "2025-10-10",
-        "url": "https://example.com/live-resume-workshop"
-      },
-      {
-        "id": 2,
-        "title": "Mock Interview Session",
-        "date": "2025-11-05",
-        "url": "https://example.com/mock-interview-workshop"
+        "title": "Resume Building 101",
+        "date": "2024-10-15",
+        "url": "#"
       }
     ]
   },
@@ -292,45 +192,15 @@
     "articles": [
       {
         "id": 1,
-        "title": "Top 10 Careers for 2025",
-        "url": "https://example.com/article"
-      },
-      {
-        "id": 2,
-        "title": "How to Write a Winning Resume",
-        "url": "https://example.com/resume-article"
-      },
-      {
-        "id": 3,
-        "title": "Emerging Skills in Technology",
-        "url": "https://example.com/tech-skills-article"
-      },
-      {
-        "id": 4,
-        "title": "Balancing Work and Life",
-        "url": "https://example.com/work-life-balance"
-      },
-      {
-        "id": 5,
-        "title": "Career Change: A Step-by-Step Guide",
-        "url": "https://example.com/career-change-guide"
+        "title": "How to Ace Your First Tech Interview",
+        "url": "#"
       }
     ],
     "ebooks": [
       {
         "id": 1,
-        "title": "Career Planning Guide",
-        "url": "https://example.com/ebook"
-      },
-      {
-        "id": 2,
-        "title": "Interview Success Strategies",
-        "url": "https://example.com/interview-ebook"
-      },
-      {
-        "id": 3,
-        "title": "The Ultimate Guide to Remote Work",
-        "url": "https://example.com/remote-work-ebook"
+        "title": "The Ultimate Guide to Career Planning",
+        "url": "#"
       }
     ],
     "webinars": [
@@ -432,27 +302,27 @@
     "guidanceTopics": [
       {
         "id": 1,
-        "title": "Stream Selection (Post-10th)",
-        "icon": "fa-solid fa-diagram-project",
-        "content": "Discover how to choose the right stream after 10th grade. Explore your interests, aptitude, and future opportunities in Science, Commerce, and Arts."
+        "title": "Stream Selection",
+        "content": "Guidance on choosing the right subjects and streams after 10th and 12th grade.",
+        "icon": "fa-solid fa-book"
       },
       {
         "id": 2,
-        "title": "Study Abroad Guidelines",
-        "icon": "fa-solid fa-globe",
-        "content": "Step-by-step guide to studying abroad: entrance exams, application process, scholarships, and adapting to a new culture."
+        "title": "Study Abroad",
+        "content": "Comprehensive support for applications to universities abroad, including SOP and LOR writing.",
+        "icon": "fa-solid fa-plane-departure"
       },
       {
         "id": 3,
-        "title": "Interview Tips",
-        "icon": "fa-solid fa-user-tie",
-        "content": "Ace your interviews with proven strategies: research, common questions, STAR technique, and professional etiquette for graduates and professionals."
+        "title": "Interview Preparation",
+        "content": "Mock interviews and expert tips to help you succeed in college and job interviews.",
+        "icon": "fa-solid fa-user-tie"
       },
       {
         "id": 4,
-        "title": "Resume Guidelines",
-        "icon": "fa-solid fa-file-lines",
-        "content": "Build a standout resume: structure, keywords, achievements, and tailoring for specific roles. Includes tips for graduates and working professionals."
+        "title": "Resume Building",
+        "content": "Craft a professional resume that stands out to recruiters and admission committees.",
+        "icon": "fa-solid fa-file-alt"
       }
     ]
   }
