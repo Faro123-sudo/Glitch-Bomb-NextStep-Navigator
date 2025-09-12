@@ -7,7 +7,7 @@ const AboutUs = () => {
         <div className="container py-5 about-container" data-aos="fade-up" data-aos-delay="300">
             
             <section className="text-center mb-5 about-header" data-aos="fade-up" data-aos-delay="300">
-                <h1 className="display-4 fw-bold" data-aos="fade-up" data-aos-delay="400">About Us</h1>
+                <h1 className="display-4 fw-bold" data-aos="zoom-in" data-aos-delay="400">About Us</h1>
                 <p className="lead text-muted">
                     Welcome to <strong>NextStep Navigation</strong>. We are dedicated to
                     providing the best possible navigation and support for students,
@@ -16,7 +16,7 @@ const AboutUs = () => {
             </section>
 
             <section className="mb-5 about-mission" data-aos="fade-up" data-aos-delay="300">
-                <h2 className="fw-semibold" data-aos="fade-up" data-aos-delay="400">Our Mission</h2>
+                <h2 className="fw-semibold" data-aos="zoom-in" data-aos-delay="400">Our Mission</h2>
                 <p className="text-muted">
                     Our mission is to empower individuals to make informed decisions about
                     their future. We provide a comprehensive and personalized navigation

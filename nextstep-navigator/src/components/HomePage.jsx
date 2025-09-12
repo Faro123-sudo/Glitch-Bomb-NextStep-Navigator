@@ -98,15 +98,16 @@ function LandingPage() {
         />
       </div>
 
+      {/* Features Section */}
       <section className="features-section py-5">
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="display-5 fw-bold">Unlock Your Potential</h2>
-            <p className="lead text-muted">
+            <h2 className="display-5 fw-bold" data-aos="zoom-in" data-aos-delay="500">Unlock Your Potential</h2>
+            <p className="lead text-muted" data-aos="slide-right" data-aos-delay="500">
               Everything you need to find your dream career is right here.
             </p>
           </div>
-          <div className="row g-4">
+          <div className="row g-4" data-aos="fade-right" data-aos-delay="500">
             <div className="col-md-6 col-lg-3 d-flex">
               <div className="feature-card text-center p-4">
                 <div className="feature-icon mb-3 mx-auto">
