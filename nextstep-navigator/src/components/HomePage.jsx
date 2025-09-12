@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./staticFiles/HomePage.css";
 import Logo from "../assets/logo.webp";
 import animationData from "../assets/animation/manWalking.json";
-import { FaQuestionCircle, FaBriefcase, FaBook, FaStar } from 'react-icons/fa';
+import { FaQuestionCircle, FaBriefcase, FaBook, FaStar } from "react-icons/fa";
 
 const codeElements = [
   "NextStep", "Navigator", "Career", "Success", "Growth", "Future",
@@ -15,7 +15,6 @@ const codeElements = [
 ];
 
 function LandingPage() {
-  // A more React-idiomatic way to handle the background particles
   const backgroundParticles = useMemo(() => {
     return Array.from({ length: 30 }).map((_, i) => ({
       id: i,
@@ -31,16 +30,16 @@ function LandingPage() {
   return (
     <>
       <div id="code-container">
-        {backgroundParticles.map(p => (
+        {backgroundParticles.map((p) => (
           <span key={p.id} className="code-particle" style={p.style}>
             {p.text}
           </span>
         ))}
       </div>
+
       <div className="d-flex flex-column align-items-center justify-content-center landing-bg position-relative overflow-hidden">
         <div className="container position-relative z-2">
           <div className="row align-items-center hero-section">
-            {/* Left Content */}
             <div
               className="col-lg-6 order-lg-1 order-2 text-center text-lg-start"
               data-aos="fade-right"
@@ -72,9 +71,9 @@ function LandingPage() {
               </div>
             </div>
 
-            {/* Right Content (Animation) */}
+            {/* Desktop view */}
             <div
-              className="col-lg-6 order-lg-2 order-1 text-center"
+              className="col-lg-6 order-lg-2 order-1 text-center d-none d-lg-block"
               data-aos="fade-left"
               data-aos-delay="500"
             >
@@ -90,40 +89,66 @@ function LandingPage() {
         </div>
       </div>
 
-      {/* Features Section */}
-      <section className="features-section  py-5">
+      {/*Mobile devices */}
+      <div className="text-center d-block d-lg-none my-4">
+        <Lottie
+          animationData={animationData}
+          loop={true}
+          className="hero-animation"
+        />
+      </div>
+
+      <section className="features-section py-5">
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="display-5 fw-bold">Unlock Your Potential</h2>
-            <p className="lead text-muted">Everything you need to find your dream career is right here.</p>
+            <p className="lead text-muted">
+              Everything you need to find your dream career is right here.
+            </p>
           </div>
           <div className="row g-4">
             <div className="col-md-6 col-lg-3 d-flex">
               <div className="feature-card text-center p-4">
-                <div className="feature-icon mb-3 mx-auto"><FaQuestionCircle /></div>
+                <div className="feature-icon mb-3 mx-auto">
+                  <FaQuestionCircle />
+                </div>
                 <h5 className="fw-bold">Interest-Based Quiz</h5>
-                <p className="text-muted">Answer a few simple questions to get personalized career recommendations that match your passions.</p>
+                <p className="text-muted">
+                  Answer a few simple questions to get personalized career recommendations that match your passions.
+                </p>
               </div>
             </div>
             <div className="col-md-6 col-lg-3 d-flex">
               <div className="feature-card text-center p-4">
-                <div className="feature-icon mb-3 mx-auto"><FaBriefcase /></div>
+                <div className="feature-icon mb-3 mx-auto">
+                  <FaBriefcase />
+                </div>
                 <h5 className="fw-bold">Dynamic Career Bank</h5>
-                <p className="text-muted">Explore hundreds of detailed career profiles with salary insights, required skills, and more.</p>
+                <p className="text-muted">
+                  Explore hundreds of detailed career profiles with salary insights, required skills, and more.
+                </p>
               </div>
             </div>
             <div className="col-md-6 col-lg-3 d-flex">
               <div className="feature-card text-center p-4">
-                <div className="feature-icon mb-3 mx-auto"><FaBook /></div>
+                <div className="feature-icon mb-3 mx-auto">
+                  <FaBook />
+                </div>
                 <h5 className="fw-bold">Resource Library</h5>
-                <p className="text-muted">Access a curated collection of articles, e-books, and templates to help you on your journey.</p>
+                <p className="text-muted">
+                  Access a curated collection of articles, e-books, and templates to help you on your journey.
+                </p>
               </div>
             </div>
             <div className="col-md-6 col-lg-3 d-flex">
               <div className="feature-card text-center p-4">
-                <div className="feature-icon mb-3 mx-auto"><FaStar /></div>
+                <div className="feature-icon mb-3 mx-auto">
+                  <FaStar />
+                </div>
                 <h5 className="fw-bold">Success Stories</h5>
-                <p className="text-muted">Get inspired by the real-life journeys of professionals who found their path with our guidance.</p>
+                <p className="text-muted">
+                  Get inspired by the real-life journeys of professionals who found their path with our guidance.
+                </p>
               </div>
             </div>
           </div>
