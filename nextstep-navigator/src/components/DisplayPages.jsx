@@ -48,9 +48,9 @@ function DisplayPages() {
       case "contact":
         return <ContactUs />;
       case "home":
-        <HomePage userType={userType} />;
+        <HomePage onNavigate={setActiveSection}  userType={userType} />;
       default:
-        return <HomePage userType={userType} />;
+        return <HomePage onNavigate={setActiveSection}  userType={userType} />;
     }
   };
 

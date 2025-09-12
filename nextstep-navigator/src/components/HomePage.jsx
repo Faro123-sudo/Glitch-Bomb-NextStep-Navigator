@@ -1,10 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./staticFiles/HomePage.css";
 import Logo from "../assets/logo.webp";
 import animationData from "../assets/animation/manWalking.json";
 import { FaQuestionCircle, FaBriefcase, FaBook, FaStar } from "react-icons/fa";
+import useSimulatedVisitors from "../hooks/useSimulatedVisitors";
 
 const codeElements = [
   "NextStep", "Navigator", "Career", "Success", "Growth", "Future",
@@ -14,7 +15,11 @@ const codeElements = [
   "Adaptability", "Excellence", "Motivation", "Progress", "Achievement", "Pathway"
 ];
 
-function LandingPage() {
+function formatNumber(n) {
+  return n.toLocaleString();
+}
+
+function LandingPage({ onNavigate }) {
   const backgroundParticles = useMemo(() => {
     return Array.from({ length: 30 }).map((_, i) => ({
       id: i,
@@ -27,8 +32,48 @@ function LandingPage() {
     }));
   }, []);
 
+const handleNavClick = (e, page) => {
+  e.preventDefault();
+  console.log("Navigating to:", page);
+  onNavigate(page);
+  window.scrollTo(0, 0);
+};
+
+
+  const { displayCount, liveViewers } = useSimulatedVisitors();
+
+  // ✅ Always start from 0 when page loads
+  const [animatedCount, setAnimatedCount] = useState(0);
+
+  useEffect(() => {
+    let frame;
+    let start;
+    const from = 0; // always start from zero
+    const to = displayCount;
+    const duration = 1200; // ms for full count-up animation
+
+    const animate = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      setAnimatedCount(Math.floor(from + (to - from) * eased));
+      if (progress < 1) frame = requestAnimationFrame(animate);
+    };
+
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [displayCount]); // re-run if displayCount changes
+
+  const features = [
+    { icon: <FaQuestionCircle />, title: "Interest-Based Quiz", desc: "Answer a few simple questions to get personalized career recommendations that match your passions.", page: "quiz" },
+    { icon: <FaBriefcase />, title: "Dynamic Career Bank", desc: "Explore hundreds of detailed career profiles with salary insights, required skills, and more.", page: "careerBank" },
+    { icon: <FaBook />, title: "Resource Library", desc: "Access a curated collection of articles, e-books, and templates to help you on your journey.", page: "resources" },
+    { icon: <FaStar />, title: "Success Stories", desc: "Get inspired by the real-life journeys of professionals who found their path with our guidance.", page: "successStories" },
+  ];
+
   return (
     <>
+      {/* Background Floating Particles */}
       <div id="code-container">
         {backgroundParticles.map((p) => (
           <span key={p.id} className="code-particle" style={p.style}>
@@ -37,20 +82,13 @@ function LandingPage() {
         ))}
       </div>
 
+      {/* Hero Section */}
       <div className="d-flex flex-column align-items-center justify-content-center landing-bg position-relative overflow-hidden">
         <div className="container position-relative z-2">
           <div className="row align-items-center hero-section">
-            <div
-              className="col-lg-6 order-lg-1 order-2 text-center text-lg-start"
-              data-aos="fade-right"
-              data-aos-delay="300"
-            >
+            <div className="col-lg-6 order-lg-1 order-2 text-center text-lg-start" data-aos="fade-right" data-aos-delay="300">
               <div className="hero-content">
-                <img
-                  src={Logo}
-                  alt="NextStep Navigator Logo"
-                  className="mb-4 fade-in landing-logo"
-                />
+                <img src={Logo} alt="NextStep Navigator Logo" className="mb-4 fade-in landing-logo" />
                 <h1 className="display-3 fw-bold text-primary mb-3 slide-in-left landing-title">
                   NextStep <span style={{ color: "#31a8cc" }}>Navigator</span>
                 </h1>
@@ -60,97 +98,74 @@ function LandingPage() {
                 <p className="lead text-muted mb-4 landing-description">
                   Discover your path forward with personalized guidance and actionable insights to reach your career and educational goals.
                 </p>
+
+                {/* ✅ Animated Counter (Counts from 0 each page load) */}
+                <div className="visitor-counter-card mb-3">
+                  <div className="visitor-stats">
+                    <div className="small text-muted">Total Visits</div>
+                    <div className="h5 mb-0 fw-bold">{formatNumber(animatedCount)}</div>
+                  </div>
+                  <div className="vr mx-2 d-none d-sm-block" />
+                  <div className="visitor-live text-end">
+                    <div className="small text-muted">Live Now</div>
+                    <div className="h6 mb-0 fw-semibold text-primary">{formatNumber(liveViewers)}</div>
+                  </div>
+                </div>
+
+                {/* Buttons */}
                 <div className="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
-                  <button className="btn btn-primary btn-lg px-4 py-2 rounded-pill shadow hover-lift">
+                  <button className="btn btn-primary btn-lg px-4 py-2 rounded-pill hover-lift" onClick={(e) => handleNavClick(e, 'quiz')} >
                     Take the Quiz
                   </button>
-                  <button className="btn btn-outline-primary btn-lg px-4 py-2 rounded-pill shadow-sm hover-lift">
+                  <button className="btn btn-outline-primary btn-lg px-4 py-2 rounded-pill shadow-sm hover-lift" onClick={(e) => handleNavClick(e, 'careerBank')}>
                     Explore Careers
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Desktop view */}
-            <div
-              className="col-lg-6 order-lg-2 order-1 text-center d-none d-lg-block"
-              data-aos="fade-left"
-              data-aos-delay="500"
-            >
+            {/* Right Animation */}
+            <div className="col-lg-6 order-lg-2 order-1 text-center d-none d-lg-block" data-aos="fade-left" data-aos-delay="500">
               <div className="hero-animation-container">
-                <Lottie
-                  animationData={animationData}
-                  loop={true}
-                  className="hero-animation"
-                />
+                <Lottie animationData={animationData} loop className="hero-animation" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/*Mobile devices */}
+      {/* Mobile Animation */}
       <div className="text-center d-block d-lg-none my-4">
-        <Lottie
-          animationData={animationData}
-          loop={true}
-          className="hero-animation"
-        />
+        <Lottie animationData={animationData} loop className="hero-animation" />
       </div>
 
+      {/* Features Section */}
       <section className="features-section py-5" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="display-5 fw-bold" data-aos="zoom-in" data-aos-delay="500">Unlock Your Potential</h2>
-            <p className="lead text-muted" data-aos="slide-right" data-aos-delay="500">
+            <h2 className="display-5 fw-bold" data-aos="zoom-in" data-aos-delay="500">
+              Unlock Your Potential
+            </h2>
+            <p className="lead text-muted" data-aos="fade-right" data-aos-delay="500">
               Everything you need to find your dream career is right here.
             </p>
           </div>
+
           <div className="row g-4" data-aos="fade-right" data-aos-delay="500">
-            <div className="col-md-6 col-lg-3 d-flex">
-              <div className="feature-card text-center p-4">
-                <div className="feature-icon mb-3 mx-auto">
-                  <FaQuestionCircle />
+            {features.map((f, i) => (
+              <div key={i} className="col-md-6 col-lg-3 d-flex">
+                <div className="feature-card text-center p-4">
+                  <div className="feature-icon mb-3 mx-auto">{f.icon}</div>
+                  <h5 className="fw-bold">{f.title}</h5>
+                  <p className="text-muted">{f.desc}</p>
+                  <div className="mt-auto">
+                    <button className="btn btn-sm btn-outline-primary rounded-pill" onClick={() => onNavigate?.(f.page)}>
+                      Explore
+                    </button>
+                  </div>
                 </div>
-                <h5 className="fw-bold">Interest-Based Quiz</h5>
-                <p className="text-muted">
-                  Answer a few simple questions to get personalized career recommendations that match your passions.
-                </p>
               </div>
-            </div>
-            <div className="col-md-6 col-lg-3 d-flex">
-              <div className="feature-card text-center p-4">
-                <div className="feature-icon mb-3 mx-auto">
-                  <FaBriefcase />
-                </div>
-                <h5 className="fw-bold">Dynamic Career Bank</h5>
-                <p className="text-muted">
-                  Explore hundreds of detailed career profiles with salary insights, required skills, and more.
-                </p>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3 d-flex">
-              <div className="feature-card text-center p-4">
-                <div className="feature-icon mb-3 mx-auto">
-                  <FaBook />
-                </div>
-                <h5 className="fw-bold">Resource Library</h5>
-                <p className="text-muted">
-                  Access a curated collection of articles, e-books, and templates to help you on your journey.
-                </p>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3 d-flex">
-              <div className="feature-card text-center p-4">
-                <div className="feature-icon mb-3 mx-auto">
-                  <FaStar />
-                </div>
-                <h5 className="fw-bold">Success Stories</h5>
-                <p className="text-muted">
-                  Get inspired by the real-life journeys of professionals who found their path with our guidance.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

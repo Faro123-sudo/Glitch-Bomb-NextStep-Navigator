@@ -27,7 +27,6 @@ const Header = ({ onNavigate, userType = "guest" }) => {
     window.scrollTo(0, 0);
   };
 
-  // ✅ Load user-specific navigation
   const navLinks = menuData[userType?.toLowerCase()] || menuData["guest"];
 
   const menuVariants = {
