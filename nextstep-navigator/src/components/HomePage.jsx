@@ -67,7 +67,6 @@ function LandingPage() {
             </div>
           </div>
 
-          {/* Right Content (Animation) */}
           <div className="col-lg-6 order-lg-2 order-1 text-center mb-5 mb-lg-0" data-aos="fade-left" data-aos-delay="500">
             <div className="hero-animation-container">
               <Lottie 
@@ -81,19 +80,7 @@ function LandingPage() {
         </div>
       </div>
 
-      {/* Scroll Indicator (Optional) */}
-      {/* <div className="position-absolute bottom-0 start-50 translate-middle-x mb-4 z-3">
-        <div className="scroll-indicator-container">
-          <div className="scroll-text text-muted small mb-1">Scroll to explore</div>
-          <div className="lottie-arrow-container">
-            <Lottie 
-              animationData={arrowDown} 
-              loop={true}
-              className="lottie-arrow"
-            />
-          </div>
-        </div>
-      </div> */}
+
     </div>
     </>
   );
