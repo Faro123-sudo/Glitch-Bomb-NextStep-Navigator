@@ -191,36 +191,73 @@
   "resourceLibrary": {
     "articles": [
       {
-        "id": 1,
+        "id": "art1",
+        "type": "Article",
         "title": "How to Ace Your First Tech Interview",
+        "description": "A comprehensive guide with tips and common questions for tech interviews.",
+        "url": "#"
+      },
+      {
+        "id": "art2",
+        "type": "Article",
+        "title": "The Art of Networking: A Guide for Professionals",
+        "description": "Learn how to build and maintain a professional network that helps your career grow.",
+        "url": "#"
+      },
+      {
+        "id": "art3",
+        "type": "Article",
+        "title": "Resume Writing 101: From Blank Page to Job Offer",
+        "description": "Step-by-step instructions on crafting a resume that gets noticed.",
         "url": "#"
       }
     ],
     "ebooks": [
       {
-        "id": 1,
+        "id": "ebook1",
+        "type": "E-book",
         "title": "The Ultimate Guide to Career Planning",
+        "description": "A deep dive into setting career goals and creating a roadmap for success.",
+        "url": "#"
+      },
+      {
+        "id": "ebook2",
+        "type": "E-book",
+        "title": "Switching Lanes: A Handbook for Career Changers",
+        "description": "Practical advice for those looking to transition into a new industry.",
         "url": "#"
       }
     ],
     "webinars": [
       {
-        "id": 1,
+        "id": "web1",
+        "type": "Webinar",
         "title": "Mastering Job Interviews",
-        "date": "2025-09-15",
-        "url": "https://example.com/webinar"
+        "description": "Join industry experts as they share secrets to succeeding in interviews.",
+        "url": "#"
       },
       {
-        "id": 2,
+        "id": "web2",
+        "type": "Webinar",
         "title": "Networking for Career Growth",
-        "date": "2025-10-20",
-        "url": "https://example.com/networking-webinar"
+        "description": "A live session on how to effectively network both online and in person.",
+        "url": "#"
+      }
+    ],
+    "templates": [
+      {
+        "id": "temp1",
+        "type": "Template",
+        "title": "Modern Resume Template",
+        "description": "A clean, professional resume template for tech and business roles. (DOCX)",
+        "url": "#"
       },
       {
-        "id": 3,
-        "title": "Building Your Personal Brand",
-        "date": "2025-12-01",
-        "url": "https://example.com/personal-brand-webinar"
+        "id": "temp2",
+        "type": "Template",
+        "title": "Creative Portfolio Resume",
+        "description": "A visually appealing resume template for designers and artists. (PSD)",
+        "url": "#"
       }
     ]
   },

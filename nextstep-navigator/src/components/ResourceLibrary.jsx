@@ -1,73 +1,117 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import data from "../data/careerData.json";
 import './ResourceLibrary.css';
+import { FaSearch, FaFileAlt, FaBookOpen, FaChalkboardTeacher, FaFileDownload } from 'react-icons/fa';
+
+const resourceTypes = ["All", "Article", "E-book", "Webinar", "Template"];
+
+const getIconForType = (type) => {
+  switch (type) {
+    case "Article":
+      return <FaFileAlt className="resource-icon" />;
+    case "E-book":
+      return <FaBookOpen className="resource-icon" />;
+    case "Webinar":
+      return <FaChalkboardTeacher className="resource-icon" />;
+    case "Template":
+      return <FaFileDownload className="resource-icon" />;
+    default:
+      return null;
+  }
+};
 
 export default function ResourceLibrary() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const allResources = useMemo(() => {
+    return [
+      ...data.resourceLibrary.articles,
+      ...data.resourceLibrary.ebooks,
+      ...data.resourceLibrary.webinars,
+      ...(data.resourceLibrary.templates || []),
+    ];
+  }, []);
+
+  const filteredResources = useMemo(() => {
+    return allResources.filter(resource => {
+      const matchesFilter = activeFilter === "All" || resource.type === activeFilter;
+      const matchesSearch = searchTerm === "" || resource.title.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesFilter && matchesSearch;
+    });
+  }, [allResources, activeFilter, searchTerm]);
+
   return (
-    <section className="container py-5">
-      <h1 className="text-center mb-5 display-4 fw-bold">Resource Library 📚</h1>
-      <div className="row g-4 justify-content-center">
+    <section className="resource-library-section container py-5">
+      <div className="text-center mb-5">
+        <h1 className="display-4 fw-bold text-primary">Resource Library 📚</h1>
+        <p className="lead text-muted">Your one-stop hub for career-enhancing articles, e-books, and tools.</p>
+      </div>
 
-        
-        <div className="col-lg-4 col-md-6">
-          <div className="card h-100 shadow-lg border-0 library-card">
-            <div className="card-body">
-              <h2 className="card-title text-center mb-4 text-primary fw-bold">
-                <i className="bi bi-journal-text me-2"></i>Articles
-              </h2>
-              <ul className="list-group list-group-flush">
-                {data.resourceLibrary.articles.map((article) => (
-                  <li key={article.id} className="list-group-item">
-                    <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
-                      {article.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+      {/* Controls */}
+      <div className="controls-wrapper mb-5 p-4 rounded-4 shadow-sm">
+        <div className="row g-3 align-items-center">
+          <div className="col-lg-5 col-md-12">
+            <div className="input-group">
+              <span className="input-group-text"><FaSearch /></span>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search resources..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="col-lg-7 col-md-12">
+            <div className="filter-buttons d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
+              {resourceTypes.map(type => (
+                <button
+                  key={type}
+                  className={`btn btn-sm rounded-pill ${activeFilter === type ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => setActiveFilter(type)}
+                >
+                  {type}s
+                </button>
+              ))}
             </div>
           </div>
         </div>
+      </div>
 
-        
-        <div className="col-lg-4 col-md-6">
-          <div className="card h-100 shadow-lg border-0 library-card">
-            <div className="card-body">
-              <h2 className="card-title text-center mb-4 text-primary fw-bold">
-                <i className="bi bi-book me-2"></i>E-books
-              </h2>
-              <ul className="list-group list-group-flush">
-                {data.resourceLibrary.ebooks.map((ebook) => (
-                  <li key={ebook.id} className="list-group-item">
-                    <a href={ebook.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
-                      {ebook.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+      {/* Resource Grid */}
+      <div className="row g-4">
+        {filteredResources.length > 0 ? (
+          filteredResources.map((resource) => (
+            <div key={resource.id} className="col-lg-4 col-md-6">
+              <div className="resource-card card h-100 shadow-sm border-0">
+                <div className="card-body d-flex flex-column">
+                  <div className="d-flex align-items-start mb-3">
+                    {getIconForType(resource.type)}
+                    <div className="flex-grow-1">
+                      <h5 className="card-title fw-bold mb-1">{resource.title}</h5>
+                      <span className="badge bg-primary-subtle text-primary-emphasis rounded-pill">{resource.type}</span>
+                    </div>
+                  </div>
+                  <p className="card-text text-muted small flex-grow-1">{resource.description}</p>
+                  <a
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-primary btn-sm mt-auto stretched-link"
+                  >
+                    {resource.type === 'Webinar' ? 'Watch Now' : 'Access Resource'}
+                  </a>
+                </div>
+              </div>
             </div>
+          ))
+        ) : (
+          <div className="col-12 text-center py-5">
+            <h4 className="text-muted">No resources found.</h4>
+            <p className="text-muted">Try adjusting your search or filter.</p>
           </div>
-        </div>
-
-        
-        <div className="col-lg-4 col-md-12">
-          <div className="card h-100 shadow-lg border-0 library-card">
-            <div className="card-body">
-              <h2 className="card-title text-center mb-4 text-primary fw-bold">
-                <i className="bi bi-camera-video me-2"></i>Webinars
-              </h2>
-              <ul className="list-group list-group-flush">
-                {data.resourceLibrary.webinars.map((webinar) => (
-                  <li key={webinar.id} className="list-group-item d-flex justify-content-between align-items-center">
-                    <span>{webinar.title}</span>
-                    <a href={webinar.url} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-primary rounded-pill">
-                      Join <span className="d-none d-md-inline">Webinar</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

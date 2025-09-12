@@ -1,61 +1,60 @@
-
-body {
+.resource-library-section {
   background-color: #f8f9fa;
 }
 
-
-.library-card {
-  border-radius: 1.25rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.controls-wrapper {
+  background-color: #ffffff;
 }
 
-
-.library-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
-}
-
-
-.list-group-item {
-  border: none;
-  padding: 0.75rem 0;
-  background-color: transparent;
-  transition: background-color 0.2s ease;
-}
-
-
-.list-group-item:hover {
-  background-color: #e9ecef;
-  border-radius: 0.5rem;
-}
-
-
-.list-group-item a {
-  color: #343a40;
+.filter-buttons .btn {
   font-weight: 500;
-  transition: color 0.2s ease;
+  padding: 0.4rem 1rem;
 }
 
+.resource-card {
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+}
 
-.list-group-item a:hover {
+.resource-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.resource-icon {
+  font-size: 1.75rem;
   color: #0d6efd;
-  
+  margin-right: 1rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e3f2fd;
+  border-radius: 0.75rem;
 }
 
-
-.btn-outline-primary {
-  color: #0d6efd;
-  border-color: #0d6efd;
+.resource-card .card-title {
+  color: #212529;
+  line-height: 1.3;
 }
 
-.btn-outline-primary:hover,
-.btn-outline-primary:focus {
-  color: #fff !important;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+.resource-card .stretched-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 1rem;
 }
 
-
-.card-title i {
-  color: #0d6efd;
+.resource-card .btn {
+  z-index: 2;
+  position: relative;
 }
