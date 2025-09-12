@@ -1,58 +1,48 @@
-body {
-  background-color: #f8f9fa;
-}
-
+/* General container styling */
 .admission-card {
   border-radius: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-left: 6px solid #0d6efd;
-  background: linear-gradient(120deg, #f6f9fc 80%, #e9ecef 100%);
-  box-shadow: 0 0.5rem 1.5rem rgba(44, 62, 80, 0.07);
+  background-color: #ffffff;
 }
 
+/* Card hover effect */
 .admission-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 1rem 2rem rgba(13, 110, 253, 0.13);
-  border-left: 6px solid #6610f2;
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
 
-
-.card-body {
-  padding: 2rem;
+/* Icon styling */
+.admission-icon {
+  font-size: 2.5rem;
+  color: #0d6efd; /* Bootstrap primary */
+  text-align: center;
 }
 
-
+/* Card text and title */
 .card-title {
-  color: #0d6efd;
+  font-size: 1.25rem;
+  color: #212529;
 }
-
 
 .card-text {
-  color: #495057; 
+  color: #6c757d;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
-.admission-icon {
-  font-size: 2.5rem;
-  color: #6f42c1;
-  background: #e9ecef;
-  border-radius: 1rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(111,66,193,0.08);
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .admission-card {
+    margin-bottom: 1.5rem;
+  }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@media (max-width: 576px) {
+  .card-title {
+    font-size: 1.1rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .admission-icon {
+    font-size: 2rem;
   }
 }

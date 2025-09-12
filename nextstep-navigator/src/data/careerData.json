@@ -955,32 +955,73 @@
     "audiences": ["graduate", "professional"]   }
 ],
 
-  "admissionAndCoaching": {
-    "guidanceTopics": [
-      {
-        "id": 1,
-        "title": "Stream Selection",
-        "content": "Guidance on choosing the right subjects and streams after 10th and 12th grade.",
-        "icon": "fa-solid fa-book"
-      },
-      {
-        "id": 2,
-        "title": "Study Abroad",
-        "content": "Comprehensive support for applications to universities abroad, including SOP and LOR writing.",
-        "icon": "fa-solid fa-plane-departure"
-      },
-      {
-        "id": 3,
-        "title": "Interview Preparation",
-        "content": "Mock interviews and expert tips to help you succeed in college and job interviews.",
-        "icon": "fa-solid fa-user-tie"
-      },
-      {
-        "id": 4,
-        "title": "Resume Building",
-        "content": "Craft a professional resume that stands out to recruiters and admission committees.",
-        "icon": "fa-solid fa-file-alt"
-      }
-    ]
-  }
+  
+"admissionAndCoaching": {
+  "guidanceTopics": [
+    {
+      "id": 1,
+      "title": "Stream Selection",
+      "content": "Guidance on choosing the right subjects and streams after 10th and 12th grade.",
+      "icon": "fa-solid fa-book",
+      "userType": "student"
+    },
+    {
+      "id": 2,
+      "title": "Scholarships & Financial Aid",
+      "content": "Find scholarships, grants, and funding opportunities to support your education.",
+      "icon": "fa-solid fa-hand-holding-usd",
+      "userType": "student"
+    },
+    {
+      "id": 3,
+      "title": "Study Abroad Support",
+      "content": "End-to-end assistance for applications, visas, SOP, and LOR writing.",
+      "icon": "fa-solid fa-plane-departure",
+      "userType": "student"
+    },
+    {
+      "id": 4,
+      "title": "Internship Placement",
+      "content": "Find and apply for internships that build your skills and resume.",
+      "icon": "fa-solid fa-briefcase",
+      "userType": "graduate"
+    },
+    {
+      "id": 5,
+      "title": "Interview Preparation",
+      "content": "Mock interviews and expert tips for cracking job interviews.",
+      "icon": "fa-solid fa-user-tie",
+      "userType": "graduate"
+    },
+    {
+      "id": 6,
+      "title": "Career Counseling",
+      "content": "One-on-one sessions with experts to map your ideal career path.",
+      "icon": "fa-solid fa-compass",
+      "userType": "graduate"
+    },
+    {
+      "id": 7,
+      "title": "Resume & LinkedIn Optimization",
+      "content": "Polish your resume and online profile to attract recruiters.",
+      "icon": "fa-solid fa-file-alt",
+      "userType": "professional"
+    },
+    {
+      "id": 8,
+      "title": "Mentorship Programs",
+      "content": "Connect with experienced professionals for career guidance.",
+      "icon": "fa-solid fa-user-graduate",
+      "userType": "professional"
+    },
+    {
+      "id": 9,
+      "title": "Leadership & Skill Development",
+      "content": "Workshops on leadership, communication, and workplace skills.",
+      "icon": "fa-solid fa-chalkboard-teacher",
+      "userType": "professional"
+    }
+  ]
+}
+
 }
