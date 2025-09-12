@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./staticFiles/HomePage.css";
@@ -19,7 +20,8 @@ function formatNumber(n) {
   return n.toLocaleString();
 }
 
-function LandingPage({ onNavigate }) {
+function LandingPage({ onLogin }) {
+  const navigate = useNavigate();
   const backgroundParticles = useMemo(() => {
     return Array.from({ length: 30 }).map((_, i) => ({
       id: i,
@@ -32,43 +34,40 @@ function LandingPage({ onNavigate }) {
     }));
   }, []);
 
-const handleNavClick = (e, page) => {
-  e.preventDefault();
-  console.log("Navigating to:", page);
-  onNavigate(page);
-  window.scrollTo(0, 0);
-};
-
+  const handleNavClick = (e, page) => {
+    e.preventDefault();
+    if (onLogin) onLogin(); // ensure user is "logged in"
+    navigate(`/${page}`); // navigate to page using React Router
+    window.scrollTo(0, 0);
+  };
 
   const { displayCount, liveViewers } = useSimulatedVisitors();
-
-  // ✅ Always start from 0 when page loads
   const [animatedCount, setAnimatedCount] = useState(0);
 
   useEffect(() => {
     let frame;
     let start;
-    const from = 0; // always start from zero
+    const from = 0;
     const to = displayCount;
-    const duration = 1200; // ms for full count-up animation
+    const duration = 1200;
 
     const animate = (timestamp) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      const eased = 1 - Math.pow(1 - progress, 3);
       setAnimatedCount(Math.floor(from + (to - from) * eased));
       if (progress < 1) frame = requestAnimationFrame(animate);
     };
 
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [displayCount]); // re-run if displayCount changes
+  }, [displayCount]);
 
   const features = [
-    { icon: <FaQuestionCircle />, title: "Interest-Based Quiz", desc: "Answer a few simple questions to get personalized career recommendations that match your passions.", page: "quiz" },
-    { icon: <FaBriefcase />, title: "Dynamic Career Bank", desc: "Explore hundreds of detailed career profiles with salary insights, required skills, and more.", page: "careerBank" },
-    { icon: <FaBook />, title: "Resource Library", desc: "Access a curated collection of articles, e-books, and templates to help you on your journey.", page: "resources" },
-    { icon: <FaStar />, title: "Success Stories", desc: "Get inspired by the real-life journeys of professionals who found their path with our guidance.", page: "successStories" },
+    { icon: <FaQuestionCircle />, title: "Interest-Based Quiz", desc: "Answer a few simple questions to get personalized career recommendations.", page: "quiz" },
+    { icon: <FaBriefcase />, title: "Dynamic Career Bank", desc: "Explore hundreds of detailed career profiles with salary insights and more.", page: "careerBank" },
+    { icon: <FaBook />, title: "Resource Library", desc: "Access curated articles, e-books, and templates to guide you.", page: "resources" },
+    { icon: <FaStar />, title: "Success Stories", desc: "Get inspired by real-life journeys of professionals.", page: "successStories" },
   ];
 
   return (
@@ -96,10 +95,10 @@ const handleNavClick = (e, page) => {
                   Your Guide to the Future
                 </h2>
                 <p className="lead text-muted mb-4 landing-description">
-                  Discover your path forward with personalized guidance and actionable insights to reach your career and educational goals.
+                  Discover your path forward with personalized guidance and actionable insights.
                 </p>
 
-                {/* ✅ Animated Counter (Counts from 0 each page load) */}
+                {/* Animated Counter */}
                 <div className="visitor-counter-card mb-3">
                   <div className="visitor-stats">
                     <div className="small text-muted">Total Visits</div>
@@ -114,10 +113,16 @@ const handleNavClick = (e, page) => {
 
                 {/* Buttons */}
                 <div className="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
-                  <button className="btn btn-primary btn-lg px-4 py-2 rounded-pill hover-lift" onClick={(e) => handleNavClick(e, 'quiz')} >
+                  <button
+                    className="btn btn-primary btn-lg px-4 py-2 rounded-pill hover-lift"
+                    onClick={(e) => handleNavClick(e, "quiz")}
+                  >
                     Take the Quiz
                   </button>
-                  <button className="btn btn-outline-primary btn-lg px-4 py-2 rounded-pill shadow-sm hover-lift" onClick={(e) => handleNavClick(e, 'careerBank')}>
+                  <button
+                    className="btn btn-outline-primary btn-lg px-4 py-2 rounded-pill shadow-sm hover-lift"
+                    onClick={(e) => handleNavClick(e, "careerBank")}
+                  >
                     Explore Careers
                   </button>
                 </div>
@@ -159,7 +164,10 @@ const handleNavClick = (e, page) => {
                   <h5 className="fw-bold">{f.title}</h5>
                   <p className="text-muted">{f.desc}</p>
                   <div className="mt-auto">
-                    <button className="btn btn-sm btn-outline-primary rounded-pill" onClick={() => onNavigate?.(f.page)}>
+                    <button
+                      className="btn btn-sm btn-outline-primary rounded-pill"
+                      onClick={(e) => handleNavClick(e, f.page)}
+                    >
                       Explore
                     </button>
                   </div>

@@ -14,7 +14,7 @@ const Footer = ({ onNavigate }) => {
   return (<>
       <hr style={{marginBottom: '20px'}}/>
     <footer className="footer-section text-dark pt-4 pb-3">
-      <div className="container-fluid px-lg-5" style={{backgroundColor: '#fff'}}>
+      <div className="container-fluid px-lg-5 px-4" style={{backgroundColor: '#fff'}}>
         <div className="row">
           {/* Brand and About */}
           <div className="col-lg-4 col-md-6 mb-4">

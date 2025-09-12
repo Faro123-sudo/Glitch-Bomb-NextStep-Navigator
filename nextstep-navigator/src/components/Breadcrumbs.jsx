@@ -1,4 +1,3 @@
-// Breadcrumbs.jsx
 import React from "react";
 import "./Breadcrumbs.css";
 
@@ -33,26 +32,33 @@ export default function Breadcrumbs({
   activeSection = "home",
   userType = "",
   extraCrumbs = [],
+  onNavigate, // ✅ allow navigation from breadcrumbs
 }) {
-  // Base crumbs start with Home
-  const crumbs = [{ title: "Home", key: "home" }];
+  const crumbs = [{ title: "Home", key: "home", page: "home" }];
 
-  // UserType breadcrumb (if available)
   if (userType) {
-    crumbs.push({ title: userAreaLabel[userType] || "Area", key: userType });
+    crumbs.push({
+      title: userAreaLabel[userType] || userType,
+      key: "userType",
+      page: "home", // clicking userType takes user to dashboard/home
+    });
   }
 
-  // Active section (skip if it's home + no userType)
-  if (activeSection === "home" && userType) {
-    crumbs.push({ title: "Dashboard", key: "dashboard" });
-  } else if (activeSection && activeSection !== "home") {
-    const title = pageTitles[activeSection] || activeSection.replace(/([A-Z])/g, " $1");
-    crumbs.push({ title, key: activeSection });
+  if (activeSection !== "home") {
+    const title =
+      pageTitles[activeSection] ||
+      activeSection.replace(/([A-Z])/g, " $1");
+    crumbs.push({ title, key: activeSection, page: activeSection });
   }
 
-  // Append extra crumbs dynamically (like filters or sub-pages)
   if (extraCrumbs.length > 0) {
-    crumbs.push(...extraCrumbs.map((c, i) => ({ title: c, key: `extra-${i}` })));
+    crumbs.push(
+      ...extraCrumbs.map((c, i) => ({
+        title: c,
+        key: `extra-${i}`,
+        page: null, // not clickable, usually filter or sub-step
+      }))
+    );
   }
 
   return (
@@ -66,12 +72,15 @@ export default function Breadcrumbs({
               className={`breadcrumb-item ${isLast ? "active" : ""}`}
               aria-current={isLast ? "page" : undefined}
             >
-              {isLast ? (
+              {isLast || !c.page ? (
                 c.title
               ) : (
-                <a href="#" onClick={(e) => e.preventDefault()}>
+                <button
+                  className="btn btn-link p-0 breadcrumb-link"
+                  onClick={() => onNavigate?.(c.page)}
+                >
                   {c.title}
-                </a>
+                </button>
               )}
             </li>
           );

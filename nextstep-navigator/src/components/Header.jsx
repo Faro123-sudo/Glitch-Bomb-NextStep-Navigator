@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from "react";
-import * as Icons from "lucide-react"; 
+import * as Icons from "lucide-react";
 import { Menu, X, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom"; // ✅ Add this
 import Logo from "../assets/logo.webp";
 import menuData from "../data/menuData.json";
 import "./Header.css";
 
-const Header = ({ onNavigate, userType = "guest" }) => {
+const Header = ({ userType = "guest" }) => {
+  const navigate = useNavigate();
+  const location = useLocation(); // ✅ detect current page
   const [isOpen, setIsOpen] = useState(false);
   const [activePage, setActivePage] = useState("home");
   const [username, setUsername] = useState("");
 
   useEffect(() => {
     const storedUsername = sessionStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
+    if (storedUsername) setUsername(storedUsername);
   }, []);
+
+  useEffect(() => {
+    // Automatically update activePage when route changes
+    const path = location.pathname.replace("/", "") || "home";
+    setActivePage(path);
+  }, [location.pathname]);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const handleNavigation = (page) => {
-    setActivePage(page);
-    onNavigate(page);
+    navigate(`/${page === "home" ? "" : page}`);
     setIsOpen(false);
     window.scrollTo(0, 0);
   };
@@ -33,9 +39,9 @@ const Header = ({ onNavigate, userType = "guest" }) => {
     open: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 300, damping: 40, staggerChildren: 0.05, delayChildren: 0.1 }
+      transition: { type: "spring", stiffness: 300, damping: 40, staggerChildren: 0.05, delayChildren: 0.1 },
     },
-    closed: { opacity: 0, y: -20, transition: { duration: 0.25 } }
+    closed: { opacity: 0, y: -20, transition: { duration: 0.25 } },
   };
 
   const itemVariants = { open: { opacity: 1, y: 0 }, closed: { opacity: 0, y: -10 } };
@@ -60,12 +66,12 @@ const Header = ({ onNavigate, userType = "guest" }) => {
             <div className="d-none d-lg-flex align-items-center ms-auto">
               <ul className="navbar-nav mb-2 mb-lg-0 d-flex flex-row align-items-center">
                 {navLinks.map((link) => {
-                  const IconComponent = Icons[link.icon] || Icons.Circle; // fallback if icon not found
+                  const IconComponent = Icons[link.icon] || Icons.Circle;
                   return (
                     <li className="nav-item mx-lg-1 position-relative" key={link.page}>
                       <button
                         onClick={() => handleNavigation(link.page)}
-                        className={`btn nav-link rounded-pill text-dark px-3 py-2 d-flex align-items-center gap-2 ${
+                        className={`btn nav-link rounded-pill px-3 py-2 d-flex align-items-center gap-2 ${
                           activePage === link.page ? "fw-bold text-primary" : "text-dark"
                         }`}
                       >
