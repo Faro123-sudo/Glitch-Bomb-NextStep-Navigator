@@ -1,147 +1,93 @@
+/* CareerBank.css */
+
 .career-bank-section {
-  min-height: 100vh;
+  background-color: #f8f9fa;
 }
 
 .controls-container {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 5;
-}
-
-.search-box input:focus {
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
 }
 
 .career-card {
-  transition: all 0.3s ease;
+  background-color: #ffffff;
+  border: none;
   border-radius: 1rem;
-  position: relative;
-  z-index: 1;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .career-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
 
-.career-card.expanded {
-  transform: translateY(-5px);
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+.career-card .card-header {
+  background-color: transparent;
+  border-bottom: 1px solid #e9ecef;
+  padding: 1.5rem;
 }
 
-.career-details .detail-item {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #f0f0f0;
+.career-card .card-title {
+  font-weight: 700;
+  color: #343a40;
 }
 
-.career-details .detail-item:last-child {
+.career-card .card-body {
+  padding: 1.5rem;
+}
+
+.career-card .card-footer {
+  background-color: transparent;
+  border-top: 1px solid #e9ecef;
+  padding: 1rem 1.5rem;
+}
+
+.skills-container .badge {
+  background-color: #e9ecef;
+  color: #495057;
+  font-weight: 500;
+  padding: 0.5em 0.75em;
+}
+
+.empty-state-animation {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 1rem;
+}
+
+.modal-header {
   border-bottom: none;
+  padding: 2rem;
 }
 
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
+.modal-title {
+  font-weight: 700;
 }
 
-.toggle-icon {
-  transition: transform 0.3s ease;
+.modal-body {
+  padding: 2rem;
 }
 
-.toggle-icon.expanded {
-  transform: rotate(180deg);
+.modal-footer {
+  border-top: none;
+  padding: 1.5rem 2rem;
 }
 
-.empty-state {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
+.modal-backdrop.show {
+  opacity: 0.5;
 }
 
-
-.industry-dropdown {
+/* Salary Chart */
+.salary-chart-container {
   position: relative;
-  z-index: 1000;
-}
-
-.industry-dropdown .dropdown-menu {
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  max-height: 300px;
-  overflow-y: auto;
-  z-index: 1001;
-  position: absolute;
-  width: 100%;
-}
-
-.industry-dropdown .dropdown-item.active {
-  background-color: #0d6efd;
-}
-
-
-.active-filters .badge {
-  padding: 0.5rem 0.75rem;
-  display: inline-flex;
-  align-items: center;
-}
-
-.active-filters .btn-close {
-  font-size: 0.7rem;
-  padding: 0.25rem;
-}
-
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.col-12.col-md-6.col-lg-4 {
-  animation: fadeIn 0.5s ease forwards;
-}
-
-
-@media (max-width: 992px) {
-  .controls-container .row > div {
-    margin-bottom: 1rem;
-  }
-  
-  .controls-container .row > div:last-child {
-    margin-bottom: 0;
-  }
-}
-
-
-.dropdown-menu::-webkit-scrollbar {
-  width: 8px;
-}
-
-.dropdown-menu::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.dropdown-menu::-webkit-scrollbar-thumb {
-  background: #c5c5c5;
-  border-radius: 10px;
-}
-
-.dropdown-menu::-webkit-scrollbar-thumb:hover {
-  background: #a5a5a5;
-}
-
-
-.dropdown.show .dropdown-menu {
-  display: block;
-  z-index: 1002;
-}
-
-
-.btn-close-white {
-  filter: invert(1) grayscale(100%) brightness(200%);
+  height: 300px;
 }
