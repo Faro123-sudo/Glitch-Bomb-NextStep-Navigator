@@ -89,6 +89,27 @@ body {
   font-weight: 500;
 }
 
+.recommendation-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease-in-out;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.recommendation-card.best-match {
+  border-left: 4px solid #198754; /* success color */
+}
+
+.recommendation-card h6 {
+  color: #0d6efd;
+}
 
 /* Desktop */
 @media (max-width: 992px) {

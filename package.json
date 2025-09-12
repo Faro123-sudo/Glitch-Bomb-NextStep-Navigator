@@ -2,6 +2,8 @@
   "dependencies": {
     "chart.js": "^4.5.0",
     "framer-motion": "^11.0.8",
-    "geo-tz": "^7.1.0"
+    "geo-tz": "^7.1.0",
+    "react-bootstrap-icons": "^1.11.4",
+    "react-circular-progressbar": "^2.1.0"
   }
 }
