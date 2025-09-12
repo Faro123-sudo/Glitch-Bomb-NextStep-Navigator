@@ -1,31 +1,32 @@
 .footer-section {
-  background-color: #212529; /* A dark background */
   width: 100%;
+  color: #212529; /* Dark text for contrast */
 }
 
 .footer-heading {
   font-weight: 600;
-  color: #ffffff;
+  color: #212529; /* Darker heading for contrast */
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 1rem;
 }
 
 .footer-link {
-  color: #adb5bd; /* Muted text color for links */
+  color: #495057; /* Slightly darker muted text color for links */
   text-decoration: none;
   transition: color 0.2s ease-in-out;
   display: inline-block;
   margin-bottom: 0.5rem;
 }
 
+
 .footer-link:hover {
-  color: #ffffff; /* Brighter on hover */
+  color: #000000; /* Darker on hover */
   text-decoration: underline;
 }
 
 .social-icons .social-icon {
-  color: #adb5bd;
+  color: #495057;
   font-size: 1.5rem;
   transition: color 0.2s ease-in-out, transform 0.2s ease;
 }
@@ -35,6 +36,6 @@
   transform: scale(1.2);
 }
 
-.border-secondary {
-  border-color: #495057 !important; /* Darker border for the top separator */
+.border-light {
+  border-color: #dee2e6 !important; /* Lighter border for the top separator */
 }

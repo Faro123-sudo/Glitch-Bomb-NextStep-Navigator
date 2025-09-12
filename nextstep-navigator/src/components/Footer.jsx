@@ -12,8 +12,8 @@ const Footer = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="footer-section bg-dark text-white pt-4 pb-3">
-      <div className="container-fluid px-lg-5">
+    <footer className="footer-section text-dark pt-4 pb-3">
+      <div className="container-fluid px-lg-5" style={{backgroundColor: '#fff'}}>
         <div className="row">
           {/* Brand and About */}
           <div className="col-lg-4 col-md-6 mb-4">
@@ -58,7 +58,7 @@ const Footer = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="row mt-3 align-items-center border-top border-secondary pt-3">
+        <div className="row mt-3 align-items-center border-top border-light pt-3">
           <div className="col-lg-6 col-md-12 mb-3 mb-lg-0 d-flex justify-content-center justify-content-lg-start">
             <GeoClock compact={true} />
           </div>
