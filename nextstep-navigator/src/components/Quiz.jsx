@@ -77,28 +77,27 @@ export default function Quiz() {
   return (
     <section className="container py-5">
       <h1 className="text-center mb-4 display-4 fw-bold text-primary">Interest-Based Career Quiz 🎯</h1>
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
-          
-          <div className="mb-4">
-            <label htmlFor="interest-select" className="form-label fw-bold">
-              Select your area of interest:
-            </label>
-            <select
-              id="interest-select"
-              className="form-select"
-              value={selectedInterest}
-              onChange={handleInterestChange}
-            >
-              <option value="">-- Choose an interest --</option>
-              {interests.map((interest, idx) => (
-                <option key={idx} value={interest}>
-                  {interest}
-                </option>
-              ))}
-            </select>
-          </div>
-
+<div className="row justify-content-center">
+  <div className="col-lg-8 col-md-10 col-sm-12">
+    
+    <div className="mb-4">
+      <label htmlFor="interest-select" className="form-label fw-bold">
+        Select your area of interest:
+      </label>
+      <select
+        id="interest-select"
+        className="form-select"
+        value={selectedInterest}
+        onChange={handleInterestChange}
+      >
+        <option value="">-- Choose an interest --</option>
+        {interests.map((interest, idx) => (
+          <option key={idx} value={interest}>
+            {interest}
+          </option>
+        ))}
+      </select>
+    </div>
           
           {selectedInterest && (
             <form onSubmit={handleSubmit}>

@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../assets/logo.webp";
 
+
 const Header = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activePage, setActivePage] = useState("home");
@@ -51,7 +52,6 @@ const Header = ({ onNavigate }) => {
     <header className="bg-white text-dark shadow-sm sticky-top z-3">
       <nav className="navbar navbar-expand-lg navbar-light bg-white container position-relative">
         <div className="d-flex align-items-center w-100">
-          {/* Logo and Brand */}
           <div className="d-flex align-items-center me-auto">
             <img
               src={Logo}
@@ -60,6 +60,13 @@ const Header = ({ onNavigate }) => {
               style={{ height: "60px", cursor: "pointer" }}
               onClick={() => handleNavigation("home")}
             />
+             {/* <img
+              src="../assets/nextstep.webp"
+              alt="Logo"
+              className="ms-2 d-lg-none" 
+              style={{ height: "50px", cursor: "pointer" }}
+              onClick={() => handleNavigation("home")}
+            /> */}
         </div>
 
           {/* Desktop Navigation */}
