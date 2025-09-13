@@ -61,7 +61,7 @@ src/
 ├── components/
 │   ├── Header.jsx         # Responsive navbar
 │   ├── Breadcrumbs.jsx    # Breadcrumb navigation
-│   └── Footer.jsx         # Footer component (if present)
+│   └── Footer.jsx         # Footer component 
 │
 ├── pages/
 │   └── AboutUs.jsx        # About Us page
