@@ -1,4 +1,3 @@
-// Quiz.jsx
 import React, { useState, useMemo, useEffect } from "react";
 import defaultData from "../data/careerData.json";
 import "./Quiz.css";
@@ -123,21 +122,21 @@ export default function Quiz({ userType = "student" }) {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        data-aos="fade-down"
       >
         <h1 className="text-center mb-4 display-4 fw-bold text-primary">
           Your Career Discovery Quiz 🧭
         </h1>
-        <p className="text-center text-muted mb-5 fs-5">
+        <p className="text-center text-muted mb-5 fs-5" data-aos="fade-up" data-aos-delay="100">
           Answer a few questions based on your interests to unlock personalized
           career suggestions and start your journey.
         </p>
       </motion.div>
 
-      <div className="row justify-content-center">
+      <div className="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
         <div className="col-lg-7 col-md-8">
-          {/* Interest Selection */}
           {!selectedInterest && (
-            <div className="mb-4 text-center p-5 bg-light rounded-3">
+            <div className="mb-4 text-center p-5 bg-light rounded-3" data-aos="zoom-in">
               <label
                 htmlFor="interest-select"
                 className="form-label fw-bold fs-4 mb-3"
@@ -167,6 +166,7 @@ export default function Quiz({ userType = "student" }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                data-aos="fade-up"
               >
                 {filteredQuestions.map((q, index) => (
                   <motion.div
@@ -229,26 +229,26 @@ export default function Quiz({ userType = "student" }) {
             )}
           </AnimatePresence>
 
-          {/* --- RECOMMENDATION RESULTS --- */}
           <AnimatePresence>
             {showRecommendations && (
               <motion.div
                 className="mt-5"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                data-aos="fade-in"
               >
-                <h3 className="fw-bold text-success mb-4 text-center">
+                <h3 className="fw-bold text-success mb-4 text-center" data-aos="zoom-in">
                   Your Recommended Careers
                 </h3>
                 {recommendedCareers.length > 0 ? (
                   <div className="row g-4">
                     {bestMatches.length > 0 && (
                       <>
-                        <h5 className="text-primary fw-bold col-12">
+                        <h5 className="text-primary fw-bold col-12" data-aos="fade-right">
                           ⭐ Best Matches for You
                         </h5>
-                        {bestMatches.map((career) => (
-                          <div className="col-md-6" key={career.id}>
+                        {bestMatches.map((career, idx) => (
+                          <div className="col-md-6" key={career.id} data-aos="fade-up" data-aos-delay={idx * 100}>
                             <div className="recommendation-card best-match h-100">
                               <h6 className="fw-bold">{career.careerName}</h6>
                               <p className="text-muted small">
@@ -259,13 +259,13 @@ export default function Quiz({ userType = "student" }) {
                         ))}
                       </>
                     )}
-                    <h5 className="text-dark fw-bold col-12 mt-4">
+                    <h5 className="text-dark fw-bold col-12 mt-4" data-aos="fade-right">
                       Other Careers in {selectedInterest}
                     </h5>
                     {recommendedCareers
                       .filter((c) => !bestMatches.some((bm) => bm.id === c.id))
-                      .map((career) => (
-                        <div className="col-md-6" key={career.id}>
+                      .map((career, idx) => (
+                        <div className="col-md-6" key={career.id} data-aos="fade-up" data-aos-delay={idx * 100}>
                           <div className="recommendation-card h-100">
                             <h6 className="fw-bold">{career.careerName}</h6>
                             <p className="text-muted small">
@@ -281,8 +281,7 @@ export default function Quiz({ userType = "student" }) {
                   </p>
                 )}
 
-                {/* --- WHAT'S NEXT SECTION --- */}
-                <div className="text-center p-4 mt-5 bg-light rounded-3 whats-next-card">
+                <div className="text-center p-4 mt-5 bg-light rounded-3 whats-next-card" data-aos="zoom-in" data-aos-delay="300">
                   <h4 className="fw-bold mb-3">What's Next?</h4>
                   <p className="text-muted">
                     Your journey doesn't stop here. Use these results to
@@ -308,9 +307,8 @@ export default function Quiz({ userType = "student" }) {
           </AnimatePresence>
         </div>
 
-        {/* --- SIDEBAR --- */}
         <div className="col-lg-4 col-md-4 d-none d-md-block">
-          <div className="quiz-sidebar">
+          <div className="quiz-sidebar" data-aos="fade-left" data-aos-delay="400">
             {selectedInterest && !showRecommendations && (
               <div className="text-center mb-4">
                 <div style={{ width: 150, height: 150, margin: "auto" }}>

@@ -16,7 +16,6 @@ const Footer = ({ onNavigate }) => {
     <footer className="footer-section text-dark pt-4 pb-3">
       <div className="container-fluid px-lg-5 px-4" style={{backgroundColor: '#fff'}}>
         <div className="row">
-          {/* Brand and About */}
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="d-flex align-items-center mb-3">
               <img src={Logo} alt="NextStep Navigator Logo" style={{ height: '40px' }} />
@@ -25,7 +24,6 @@ const Footer = ({ onNavigate }) => {
             <p className="text-muted">Your guide to a successful and fulfilling career journey. Explore, learn, and grow with us.</p>
           </div>
 
-          {/* Quick Links */}
           <div className="col-lg-2 col-md-6 mb-4">
             <h5 className="footer-heading mb-3">Quick Links</h5>
             <ul className="list-unstyled">
@@ -36,7 +34,6 @@ const Footer = ({ onNavigate }) => {
             </ul>
           </div>
 
-          {/* Resources */}
           <div className="col-lg-3 col-md-6 mb-4">
             <h5 className="footer-heading mb-3">Resources</h5>
             <ul className="list-unstyled">
@@ -47,7 +44,6 @@ const Footer = ({ onNavigate }) => {
             </ul>
           </div>
 
-          {/* Social Media */}
           <div className="col-lg-3 col-md-6 mb-4">
             <h5 className="footer-heading mb-3">Follow Us</h5>
             <div className="social-icons">

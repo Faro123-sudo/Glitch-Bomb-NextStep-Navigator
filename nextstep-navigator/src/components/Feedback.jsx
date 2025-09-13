@@ -5,7 +5,6 @@ import "./Feedback.css";
 export default function Feedback() {
   const [showFeedback, setShowFeedback] = useState(false);
 
-
   if (location.pathname === "/landing"
   ) {
     return null;

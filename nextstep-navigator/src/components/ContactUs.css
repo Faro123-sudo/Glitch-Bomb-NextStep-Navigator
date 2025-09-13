@@ -34,7 +34,6 @@ textarea {
 .list-unstyled li {
     font-size: 1rem;
 }
-/* Floating Feedback Button */
 .feedback-btn {
   position: fixed;
   bottom: 20px;
@@ -47,7 +46,6 @@ textarea {
   z-index: 1050;
 }
 
-/* Modal Overlay */
 .feedback-modal {
   position: fixed;
   top: 0;
@@ -58,7 +56,6 @@ textarea {
   z-index: 2000;
 }
 
-/* Feedback Card */
 .feedback-card {
   max-width: 500px;
   width: 90%;

@@ -19,7 +19,6 @@ function DisplayPages() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // store userType in sessionStorage
   useEffect(() => {
     if (userType) sessionStorage.setItem("userType", userType);
     else sessionStorage.removeItem("userType");
@@ -29,7 +28,6 @@ function DisplayPages() {
     navigate(page === "home" ? "/" : `/${page}`);
   };
 
-  // derive activeSection from current URL path
   const activeSection = location.pathname === "/" ? "home" : location.pathname.replace("/", "");
 
   return (

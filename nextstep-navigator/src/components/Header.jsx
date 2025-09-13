@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import * as Icons from "lucide-react";
 import { Menu, X, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate, useLocation } from "react-router-dom"; // ✅ Add this
+import { useNavigate, useLocation } from "react-router-dom";
 import Logo from "../assets/logo.webp";
 import menuData from "../data/menuData.json";
 import "./Header.css";
 
 const Header = ({ userType = "guest" }) => {
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ detect current page
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [activePage, setActivePage] = useState("home");
   const [username, setUsername] = useState("");
@@ -20,7 +20,6 @@ const Header = ({ userType = "guest" }) => {
   }, []);
 
   useEffect(() => {
-    // Automatically update activePage when route changes
     const path = location.pathname.replace("/", "") || "home";
     setActivePage(path);
   }, [location.pathname]);
@@ -51,7 +50,6 @@ const Header = ({ userType = "guest" }) => {
       <div className="container floating-navbar-container">
         <nav className="navbar navbar-expand-lg navbar-light rounded-navbar">
           <div className="d-flex align-items-center w-100">
-            {/* Logo */}
             <div className="d-flex align-items-center me-auto">
               <img
                 src={Logo}
@@ -62,7 +60,6 @@ const Header = ({ userType = "guest" }) => {
               />
             </div>
 
-            {/* Desktop Navigation */}
 <div className="d-none d-lg-flex align-items-center flex-grow-1">
   <ul className="navbar-nav mb-2 mb-lg-0 d-flex flex-row align-items-center mx-auto">
     {navLinks.map((link) => {
@@ -93,7 +90,6 @@ const Header = ({ userType = "guest" }) => {
     })}
   </ul>
 
-  {/* Username Display */}
   {username && (
     <div className="d-flex align-items-center ps-3 border-start ms-2">
       <User size={20} className="text-primary me-2" />
@@ -103,13 +99,11 @@ const Header = ({ userType = "guest" }) => {
 </div>
 
 
-            {/* Mobile Menu Button */}
             <button className="navbar-toggler border-0 p-0 ms-3 d-lg-none" type="button" onClick={toggleMenu}>
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
 
-          {/* Mobile Navigation */}
           <AnimatePresence>
             {isOpen && (
               <motion.div

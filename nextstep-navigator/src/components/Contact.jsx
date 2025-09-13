@@ -84,7 +84,6 @@ export default function ContactUs() {
                   </div>
                 </div>
 
-                {/* Submit Button */}
                 <div className="row">
                   <div className="col-12">
                     <button
@@ -108,7 +107,6 @@ export default function ContactUs() {
 
       </div>
 
-      {/*Google Map Implemented */}
       <div className="mt-5" data-aos="fade-up">
         <iframe
           title="Google Map"

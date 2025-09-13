@@ -1,12 +1,3 @@
-.feedback-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1050;
-  width: 60px;
-  height: 60px;
-}
-
 .feedback-modal {
   position: fixed;
   top: 0;

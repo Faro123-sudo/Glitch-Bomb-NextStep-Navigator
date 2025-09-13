@@ -1,4 +1,3 @@
-// CareerBank.jsx
 import React, { useState, useEffect } from "react";
 import defaultData from "../data/careerData.json";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -29,9 +28,8 @@ export default function CareerBank({ userType = "" }) {
   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState(defaultData); // data used for rendering
   const [loadingData, setLoadingData] = useState(false);
-  const [showAll, setShowAll] = useState(false); // when userType is set, default to prioritized view
+  const [showAll, setShowAll] = useState(false);
 
-  // Try to load user-specific data file if userType set, otherwise fall back
   useEffect(() => {
     let cancelled = false;
     async function loadData() {
@@ -41,15 +39,13 @@ export default function CareerBank({ userType = "" }) {
       }
 
       setLoadingData(true);
-      const path = `/data/career_${userType}.json`; // e.g., career_student.json placed in public/data
+      const path = `/data/career_${userType}.json`;
       try {
         const res = await fetch(path);
         if (!res.ok) {
-          // user-specific file doesn't exist — fallback to defaultData
           setData(defaultData);
         } else {
           const json = await res.json();
-          // if the user-specific file has the same shape (careerBank array), use it
           if (!cancelled) setData(json);
         }
       } catch (err) {
@@ -66,17 +62,11 @@ export default function CareerBank({ userType = "" }) {
     };
   }, [userType]);
 
-  // Utility: determine industries from active data set
   const industries = [
     "All",
     ...new Set((data.careerBank || []).map((career) => career.industry || "Other")),
   ];
 
-  // Filtering + prioritization logic:
-  // - If showAll is true OR no userType, include all careers.
-  // - If userType is set and showAll is false:
-  //    * If career.audiences exists (array) and includes userType -> include & mark priority 0
-  //    * else mark priority 1 (still include but after prioritized items).
   const computePrioritizedList = () => {
     const list = (data.careerBank || []).map((career) => {
       const audiences = Array.isArray(career.audiences)
@@ -86,8 +76,6 @@ export default function CareerBank({ userType = "" }) {
       return { ...career, __priority: hasAudience ? 0 : 1 };
     });
 
-    // If not showing all and userType specified, keep both priority 0 and 1 (but we will sort by priority).
-    // If you would prefer to hide non-matching careers, change filter below to keep only __priority === 0.
     let filtered = list;
 
     // Apply search + industry filter first
@@ -103,16 +91,13 @@ export default function CareerBank({ userType = "" }) {
       return matchesSearch && matchesIndustry;
     });
 
-    // If userType is set and showAll is false, sort so matching audiences come first
     if (userType && !showAll) {
       filtered.sort((a, b) => {
         if (a.__priority !== b.__priority) return a.__priority - b.__priority;
-        // tie-breaker: keep original order or apply alphabet sort
         return a.careerName.localeCompare(b.careerName);
       });
     }
 
-    // Apply sortOption (salary/name)
     filtered = filtered.sort((a, b) => {
       if (sortOption === "salary-asc") {
         return (
@@ -302,7 +287,6 @@ export default function CareerBank({ userType = "" }) {
                         <span className="badge bg-primary-subtle text-primary me-1">
                           {career.industry}
                         </span>
-                        {/* Audience badge if present */}
                         {career.audiences && career.audiences.length > 0 && (
                           <span className="badge bg-info-subtle text-info ms-1">
                             {career.audiences.join(", ")}

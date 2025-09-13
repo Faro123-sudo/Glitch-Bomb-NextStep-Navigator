@@ -36,8 +36,8 @@ function LandingPage({ onLogin }) {
 
   const handleNavClick = (e, page) => {
     e.preventDefault();
-    if (onLogin) onLogin(); // ensure user is "logged in"
-    navigate(`/${page}`); // navigate to page using React Router
+    if (onLogin) onLogin();
+    navigate(`/${page}`);
     window.scrollTo(0, 0);
   };
 
@@ -72,7 +72,6 @@ function LandingPage({ onLogin }) {
 
   return (
     <>
-      {/* Background Floating Particles */}
       <div id="code-container">
         {backgroundParticles.map((p) => (
           <span key={p.id} className="code-particle" style={p.style}>
@@ -81,7 +80,6 @@ function LandingPage({ onLogin }) {
         ))}
       </div>
 
-      {/* Hero Section */}
       <div className="d-flex flex-column align-items-center justify-content-center landing-bg position-relative overflow-hidden">
         <div className="container position-relative z-2">
           <div className="row align-items-center hero-section">
@@ -98,7 +96,6 @@ function LandingPage({ onLogin }) {
                   Discover your path forward with personalized guidance and actionable insights.
                 </p>
 
-                {/* Animated Counter */}
                 <div className="visitor-counter-card mb-3">
                   <div className="visitor-stats">
                     <div className="small text-muted">Total Visits</div>
@@ -111,7 +108,6 @@ function LandingPage({ onLogin }) {
                   </div>
                 </div>
 
-                {/* Buttons */}
                 <div className="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
                   <button
                     className="btn btn-primary btn-lg px-4 py-2 rounded-pill hover-lift"
@@ -129,7 +125,6 @@ function LandingPage({ onLogin }) {
               </div>
             </div>
 
-            {/* Right Animation */}
             <div className="col-lg-6 order-lg-2 order-1 text-center d-none d-lg-block" data-aos="fade-left" data-aos-delay="500">
               <div className="hero-animation-container">
                 <Lottie animationData={animationData} loop className="hero-animation" />
@@ -139,12 +134,10 @@ function LandingPage({ onLogin }) {
         </div>
       </div>
 
-      {/* Mobile Animation */}
       <div className="text-center d-block d-lg-none my-4">
         <Lottie animationData={animationData} loop className="hero-animation" />
       </div>
 
-      {/* Features Section */}
       <section className="features-section py-5" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
           <div className="text-center mb-5">

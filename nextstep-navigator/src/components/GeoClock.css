@@ -67,7 +67,6 @@
   color: #ffffff;
 }
 
-/* Compact mode */
 .geoclock-wrapper.compact {
   min-width: auto;
   padding: 0.25rem 0.75rem;
@@ -80,10 +79,9 @@
   color: #2c3034;
 }
 .geoclock-wrapper.compact .clock-controls {
-  display: none; /* Hide controls in compact mode */
+  display: none;
 }
 
-/* Timezone Selector Modal */
 .timezone-selector-overlay {
   position: fixed;
   top: 0;

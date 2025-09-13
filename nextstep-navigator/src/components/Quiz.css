@@ -111,7 +111,6 @@ body {
   color: #0d6efd;
 }
 
-/* Desktop */
 @media (max-width: 992px) {
   h1 {
     font-size: 2rem;
@@ -131,7 +130,6 @@ body {
   }
 }
 
-/* Tablets / Mobile  */
 @media (max-width: 768px) {
   h1 {
     font-size: 0.9rem;
@@ -172,7 +170,6 @@ body {
   }
 }
 
-/* Small mobile (≤ 576px) */
 @media (max-width: 576px) {
   h1 {
     font-size: 1.5rem;

@@ -32,7 +32,7 @@ export default function Breadcrumbs({
   activeSection = "home",
   userType = "",
   extraCrumbs = [],
-  onNavigate, // ✅ allow navigation from breadcrumbs
+  onNavigate,
 }) {
   const crumbs = [{ title: "Home", key: "home", page: "home" }];
 
@@ -40,7 +40,7 @@ export default function Breadcrumbs({
     crumbs.push({
       title: userAreaLabel[userType] || userType,
       key: "userType",
-      page: "home", // clicking userType takes user to dashboard/home
+      page: "home",
     });
   }
 
@@ -56,7 +56,7 @@ export default function Breadcrumbs({
       ...extraCrumbs.map((c, i) => ({
         title: c,
         key: `extra-${i}`,
-        page: null, // not clickable, usually filter or sub-step
+        page: null,
       }))
     );
   }
@@ -76,7 +76,7 @@ export default function Breadcrumbs({
                 c.title
               ) : (
                 <button
-                  className="btn btn-link p-0 breadcrumb-link"
+                  className="breadcrumb-link"
                   onClick={() => onNavigate?.(c.page)}
                 >
                   {c.title}

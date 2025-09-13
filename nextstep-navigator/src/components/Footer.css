@@ -1,18 +1,18 @@
 .footer-section {
   width: 100%;
-  color: #212529; /* Dark text for contrast */
+  color: #212529;
 }
 
 .footer-heading {
   font-weight: 600;
-  color: #212529; /* Darker heading for contrast */
+  color: #212529;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 1rem;
 }
 
 .footer-link {
-  color: #495057; /* Slightly darker muted text color for links */
+  color: #495057;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
   display: inline-block;
@@ -21,7 +21,7 @@
 
 
 .footer-link:hover {
-  color: #000000; /* Darker on hover */
+  color: #000000;
   text-decoration: underline;
 }
 
@@ -32,10 +32,10 @@
 }
 
 .social-icons .social-icon:hover {
-  color: #0d6efd; /* Primary blue color on hover */
+  color: #0d6efd;
   transform: scale(1.2);
 }
 
 .border-light {
-  border-color: #dee2e6 !important; /* Lighter border for the top separator */
+  border-color: #dee2e6 !important;
 }

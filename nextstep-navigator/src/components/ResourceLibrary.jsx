@@ -43,13 +43,12 @@ export default function ResourceLibrary() {
 
   return (
     <section className="resource-library-section container py-5">
-      <div className="text-center mb-5">
+      <div className="text-center mb-5" data-aos="fade-down">
         <h1 className="display-4 fw-bold text-primary">Resource Library 📚</h1>
-        <p className="lead text-muted">Your one-stop hub for career-enhancing articles, e-books, and tools.</p>
+        <p className="lead text-muted" data-aos-delay="100">Your one-stop hub for career-enhancing articles, e-books, and tools.</p>
       </div>
 
-      {/* Controls */}
-      <div className="controls-wrapper mb-5 p-4 rounded-4 shadow-sm">
+      <div className="controls-wrapper mb-5 p-4 rounded-4 shadow-sm" data-aos="fade-up" data-aos-delay="200">
         <div className="row g-3 align-items-center">
           <div className="col-lg-5 col-md-12">
             <div className="input-group">
@@ -79,11 +78,10 @@ export default function ResourceLibrary() {
         </div>
       </div>
 
-      {/* Resource Grid */}
-      <div className="row g-4">
+      <div className="row g-4" data-aos="fade-up" data-aos-delay="300">
         {filteredResources.length > 0 ? (
-          filteredResources.map((resource) => (
-            <div key={resource.id} className="col-lg-4 col-md-6">
+          filteredResources.map((resource, idx) => (
+            <div key={resource.id} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={idx * 50}>
               <div className="resource-card card h-100 shadow-sm border-0">
                 <div className="card-body d-flex flex-column">
                   <div className="d-flex align-items-start mb-3">
@@ -107,7 +105,7 @@ export default function ResourceLibrary() {
             </div>
           ))
         ) : (
-          <div className="col-12 text-center py-5">
+          <div className="col-12 text-center py-5" data-aos="zoom-in">
             <h4 className="text-muted">No resources found.</h4>
             <p className="text-muted">Try adjusting your search or filter.</p>
           </div>

@@ -1,46 +1,24 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 
-/**
- * @typedef {'geo' | 'device' | 'manual' | 'default'} TimezoneSource
- */
-
-/**
- * A custom hook to manage and display time based on user's geolocation or manual selection.
- *
- * @param {object} options - The options for the hook.
- * @param {string} [options.defaultZone='Africa/Lagos'] - The default timezone to use if none is set.
- * @returns {{
- *  time: Date,
- *  tzName: string,
- *  tzOffsetMinutes: number,
- *  loading: boolean,
- *  error: string | null,
- *  timezoneSource: TimezoneSource,
- *  setTzName: (tz: string) => void
- * }}
- */
 export const useGeoClock = ({ defaultZone = 'Africa/Lagos' } = {}) => {
   const getInitialTz = () => localStorage.getItem('selectedTimezone') || defaultZone;
-  const getInitialSource = () => /** @type {TimezoneSource} */ (localStorage.getItem('timezoneSource') || 'default');
+  const getInitialSource = () => (localStorage.getItem('timezoneSource') || 'default');
 
   const [time, setTime] = useState(new Date());
   const [tzName, setTzNameState] = useState(getInitialTz);
   const [timezoneSource, setTimezoneSource] = useState(getInitialSource);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Effect for updating time every second
   useEffect(() => {
     const timerId = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timerId);
   }, []);
 
-  // Effect for geolocation and timezone detection on initial mount
   useEffect(() => {
     const source = localStorage.getItem('timezoneSource');
     if (source === 'manual' || source === 'geo') {
       setLoading(false);
-      return; // User has a preference, so we don't fetch location
+      return;
     }
 
     const fetchTimezone = async () => {
@@ -57,7 +35,6 @@ export const useGeoClock = ({ defaultZone = 'Africa/Lagos' } = {}) => {
         async (position) => {
           try {
             const { latitude, longitude } = position.coords;
-            // Lazy-load the timezone lookup library
             const { default: geoTz } = await import('geo-tz');
             const timezones = geoTz(latitude, longitude);
 
@@ -97,7 +74,7 @@ export const useGeoClock = ({ defaultZone = 'Africa/Lagos' } = {}) => {
     setTimezoneSource('manual');
     localStorage.setItem('selectedTimezone', newTz);
     localStorage.setItem('timezoneSource', 'manual');
-    setError(null); // Clear any previous errors
+    setError(null);
   }, []);
 
   const tzOffsetMinutes = useMemo(() => {
@@ -106,7 +83,7 @@ export const useGeoClock = ({ defaultZone = 'Africa/Lagos' } = {}) => {
       const localDate = new Date(time.toLocaleString('en-US'));
       return (localDate.getTime() - dateInTz.getTime()) / 60000;
     } catch {
-      return 0; // Fallback for invalid timezone name
+      return 0;
     }
   }, [time, tzName]);
 

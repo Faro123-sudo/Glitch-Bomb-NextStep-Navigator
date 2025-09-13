@@ -9,14 +9,13 @@ const domains = [
 
 export default function SuccessStories({ userType = "" }) {
   const [selectedDomain, setSelectedDomain] = useState("All");
-  const [showRecommended, setShowRecommended] = useState(!!userType); // default to recommended if userType provided
+  const [showRecommended, setShowRecommended] = useState(!!userType);
   const [stories, setStories] = useState(defaultData.successStories);
 
   useEffect(() => {
     setStories(defaultData.successStories);
   }, []);
 
-  // Filter logic
   const filteredStories = stories
     .map((story) => {
       const audiences = Array.isArray(story.audiences)
@@ -35,12 +34,11 @@ export default function SuccessStories({ userType = "" }) {
 
   return (
     <section className="container py-5">
-      <h1 className="text-center mb-5 display-4 fw-bold text-primary">
+      <h1 className="text-center mb-5 display-4 fw-bold text-primary" data-aos="fade-down">
         Success Stories
       </h1>
 
-      {/* Filters */}
-      <div className="row mb-4 justify-content-center">
+      <div className="row mb-4 justify-content-center" data-aos="fade-up" data-aos-delay="100">
         <div className="col-md-4 mb-3">
           <select
             className="form-select form-select-lg"
@@ -69,25 +67,20 @@ export default function SuccessStories({ userType = "" }) {
         )}
       </div>
 
-      {/* Story Grid */}
-      <div className="row g-4">
+      <div className="row g-4" data-aos="fade-up" data-aos-delay="200">
         {filteredStories.length > 0 ? (
           filteredStories.map((story, idx) => (
             <div
               key={story.id}
               className="col-lg-4 col-md-6"
-              style={{
-                animation: "fadeInUp 0.5s",
-                animationDelay: `${idx * 0.08}s`,
-                animationFillMode: "both",
-              }}
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}
             >
               <div className="card h-100 shadow-lg border-0 success-story-card position-relative">
                 <span className="badge bg-secondary position-absolute top-0 start-0 m-3 domain-badge">
                   {story.domain}
                 </span>
 
-                {/* Recommended Badge */}
                 {story.recommended && (
                   <span className="badge bg-primary position-absolute top-0 end-0 m-3">
                     Recommended
@@ -121,7 +114,7 @@ export default function SuccessStories({ userType = "" }) {
             </div>
           ))
         ) : (
-          <div className="col-12 text-center text-muted py-5">
+          <div className="col-12 text-center text-muted py-5" data-aos="zoom-in">
             No stories found for this selection.
           </div>
         )}

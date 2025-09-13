@@ -1,11 +1,8 @@
-// AdmissionAndCoaching.jsx
-
 import React from "react";
 import data from "../data/careerData.json";
 import "./AdmissionAndCoaching.css";
 
 export default function AdmissionAndCoaching({ userType = "student" }) {
-  // Filter topics based on userType
   const filteredTopics = data.admissionAndCoaching.guidanceTopics.filter(
     (topic) => topic.userType === userType
   );

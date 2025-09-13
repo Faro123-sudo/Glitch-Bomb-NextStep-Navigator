@@ -14,7 +14,6 @@ const userTypes = [
 ];
 
 export default function MultimediaGuidance({ userType = "" }) {
-  // Use userType if provided to auto-filter
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedUserType, setSelectedUserType] = useState(userType || "All");
   const [showTranscriptId, setShowTranscriptId] = useState(null);
@@ -36,18 +35,17 @@ export default function MultimediaGuidance({ userType = "" }) {
 
   return (
     <section className="container py-5">
-      <h1 className="text-center mb-4 display-4 fw-bold text-primary">
+      <h1 className="text-center mb-4 display-4 fw-bold text-primary" data-aos="fade-down">
         Multimedia Guidance
       </h1>
-      <p className="text-center text-muted mb-5 fs-5">
+      <p className="text-center text-muted mb-5 fs-5" data-aos="fade-up" data-aos-delay="100">
         {userType
           ? `Curated for ${userType.charAt(0).toUpperCase() + userType.slice(1)}s`
           : "Watch and listen to professionals share real-world insights. Filter by category or user type to find what inspires you!"}
       </p>
 
-      {/* Featured Section */}
-      <div className="row mb-5">
-        <div className="col-md-6 mb-3">
+      <div className="row mb-5" data-aos="fade-up" data-aos-delay="200">
+        <div className="col-md-6 mb-3" data-aos="zoom-in-right" data-aos-delay="300">
           <div className="card multimedia-card shadow border-0">
             <div className="card-body">
               <h5 className="card-title text-primary fw-bold mb-3">
@@ -72,7 +70,7 @@ export default function MultimediaGuidance({ userType = "" }) {
             </div>
           </div>
         </div>
-        <div className="col-md-6 mb-3">
+        <div className="col-md-6 mb-3" data-aos="zoom-in-left" data-aos-delay="400">
           <div className="card multimedia-card shadow border-0">
             <div className="card-body">
               <h5 className="card-title text-primary fw-bold mb-3">
@@ -98,8 +96,7 @@ export default function MultimediaGuidance({ userType = "" }) {
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="d-flex flex-wrap justify-content-center gap-3 mb-4">
+      <div className="d-flex flex-wrap justify-content-center gap-3 mb-4" data-aos="fade-up" data-aos-delay="200">
         <div>
           <span className="fw-semibold me-2">Category:</span>
           {categories.map((cat) => (
@@ -132,10 +129,8 @@ export default function MultimediaGuidance({ userType = "" }) {
         )}
       </div>
 
-      {/* Videos & Podcasts */}
-      <div className="row g-4 justify-content-center">
-        {/* Videos */}
-        <div className="col-md-6">
+      <div className="row g-4 justify-content-center" data-aos="fade-up" data-aos-delay="300">
+        <div className="col-md-6" data-aos="fade-right" data-aos-delay="400">
           <div className="card shadow-lg border-0 h-100 multimedia-card">
             <div className="card-body">
               <h2 className="card-title text-center mb-4 text-primary fw-bold">
@@ -186,8 +181,7 @@ export default function MultimediaGuidance({ userType = "" }) {
           </div>
         </div>
 
-        {/* Podcasts */}
-        <div className="col-md-6">
+        <div className="col-md-6" data-aos="fade-left" data-aos-delay="500">
           <div className="card shadow-lg border-0 h-100 multimedia-card argon-podcast-card">
             <div className="card-body">
               <h2 className="card-title text-center mb-4 text-primary fw-bold">
@@ -239,9 +233,8 @@ export default function MultimediaGuidance({ userType = "" }) {
         </div>
       </div>
 
-      {/* Workshops */}
-      <div className="row mt-5">
-        <div className="col-12">
+      <div className="row mt-5" data-aos="fade-up" data-aos-delay="200">
+        <div className="col-12" data-aos="zoom-in-up" data-aos-delay="300">
           <div className="card multimedia-card shadow border-0">
             <div className="card-body">
               <h4 className="card-title text-primary fw-bold mb-3">
