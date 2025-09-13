@@ -108,15 +108,11 @@ npm run dev
 
 ### 🖥️ Desktop Header
 
-![Desktop Navigation Screenshot](docs/screenshots/header-desktop.png)
+![Desktop Landing Page Screenshot](docs/screenshots/header-desktop.png)
 
 ### 📱 Mobile Menu
 
-![Mobile Navigation Screenshot](docs/screenshots/header-mobile.png)
-
-### 📑 Breadcrumbs
-
-![Breadcrumb Screenshot](docs/screenshots/breadcrumbs.png)
+![Mobile landing Page Screenshot](docs/screenshots/header-mobile.png)
 
 ---
 
