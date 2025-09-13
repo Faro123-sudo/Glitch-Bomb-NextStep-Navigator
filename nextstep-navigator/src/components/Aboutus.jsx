@@ -1,8 +1,22 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Aboutus.css";
+import HaleemImage from "../../images/Haleem.webp";
+import { Import } from "lucide-react";
+import JoyImage from "../../images/Joy.webp";
+import StephanieImage from "../../images/Stephanie.webp";
+import PhillipImage from "../../images/Phillip.webp";
+import DavidImage from "../../images/DavidI.webp";
 
 const AboutUs = () => {
+    const teamMembers = [
+        { name: "David", role: "Team Member", imgSrc: DavidImage },
+        { name: "Joy", role: "Team Member", imgSrc: JoyImage },
+        { name: "Stephanie", role: "Team Member", imgSrc: StephanieImage },
+        { name: "Phillip", role: "Team Member", imgSrc: PhillipImage },
+        { name: "Haleem", role: "Team Member", imgSrc: HaleemImage },
+    ];
+
     return (
         <div className="container py-5 about-container" data-aos="fade-up" data-aos-delay="300">
             
@@ -31,16 +45,10 @@ const AboutUs = () => {
             <section className="about-team">
                 <h2 className="fw-semibold text-center mb-4">Meet the Team</h2>
                 <div className="row g-4 justify-content-center" data-aos="fade-up" data-aos-delay="200">
-                    {[
-                        { name: "David", role: "Team Member" },
-                        { name: "Joy", role: "Team Member" },
-                        { name: "Stephanie", role: "Team Member" },
-                        { name: "Phillip", role: "Team Member" },
-                        { name: "Haleem", role: "Team Member" },
-                    ].map((member, index) => (
+                    {teamMembers.map((member, index) => (
                         <div key={index} className="col-md-4 col-sm-6 text-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={member.imgSrc}
                                 alt={member.name}
                                 className="rounded-circle mb-3"
                             />
