@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import Logo from "../assets/logo.webp";
 import animationData from "../assets/animation/looking.json";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./staticFiles/landingPage.css";
+import "./staticFiles/LandingPage.css";
 
 const LandingPage = ({ onNavigate }) => {
   const [name, setName] = useState("");
