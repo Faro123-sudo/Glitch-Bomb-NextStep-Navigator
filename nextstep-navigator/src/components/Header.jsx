@@ -63,44 +63,45 @@ const Header = ({ userType = "guest" }) => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="d-none d-lg-flex align-items-center ms-auto">
-              <ul className="navbar-nav mb-2 mb-lg-0 d-flex flex-row align-items-center">
-                {navLinks.map((link) => {
-                  const IconComponent = Icons[link.icon] || Icons.Circle;
-                  return (
-                    <li className="nav-item mx-lg-1 position-relative" key={link.page}>
-                      <button
-                        onClick={() => handleNavigation(link.page)}
-                        className={`btn nav-link rounded-pill px-3 py-2 d-flex align-items-center gap-2 ${
-                          activePage === link.page ? "fw-bold text-primary" : "text-dark"
-                        }`}
-                      >
-                        <IconComponent size={18} />
-                        {link.label}
-                        {activePage === link.page && (
-                          <motion.div
-                            layoutId="underline"
-                            className="position-absolute bottom-0 start-50 translate-middle-x bg-primary"
-                            style={{ height: "3px", width: "60%", borderRadius: "2px" }}
-                            initial={{ width: 0 }}
-                            animate={{ width: "60%" }}
-                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                          />
-                        )}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+<div className="d-none d-lg-flex align-items-center flex-grow-1">
+  <ul className="navbar-nav mb-2 mb-lg-0 d-flex flex-row align-items-center mx-auto">
+    {navLinks.map((link) => {
+      const IconComponent = Icons[link.icon] || Icons.Circle;
+      return (
+        <li className="nav-item mx-lg-1 position-relative" key={link.page}>
+          <button
+            onClick={() => handleNavigation(link.page)}
+            className={`btn nav-link rounded-pill px-3 py-2 d-flex align-items-center gap-2 ${
+              activePage === link.page ? "fw-bold text-primary" : "text-dark"
+            }`}
+          >
+            <IconComponent size={18} />
+            {link.label}
+            {activePage === link.page && (
+              <motion.div
+                layoutId="underline"
+                className="position-absolute bottom-0 start-50 translate-middle-x bg-primary"
+                style={{ height: "3px", width: "60%", borderRadius: "2px" }}
+                initial={{ width: 0 }}
+                animate={{ width: "60%" }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            )}
+          </button>
+        </li>
+      );
+    })}
+  </ul>
 
-              {/* Username Display */}
-              {username && (
-                <div className="d-flex align-items-center ps-3 border-start ms-2">
-                  <User size={20} className="text-primary me-2" />
-                  <span className="fw-semibold text-secondary">{username}</span>
-                </div>
-              )}
-            </div>
+  {/* Username Display */}
+  {username && (
+    <div className="d-flex align-items-center ps-3 border-start ms-2">
+      <User size={20} className="text-primary me-2" />
+      <span className="fw-semibold text-secondary">{username}</span>
+    </div>
+  )}
+</div>
+
 
             {/* Mobile Menu Button */}
             <button className="navbar-toggler border-0 p-0 ms-3 d-lg-none" type="button" onClick={toggleMenu}>
