@@ -141,7 +141,7 @@ export default function MultimediaGuidance({ userType = "" }) {
               )}
               <ul className="list-group list-group-flush">
                 {filteredVideos.map((video) => (
-                  <li key={video.id} className="list-group-item">
+                  <li key={video.id} className="list-group-item d-flex">
                     <div className="d-flex align-items-center">
                       {isYouTube(video.url) && (
                         <iframe

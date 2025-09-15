@@ -15,6 +15,7 @@ const LandingPage = ({ onNavigate }) => {
       sessionStorage.setItem("username", name);
       sessionStorage.setItem("userType", userType);
       onNavigate();
+      window.scrollTo(0, 0);
     } else {
       alert("Please enter your name.");
     }
